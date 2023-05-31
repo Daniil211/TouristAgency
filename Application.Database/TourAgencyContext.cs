@@ -39,7 +39,7 @@ namespace Application.Database
         public virtual DbSet<TransportOfTour> TransportOfTours { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Name=ConnectionStrings:DefaultConnection");
+            => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TourAgency;Trusted_Connection=False;TrustServerCertificate=False;");
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

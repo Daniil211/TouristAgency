@@ -1,22 +1,22 @@
-﻿<Window x:Class="Application.Desktop.MainWindow"
+﻿<Window x:Class="Application.Desktop.AdminsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
         mc:Ignorable="d"
-        Title="MainPage" 
+       Title="AdminsWindow" 
         Height="750" Width="980" 
         Icon="Icons/logoIcon.png" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="SingleBorderWindow" 
-        MinHeight="700" MinWidth="750">
+        MinHeight="700" MinWidth="750" >
+
     <Border CornerRadius="20" Background="#FFFFFCF2">
         <Grid Margin="35,5,35,5">
             <!-- Общая разметка по горизонтали (header, popularTours, formFind) -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"></RowDefinition>
-                <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
@@ -24,14 +24,12 @@
             <DockPanel Grid.Row="0" >
                 <Image Style="{StaticResource logo}"  Source="Icons/logoIcon.png" DockPanel.Dock="Left"/>
                 <TextBlock Text="Путешествие мечты" VerticalAlignment="Center" DockPanel.Dock="Left"></TextBlock>
-                <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+                <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" />
+
             </DockPanel>
-
-            <!-- PopularTours frame -->
-            <Frame Grid.Row="1" Name="PopToursFrame" Margin="0,5,0,5"/>
-
-            <Button x:Name="ButtonFind" Grid.Row="2"  Style="{DynamicResource buttonFind}" Content="Подобрать тур" Click="ButtonFind_Click"/>
+            <DataGrid Grid.Row="1" x:Name="DataGridMen" Margin="0,0,0,10" />
 
         </Grid>
+
     </Border>
 </Window>

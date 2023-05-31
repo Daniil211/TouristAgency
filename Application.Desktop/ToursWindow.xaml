@@ -1,0 +1,56 @@
+﻿<Window x:Class="Application.Desktop.ToursWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application.Desktop"
+        mc:Ignorable="d"
+        Title="ToursWindow" 
+        Height="750" Width="980" 
+        Icon="Icons/logoIcon.png" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow" 
+        MinHeight="700" MinWidth="750">
+    <Border CornerRadius="20" Background="#FFFFFCF2">
+        <Grid HorizontalAlignment="Center" Background="#FFF3C6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Row="1" Name="LViewTours"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalAlignment="Center">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="20" Width="400">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="310"></RowDefinition>
+                                <RowDefinition Height="70"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                                <RowDefinition Height="auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Image Width="400" Grid.Row="0" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
+                                <Image.Source>
+                                    <Binding Path="Image">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>Icons/logoIcon.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{Binding TourName}" VerticalAlignment="Center" TextAlignment="Center" Width="390"
+                                       TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="1"></TextBlock>
+                            <TextBlock Text="{Binding Price, StringFormat={}{0:N0} руб}" Grid.Row="2"  FontSize="14" HorizontalAlignment="Left"></TextBlock>
+                            <TextBlock Text="{Binding Duration}" Grid.Row="2" FontSize="14"  HorizontalAlignment="Right"></TextBlock>
+                            <Button Name="MakeOrder" Click="Btn_MakeOrder_Click" Grid.Row="3" Style="{DynamicResource buttonCallBack}" Content="Оставить заявку" ></Button>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Border>
+</Window>

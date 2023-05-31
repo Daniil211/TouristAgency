@@ -20,9 +20,22 @@ namespace Application.Desktop
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>Initializes a new instance of the <see cref="MainWindow" /> class.</summary>
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            AuthWindow aw = new AuthWindow();
+            aw.Show();
+
+        }
+
+        private void ButtonFind_Click(object sender, RoutedEventArgs e)
+        {
+            ToursWindow toursWindow = new ToursWindow();
+            toursWindow.Show();
         }
     }
 }

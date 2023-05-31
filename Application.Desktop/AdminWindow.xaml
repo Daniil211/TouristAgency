@@ -1,0 +1,49 @@
+﻿<Window x:Class="Application.Desktop.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Application.Desktop"
+        mc:Ignorable="d"
+       Title="AdminWindow" 
+        Height="750" Width="980" 
+        Icon="Icons/logoIcon.png" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow" 
+        MinHeight="700" MinWidth="750" 
+        Loaded="Window_Loaded">
+
+    <Border CornerRadius="20" Background="#FFFFFCF2">
+        <Grid Margin="35,5,35,5">
+            <!-- Общая разметка по горизонтали (header, popularTours, formFind) -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition Height="159*"  />
+                <RowDefinition Height="48*" />
+                <RowDefinition Height="52*" />
+                <RowDefinition Height="305*" />
+
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <DockPanel Grid.Row="0" >
+                <Image Style="{StaticResource logo}"  Source="Icons/logoIcon.png" DockPanel.Dock="Left"/>
+                <TextBlock Text="Путешествие мечты" VerticalAlignment="Center" DockPanel.Dock="Left"></TextBlock>
+                <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" />
+            </DockPanel>
+            <Button Grid.Row="1" Style="{DynamicResource buttonFind}"  x:Name="men_btn" Click="men_btn_Click" Margin="0,2,0,28" Width="223" HorizontalAlignment="Center" >Посмотреть менеджеров</Button>
+            <DataGrid Grid.Row="2" x:Name="DataGridOrders" Margin="0,0,0,10" />
+            <StackPanel Grid.Row="3" Margin="0,10,0,5" Orientation="Horizontal">
+                <Label HorizontalAlignment="Center">Выберите номер заказа:</Label>
+                <ComboBox x:Name="num_cb" Height="29" Width="294"></ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Margin="0,4,0,10"  Orientation="Horizontal">
+                <Label HorizontalAlignment="Center">Выберите менеджера:</Label>
+                <ComboBox x:Name="cbmen" Width="302"></ComboBox>
+            </StackPanel>
+            <Button Grid.Row="5" Style="{DynamicResource buttonFind}"  x:Name="save_btn" Click="save_btn_Click" Margin="365,0,365,47" >Сохранить изменения</Button>
+
+        </Grid>
+    </Border>
+</Window>
