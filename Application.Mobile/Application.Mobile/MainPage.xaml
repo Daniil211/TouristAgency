@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Application.Mobile.MainPage"
+             BackgroundColor="#FFFCF2"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="5,30,5,30">
+            <Image Source="logoIcon.png" HeightRequest="40" />
+            <Label Text="Путешествие мечты" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0,7,5,0"/>
+            <Button Text="Все туры" Style="{StaticResource buttonPodStyle}"  WidthRequest="140" Clicked="ButtonAll_Clicked"/>
+        </StackLayout>
+
+        <Label Text="Популярные туры" TextColor="Black" FontSize="18" FontAttributes="Bold" Margin="15" HorizontalOptions="Center"/>
+
+        <ScrollView Orientation="Horizontal">
+            <StackLayout Orientation="Horizontal">
+                <Frame HeightRequest="340" WidthRequest="230" BackgroundColor="White" Padding="0" HasShadow="True" Margin="10" CornerRadius="10" HorizontalOptions="CenterAndExpand">
+                    <Grid>
+                        <StackLayout>
+                            <Image Source="Altai.jpg" HeightRequest="200" Aspect="AspectFill"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Горный Алтай" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="50,000 руб." TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="20,0,0,5"/>
+                                <Label Grid.Column="1" Text="6 дней" TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="40,0,0,5"/>
+                            </Grid>
+                            <Button Text="Оставить заявку" Style="{StaticResource buttonOrdStyle}" Clicked="ButtonOrd_Clicked"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="340" WidthRequest="230" BackgroundColor="White" Padding="0" HasShadow="True" Margin="10" CornerRadius="10" HorizontalOptions="CenterAndExpand">
+                    <Grid>
+                        <StackLayout>
+                            <Image Source="Kazan.jpg" HeightRequest="200" Aspect="AspectFill"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Гастрономический тур в Казань" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="15,000 руб." TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="20,0,0,5"/>
+                                <Label Grid.Column="1" Text="4 дня" TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="40,0,0,5"/>
+                            </Grid>
+                            <Button Text="Оставить заявку" Style="{StaticResource buttonOrdStyle}" Clicked="ButtonOrd_Clicked"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="340" WidthRequest="230" BackgroundColor="White" Padding="0" HasShadow="True" Margin="10" CornerRadius="10" HorizontalOptions="CenterAndExpand">
+                    <Grid>
+                        <StackLayout>
+                            <Image Source="Dagestan.jpg" HeightRequest="200" Aspect="AspectFill"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Жемчужины Дагестана" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="20,000 руб." TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="20,0,0,5"/>
+                                <Label Grid.Column="1" Text="4 дня" TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="40,0,0,5"/>
+                            </Grid>
+                            <Button Text="Оставить заявку" Style="{StaticResource buttonOrdStyle}" Clicked="ButtonOrd_Clicked"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+
+                <Frame HeightRequest="340" WidthRequest="230" BackgroundColor="White" Padding="0" HasShadow="True" Margin="10" CornerRadius="10" HorizontalOptions="CenterAndExpand">
+                    <Grid>
+                        <StackLayout>
+                            <Image Source="Baikal.jpg" HeightRequest="200" Aspect="AspectFill"/>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Ледовый Байкал" TextColor="Black" FontSize="16" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="60,000 руб." TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="20,0,0,5"/>
+                                <Label Grid.Column="1" Text="7 дней" TextColor="Black" FontSize="14" VerticalOptions="EndAndExpand" Margin="40,0,0,5"/>
+                            </Grid>
+                            <Button Text="Оставить заявку" Style="{StaticResource buttonOrdStyle}" Clicked="ButtonOrd_Clicked"></Button>
+                        </StackLayout>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+        <Grid Margin="10,30,10,0" BackgroundColor="#FFF3C6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Text="Город" Grid.Column="0" Grid.Row="0"/>
+            <Picker   Grid.Column="1" Grid.Row="0">
+                <Picker.Items>
+                    <x:String>Казань</x:String>
+                    <x:String>Белокуриха</x:String>
+                    <x:String>Махачкала</x:String>
+                    <x:String>Иркутск</x:String>
+                    <x:String>Петрозаводск</x:String>
+                    <x:String>Санкт-Петербург</x:String>
+                    <x:String>Калининград</x:String>
+                    <x:String>Великий Устюг</x:String>
+                    <x:String>Волгоград</x:String>
+                    <x:String>Мурманск</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label Text="Транспорт" Grid.Column="0" Grid.Row="1"/>
+            <Picker   Grid.Column="1" Grid.Row="1">
+                <Picker.Items>
+                    <x:String>Самолёт</x:String>
+                    <x:String>Поезд</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label Text="Звёзды" Grid.Column="0" Grid.Row="2"/>
+            <Picker   Grid.Column="1" Grid.Row="2">
+                <Picker.Items>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                    <x:String>5</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Grid.Row="3" Grid.ColumnSpan="2" HorizontalOptions="Center" Text="Подобрать тур" Style="{StaticResource buttonPodStyle}" Clicked="ButtonPod_Clicked" Margin="5,20,5,5" WidthRequest="250"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
