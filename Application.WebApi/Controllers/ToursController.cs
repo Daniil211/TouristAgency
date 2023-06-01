@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Database;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace Application.WebApi.Controllers
 {
@@ -17,10 +18,10 @@ namespace Application.WebApi.Controllers
         }
 
         [HttpGet(Name = "GetTours")]
-        // GET: ToursController
-        public ActionResult Index()
+        public ActionResult MethodGetTours()
         {
             return Ok(_context.Tours.ToList());
         }
+
     }
 }

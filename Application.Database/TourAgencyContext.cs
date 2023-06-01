@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace Application.Database
 {
-    public partial class TourAgencyContext : DbContext
+    public partial class TourAgencyContext : DbContext, IUnitOfWork
     {
         public TourAgencyContext()
         {
+            Database.EnsureDeleted();   
+            Database.EnsureCreated();
         }
 
-        public TourAgencyContext(DbContextOptions<TourAgencyContext> options)
-            : base(options)
-        {
-        }
+        public TourAgencyContext(DbContextOptions<TourAgencyContext> options) : base(options)
+        {}
 
         public virtual DbSet<City> Cities { get; set; }
 
@@ -38,11 +38,18 @@ namespace Application.Database
 
         public virtual DbSet<TransportOfTour> TransportOfTours { get; set; }
 
+
+        public virtual DbSet<User> Users { set; get; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<UserToken> UserTokens { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TourAgency;Trusted_Connection=False;TrustServerCertificate=False;");
         //Server=(localdb)\\MSSQLLocalDB;Database=TourAgency;Trusted_Connection=False;TrustServerCertificate=False;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<City>(entity =>
             {
                 entity.Property(e => e.CityName)
@@ -154,6 +161,32 @@ namespace Application.Database
                     .HasConstraintName("FK_TransportOfTour_Transport");
             });
             OnModelCreatingPartial(modelBuilder);
+
+            // Custom application mappings
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.Username).HasMaxLength(450).IsRequired();
+                entity.HasIndex(e => e.Username).IsUnique();
+                entity.Property(e => e.Password).IsRequired();
+                entity.Property(e => e.SerialNumber).HasMaxLength(450);
+            });
+
+            modelBuilder.Entity<UserRole>(entity =>
+            {
+                entity.HasIndex(e => e.UserId);
+                entity.Property(e => e.UserId);
+                entity.HasOne(d => d.User).WithMany(p => p.UserRoles).HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<UserToken>(entity =>
+            {
+                entity.HasOne(ut => ut.User)
+                      .WithMany(u => u.UserTokens)
+                      .HasForeignKey(ut => ut.UserId);
+
+                entity.Property(ut => ut.RefreshTokenIdHash).HasMaxLength(450).IsRequired();
+                entity.Property(ut => ut.RefreshTokenIdHashSource).HasMaxLength(450);
+            });
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
