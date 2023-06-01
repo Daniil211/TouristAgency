@@ -40,7 +40,7 @@ namespace Application.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=TourAgency;Trusted_Connection=False;TrustServerCertificate=False;");
-        //"" для webapi Data Source=ConnectionStrings:DefaultConnection
+        //Server=(localdb)\\MSSQLLocalDB;Database=TourAgency;Trusted_Connection=False;TrustServerCertificate=False;
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<City>(entity =>
