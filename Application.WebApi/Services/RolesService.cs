@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-using AuthorizeTest.dntipsAPI.Entities;
-using AuthorizeTest.dntipsAPI.Utils;
-using AuthorizeTest.dntipsAPI.Context;
-using AuthorizeTest.Shared.Enums;
-using AuthorizeTest.Shared.Utils;
+using Application.Authorize.Enums;
+using Application.Database.Models;
+using Application.Database;
+using Application.WebApi.Utils;
 
 namespace Application.WebApi.Services
 {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace AuthorizeTest.Shared.Models
+namespace Application.Authorize.Models
 {
     public class JWTTokenDTO
     {

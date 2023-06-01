@@ -1,7 +1,6 @@
-﻿using AuthorizeTest.dntipsAPI.Entities;
-using AuthorizeTest.dntipsAPI.Models;
-using AuthorizeTest.dntipsAPI.Utils;
-using AuthorizeTest.Shared.Utils;
+﻿using Application.Database.Models;
+using Application.WebApi.Models;
+using Application.WebApi.Utils;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

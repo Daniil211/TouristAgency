@@ -13,8 +13,8 @@ namespace Application.Database
     {
         public TourAgencyContext()
         {
-            Database.EnsureDeleted();   
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();   
+            //Database.EnsureCreated();
         }
 
         public TourAgencyContext(DbContextOptions<TourAgencyContext> options) : base(options)

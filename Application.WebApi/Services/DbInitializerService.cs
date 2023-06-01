@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using AuthorizeTest.dntipsAPI.Context;
-using AuthorizeTest.dntipsAPI.Entities;
-using AuthorizeTest.dntipsAPI.Utils;
-using AuthorizeTest.Shared.Enums;
-using AuthorizeTest.Shared.Models;
+using Application.Authorize.Enums;
+using Application.Database;
+using Application.Database.Models;
+using Application.WebApi.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -43,7 +42,7 @@ namespace Application.WebApi.Services
         public void Initialize()
         {
             using var serviceScope = _scopeFactory.CreateScope();
-            using var context = serviceScope.ServiceProvider.GetService<AuthorizeTest.dntipsAPI.Context.ApplicationDbContext>();
+            using var context = serviceScope.ServiceProvider.GetService<TourAgencyContext>();
             context.Database.Migrate();
         }
 
@@ -51,7 +50,7 @@ namespace Application.WebApi.Services
         {
             using (var serviceScope = _scopeFactory.CreateScope())
             {
-                using (var context = serviceScope.ServiceProvider.GetService<AuthorizeTest.dntipsAPI.Context.ApplicationDbContext>())
+                using (var context = serviceScope.ServiceProvider.GetService<TourAgencyContext>())
                 {
                     //// Add default roles
                     //var adminRole = new Role { Name = ConstantRoles.Admin };
@@ -69,7 +68,7 @@ namespace Application.WebApi.Services
                         var adminUser = new User
                         {
                             Username = "Admin",
-                            DisplayName = "بهرام قدیری",
+                            DisplayName = "Спиридонов Даниил",
                             IsActive = true,
                             LastLoggedIn = null,
                             Password = _securityService.GetSha256Hash("12345678"),
@@ -83,7 +82,7 @@ namespace Application.WebApi.Services
                         var userUser = new User
                         {
                             Username = "User",
-                            DisplayName = "پدارم قدیری",
+                            DisplayName = "Хамитова Элина",
                             IsActive = true,
                             LastLoggedIn = null,
                             Password = _securityService.GetSha256Hash("12345678"),

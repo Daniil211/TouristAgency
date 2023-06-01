@@ -1,4 +1,4 @@
-﻿namespace AuthorizeTest.Shared.Models
+﻿namespace Application.Authorize.Models
 {
     public class UserDTO
     {

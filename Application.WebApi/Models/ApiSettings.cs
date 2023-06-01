@@ -1,4 +1,4 @@
-﻿namespace AuthorizeTest.dntipsAPI.Models
+﻿namespace Application.WebApi.Models
 {
     public class ApiSettings
     {

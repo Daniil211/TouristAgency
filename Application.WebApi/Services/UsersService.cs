@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Application.Database;
 using Application.Database.Models;
+using Application.WebApi.Utils;
 
 namespace Application.WebApi.Services
 {

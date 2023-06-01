@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace AuthorizeTest.dntipsAPI.Models
+namespace Application.WebApi.Models
 {
     public class JwtTokensData
     {

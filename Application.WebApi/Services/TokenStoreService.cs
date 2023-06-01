@@ -1,7 +1,7 @@
-﻿using AuthorizeTest.dntipsAPI.Context;
-using AuthorizeTest.dntipsAPI.Entities;
-using AuthorizeTest.dntipsAPI.Models;
-using AuthorizeTest.dntipsAPI.Utils;
+﻿using Application.Database;
+using Application.Database.Models;
+using Application.WebApi.Models;
+using Application.WebApi.Utils;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 

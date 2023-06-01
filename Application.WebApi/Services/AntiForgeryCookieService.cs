@@ -1,4 +1,4 @@
-﻿using AuthorizeTest.dntipsAPI.Utils;
+﻿using Application.WebApi.Utils;
 using Microsoft.AspNetCore.Antiforgery;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
