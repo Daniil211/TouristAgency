@@ -6,8 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuthorizeTest.Shared.Utils
-{
+namespace Application.WebApi.Utils;
+
     public static class PublicExtensions
     {
         public static string GetDescription(this Enum value)
@@ -45,4 +45,4 @@ namespace AuthorizeTest.Shared.Utils
             return propValue?.ToString()??"";
         }
     }
-}
+
