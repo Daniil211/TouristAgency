@@ -19,8 +19,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Application.Authorize\Application.Authorize.csproj" />
-  </ItemGroup>
-
 </Project>
