@@ -1,5 +1,7 @@
 ﻿@page "/fetchdata"
-@inject HttpClient Http
+@inject HttpService Http
+@attribute [Authorize(Policy = PolicyTypes.RequireUser)]
+@*@attribute [Authorize]*@
 
 <PageTitle>Weather forecast</PageTitle>
 
@@ -37,16 +39,23 @@ else
 }
 
 @code {
-    private WeatherForecast[]? forecasts;
+    private WeatherForecast[] forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        try
+        {
+            forecasts = await Http.Get<WeatherForecast[]>("WeatherForecast/GetWeatherForecastUser");
+        }
+        catch (Exception ex)
+        {
+            var k = ex.Message;
+        }
     }
 
     public class WeatherForecast
     {
-        public DateOnly Date { get; set; }
+        public DateTime Date { get; set; }
 
         public int TemperatureC { get; set; }
 
