@@ -35,51 +35,50 @@ namespace Application.Web.Client.Services
 
         public async Task<T> Get<T>(string uri, bool isReturnToLogin = true)
         {
-            try
-            {
+            //try
+            //{
                 var request = new HttpRequestMessage(HttpMethod.Get, uri);
                 return await sendRequest<T>(request, isReturnToLogin);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception(ex.Message);
+            //}
 
         }
 
         public async Task<T> Post<T>(string uri, object value, bool isReturnToLogin = true)
         {
-            try
-            {
+            //try
+            //{
                 var request = new HttpRequestMessage(HttpMethod.Post, uri);
                 request.Content = new StringContent(JsonSerializer.Serialize(value), Encoding.UTF8, "application/json");
                 return await sendRequest<T>(request, isReturnToLogin);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception(ex.Message);
+            //}
 
         }
 
         public async Task<T> PostFile<T>(MultipartFormDataContent content, string uri)
         {
-            try
-            {
+            //try
+            //{
                 var request = new HttpRequestMessage(HttpMethod.Post, uri);
                 request.Content = content;
                 return await sendRequest<T>(request);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw new Exception(ex.Message);
+            //}
         }
         // helper methods
         private async Task<T> sendRequest<T>(HttpRequestMessage request, bool isReturnToLogin = true)
         {
-            try
-            {
+           
                 // How to add a JWT to all of the requests
                 var token = await _localStorageService.GetItemAsync<JWTTokenDTO>(ConstantKeys.LocalJWTToken);
                 var LocalSavedTokenDateTime = await _localStorageService.GetItemAsync<DateTime>(ConstantKeys.LocalSavedTokenDateTime);
@@ -229,11 +228,7 @@ namespace Application.Web.Client.Services
 
                 var responseContent = await response.Content.ReadFromJsonAsync<T>();
                 return responseContent;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
+          
         }
 
     }

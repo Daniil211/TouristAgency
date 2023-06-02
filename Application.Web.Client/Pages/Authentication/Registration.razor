@@ -1,7 +1,6 @@
 ﻿@page "/registration"
-
-@inject IClientAuthenticationService AuthenticationService
 @inject NavigationManager NavigationManager
+@inject IClientAuthenticationService AuthenticationService
 
 
 <EditForm Model="UserForRegistration" OnValidSubmit="RegisterUser" class="pt-4">
@@ -68,6 +67,7 @@
 </EditForm>
 
 @code{
+
     UserRequestDTO UserForRegistration = new UserRequestDTO();
     bool IsProcessing;
     bool ShowRegistrationErrors;

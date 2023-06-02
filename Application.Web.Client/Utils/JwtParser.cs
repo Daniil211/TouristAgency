@@ -17,10 +17,6 @@ namespace Application.Web.Client.Utils
         public IEnumerable<string> Roles { set; get; }
     }
 
-    /// <summary>
-    /// From the Steve Sanderson’s Mission Control project:
-    /// https://github.com/SteveSandersonMS/presentation-2019-06-NDCOslo/blob/master/demos/MissionControl/MissionControl.Client/Util/ServiceExtensions.cs
-    /// </summary>
     public static class JwtParser
     {
         public static JwtInfo ParseClaimsFromJwt(string jwt)

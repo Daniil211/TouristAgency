@@ -94,8 +94,8 @@ namespace Application.WebApi.Services
             }
 
             ClaimsPrincipal decodedRefreshTokenPrincipal = null;
-            try
-            {
+            //try
+            //{
                 decodedRefreshTokenPrincipal = new JwtSecurityTokenHandler().ValidateToken(
                     refreshTokenValue,
                     new TokenValidationParameters
@@ -110,11 +110,11 @@ namespace Application.WebApi.Services
                     },
                     out _
                 );
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Failed to validate refreshTokenValue: `{refreshTokenValue}`.");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    _logger.LogError(ex, $"Failed to validate refreshTokenValue: `{refreshTokenValue}`.");
+            //}
 
             return decodedRefreshTokenPrincipal?.Claims?.FirstOrDefault(c => c.Type == ClaimTypes.SerialNumber)?.Value;
         }

@@ -41,7 +41,7 @@ namespace Application.Web.Client.Services
             }
             else
             {
-                return new AuthenticationResponseDTO { IsAuthSuccessful = false,ErrorMessage="ورود ناموفق" }; ;
+                return new AuthenticationResponseDTO { IsAuthSuccessful = false,ErrorMessage= "Login failed" }; ;
             }
         }
         public async Task LogoutAsync()

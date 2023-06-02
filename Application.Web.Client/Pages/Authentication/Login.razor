@@ -49,7 +49,7 @@
             IsProcessing = false;
             var absoluteUri = new Uri(NavigationManager.Uri);
             //var queryParam = HttpUtility.ParseQueryString(absoluteUri.Query);
-            //ReturnUrl = queryParam["returnUrl"];
+            //ReturnUrl = 0queryParam["returnUrl"];
             if (string.IsNullOrEmpty(ReturnUrl))
             {
                 NavigationManager.NavigateTo("/");

@@ -32,4 +32,4 @@ builder.Services.AddScoped(x =>
     return new HttpClient() { BaseAddress = apiUrl };
 });
 
-//await builder.Build().RunAsync();
+await builder.Build().RunAsync();

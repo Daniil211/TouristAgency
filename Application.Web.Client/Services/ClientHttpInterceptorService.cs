@@ -25,8 +25,7 @@ namespace Application.Web.Client.Services
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            try
-            {
+
                 // How to add a JWT to all of the requests
                 var token = await _localStorage.GetItemAsync<JWTTokenDTO>(ConstantKeys.LocalJWTToken);
                 if (token is not null)
@@ -61,12 +60,7 @@ namespace Application.Web.Client.Services
                 }
 
                 return response;
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+           
 
         }
     }
