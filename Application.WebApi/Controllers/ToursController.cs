@@ -5,9 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Application.Database.Models;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Microsoft.AspNetCore.Cors;
 
 namespace Application.WebApi.Controllers
 {
+    [EnableCors("AllowAllOrigins")]
     [ApiController]
     [Route("[controller]")]
     public class DataController : ControllerBase
