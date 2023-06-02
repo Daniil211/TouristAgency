@@ -1,9 +1,8 @@
 ﻿using System.Security.Claims;
-using AuthorizeTest.Shared.Enums;
-using AuthorizeTest.Shared.Models;
+using Application.Authorize.Enums;
 using Microsoft.AspNetCore.Authorization; // dotnet add package Microsoft.AspNetCore.Authorization
 
-namespace AuthorizeTest.Shared.Utils
+namespace Application.Authorize.Utils
 {
     public static class PolicyTypes
     {
@@ -19,20 +18,18 @@ namespace AuthorizeTest.Shared.Utils
             options.AddPolicy(RequireCustomer, policy =>
                     policy.RequireAssertion(context =>
                         context.User.HasClaim(claim => claim.Type == ClaimTypes.Role
-                            && (claim.Value == RolesEnum.Admin.ToString() || claim.Value == RolesEnum.Customer.ToString()))
+                            && (claim.Value == RolesEnum.Admin.ToString() ))
                     ));
             options.AddPolicy(RequireEmployee, policy =>
                     policy.RequireAssertion(context =>
                         context.User.HasClaim(claim => claim.Type == ClaimTypes.Role
-                            && (claim.Value == RolesEnum.Admin.ToString() || claim.Value == RolesEnum.Employee.ToString()))
+                            && (claim.Value == RolesEnum.Admin.ToString()))
                     ));
 
             options.AddPolicy(RequireEmployeeOrCustomer, policy =>
                                 policy.RequireAssertion(context =>
                                     context.User.HasClaim(claim => claim.Type == ClaimTypes.Role
-                                        && (claim.Value == RolesEnum.Admin.ToString() ||
-                                            claim.Value == RolesEnum.Employee.ToString() ||
-                                            claim.Value == RolesEnum.Customer.ToString()))
+                                        && (claim.Value == RolesEnum.Admin.ToString()))
                                 ));
             options.AddPolicy(RequireUser, policy =>
                     policy.RequireAssertion(context =>
@@ -42,7 +39,7 @@ namespace AuthorizeTest.Shared.Utils
             options.AddPolicy(RequireEditor, policy =>
                     policy.RequireAssertion(context =>
                         context.User.HasClaim(claim => claim.Type == ClaimTypes.Role
-                            && (claim.Value == RolesEnum.Admin.ToString() || claim.Value == RolesEnum.Editor.ToString()))
+                            && (claim.Value == RolesEnum.Admin.ToString()))
                     ));
             return options;
         }

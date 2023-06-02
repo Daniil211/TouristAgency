@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuthorizeTest.Shared.Utils
+namespace Application.Authorize.Utils
 {
     public static class PublicExtensions
     {
