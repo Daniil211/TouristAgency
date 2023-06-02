@@ -1,5 +1,5 @@
-﻿using AuthorizeTest.Admin.Utils;
-using AuthorizeTest.Shared.Models;
+﻿using Application.Authorize.Models;
+using Application.Web.Client.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net;
@@ -9,7 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 
-namespace AuthorizeTest.Admin.Services
+namespace Application.Web.Client.Services
 {
     public class HttpService
     {

@@ -1,7 +1,5 @@
 ﻿@page "/login"
 
-@using System.Web
-
 @inject IClientAuthenticationService AuthenticationService
 @inject NavigationManager NavigationManager
 
@@ -64,7 +62,7 @@
         else
         {
             IsProcessing = false;
-            Errors = result?.ErrorMessage??"امکان اتصال به سرویس دهنده نمی باشد";
+            Errors = result?.ErrorMessage ?? "Unable to connect to server";
             ShowAuthenticationErrors = true;
         }
     }

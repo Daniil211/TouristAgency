@@ -1,12 +1,11 @@
-﻿using AuthorizeTest.Admin.Models;
-using AuthorizeTest.Admin.Utils;
-using AuthorizeTest.Shared.Models;
+﻿using Application.Authorize.Models;
+using Application.Web.Client.Utils;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Security.Claims;
 
-namespace AuthorizeTest.Admin.Services
+namespace Application.Web.Client.Services
 {
     public class AuthStateProvider : AuthenticationStateProvider
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AuthorizeTest.Admin.Models
+namespace Application.Web.Client.Models
 {
     public class AuthenticationDTO
     {

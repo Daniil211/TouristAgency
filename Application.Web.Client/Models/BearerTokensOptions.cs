@@ -1,4 +1,4 @@
-﻿namespace AuthorizeTest.Admin.Models
+﻿namespace Application.Web.Client.Models
 {
     public class BearerTokensOptions
     {

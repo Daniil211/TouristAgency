@@ -1,12 +1,12 @@
-﻿using AuthorizeTest.Admin.Models;
-using AuthorizeTest.Shared.Models;
+﻿using Application.Authorize.Models;
+using Application.Web.Client.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
 
-namespace AuthorizeTest.Admin.Services
+namespace Application.Web.Client.Services
 {
     public class ClientHttpInterceptorService : DelegatingHandler
     {

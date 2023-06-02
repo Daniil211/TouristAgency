@@ -1,11 +1,11 @@
-﻿using AuthorizeTest.Admin.Models;
-using AuthorizeTest.Shared.Models;
+﻿using Application.Authorize.Models;
+using Application.Web.Client.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
 
-namespace AuthorizeTest.Admin.Services
+namespace Application.Web.Client.Services
 {
     public interface IClientAuthenticationService
     {
