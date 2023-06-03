@@ -1,0 +1,67 @@
+﻿@using GameIndustry_v2.Helpers
+<div class="row">
+    <ul class="list-group mr-4 selectable-list">
+        @foreach (var item in OnNotSelected)
+        {
+            <li class="list-group-item mb-1" @onclick="(()=> Select(item))">
+                @item.Value
+            </li>
+        }  
+    </ul>
+    <div>
+        @if (allSelected)
+        {
+            <button class="btn btn-danger" @onclick="SelectDeselectAll">Deselect.All</button>
+        }
+        else
+        {
+            <button class="btn btn-primary" @onclick="SelectDeselectAll">Select.All</button>
+        }
+    </div>
+    <ul class="list-group ml-4 selectable-list">
+        @foreach (var item in OnSelected)
+        {
+            <li class="list-group-item mb-1 list-group-item-info" @onclick="(()=>Deselect(item))">
+                @item.Value
+            </li>
+        }
+    </ul>
+</div>
+
+@code {
+
+    [Parameter]
+    public List<MultipleSelectorHelperModel> OnSelected { get; set; }
+    [Parameter]
+    public List<MultipleSelectorHelperModel> OnNotSelected { get; set; }
+
+    bool allSelected;
+
+    void Select(MultipleSelectorHelperModel selectedItem)
+    {
+        OnSelected.Add(selectedItem);
+        OnNotSelected.Remove(selectedItem);
+    }
+
+    void Deselect(MultipleSelectorHelperModel deselectItem)
+    {
+        OnNotSelected.Add(deselectItem);
+        OnSelected.Remove(deselectItem);
+    }
+
+    void SelectDeselectAll()
+    {
+        if (allSelected)
+        {
+            OnNotSelected.AddRange(OnSelected);
+            OnSelected.Clear();
+            allSelected = false;
+        }
+        else
+        {
+            OnSelected.AddRange(OnNotSelected);
+            OnNotSelected.Clear();
+            allSelected = true;
+        }
+    }
+}

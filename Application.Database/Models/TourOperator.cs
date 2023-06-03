@@ -12,7 +12,7 @@ public partial class TourOperator
     public int? Age { get; set; }
 
     public string? Standing { get; set; }
-
+    public string? Image { get; set; }
     public string? Profession { get; set; }
 
     public virtual ICollection<Order> Orders { get; set; } = new List<Order>();

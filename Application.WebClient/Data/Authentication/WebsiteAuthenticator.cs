@@ -2,65 +2,65 @@
 using Application.Database;
 using Application.Database.Models;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
+//using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Newtonsoft.Json;
 
 namespace Application.WebClient.Data.Authentication
 {
     public class WebsiteAuthenticator : AuthenticationStateProvider
     {
-        private readonly ILocalStorage _protectedLocalStorage;
+        //private readonly ProtectedLocalStorage _protectedLocalStorage;
         private readonly IApplicationDbContext _context;
 
         private readonly ICurrentUserService _currentUserService;
 
-        public WebsiteAuthenticator(ProtectedLocalStorage protectedLocalStorage, IApplicationDbContext context, 
+        public WebsiteAuthenticator(IApplicationDbContext context, 
             ICurrentUserService currentUserService)
         {
-            _protectedLocalStorage = protectedLocalStorage;
+            //_protectedLocalStorage = protectedLocalStorage;
             _context = context;
             _currentUserService = currentUserService;
         }
 
-        public override async Task<AuthenticationState> GetAuthenticationStateAsync()
-        {
-            var principal = new ClaimsPrincipal();
+        //public override async Task<AuthenticationState> GetAuthenticationStateAsync()
+        //{
+        //    var principal = new ClaimsPrincipal();
 
-            var storedPrincipal = await _protectedLocalStorage.GetAsync<string>("identity");
+        //    var storedPrincipal = await _protectedLocalStorage.GetAsync<string>("identity");
 
-            if (storedPrincipal.Success)
-            {
-                var user = JsonConvert.DeserializeObject<User>(storedPrincipal.Value);
-                var (userInDb, isLookUpSuccess) = LookUpUser(user.Username, user.Password);
+        //    if (storedPrincipal.Success)
+        //    {
+        //        var user = JsonConvert.DeserializeObject<User>(storedPrincipal.Value);
+        //        var (userInDb, isLookUpSuccess) = LookUpUser(user.Username, user.Password);
 
-                if (isLookUpSuccess)
-                {
-                    var identity = CreateIdentityFromUser(userInDb);
-                    principal = new(identity);
-                }
-            }
+        //        if (isLookUpSuccess)
+        //        {
+        //            var identity = CreateIdentityFromUser(userInDb);
+        //            principal = new(identity);
+        //        }
+        //    }
 
-            return new AuthenticationState(principal);
-        }
+        //    return new AuthenticationState(principal);
+        //}
 
-        public async Task LoginAsync(LoginFormModel loginFormModel)
-        {
-            var (userInDatabase, isSuccess) = LookUpUser(loginFormModel.Username, loginFormModel.Password);
-            _currentUserService.AuthorizedUser = userInDatabase;
+        //public async Task LoginAsync(LoginFormModel loginFormModel)
+        //{
+        //    var (userInDatabase, isSuccess) = LookUpUser(loginFormModel.Username, loginFormModel.Password);
+        //    _currentUserService.AuthorizedUser = userInDatabase;
 
-            var principal = new ClaimsPrincipal();
+        //    var principal = new ClaimsPrincipal();
 
-            if (isSuccess)
-            {
-                var identity = CreateIdentityFromUser(userInDatabase);
-                principal = new ClaimsPrincipal(identity);
+        //    if (isSuccess)
+        //    {
+        //        var identity = CreateIdentityFromUser(userInDatabase);
+        //        principal = new ClaimsPrincipal(identity);
 
-                var ret = JsonConvert.SerializeObject(userInDatabase);
-                await _protectedLocalStorage.SetAsync("identity", ret);
-            }
+        //        var ret = JsonConvert.SerializeObject(userInDatabase);
+        //        await _protectedLocalStorage.SetAsync("identity", ret);
+        //    }
 
-            NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(principal)));
-        }
+        //    NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(principal)));
+        //}
 
         public async Task RegAsync(RegFormModel regFormModel)
         {
@@ -76,12 +76,12 @@ namespace Application.WebClient.Data.Authentication
             ((TourAgencyContext)_context).SaveChanges();
         }
 
-        public async Task LogoutAsync()
-        {
-            await _protectedLocalStorage.DeleteAsync("identity");
-            var principal = new ClaimsPrincipal();
-            NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(principal)));
-        }
+        //public async Task LogoutAsync()
+        //{
+        //    await _protectedLocalStorage.DeleteAsync("identity");
+        //    var principal = new ClaimsPrincipal();
+        //    NotifyAuthenticationStateChanged(Task.FromResult(new AuthenticationState(principal)));
+        //}
 
         private ClaimsIdentity CreateIdentityFromUser(User user)
         {
