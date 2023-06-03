@@ -29,7 +29,7 @@ namespace Application.Desktop
             // Создаем контекст базы данных и загружаем данные из базы данных
             using (var db = new TourAgencyContext(options))
             {
-                db.Database.EnsureCreated();
+                //db.Database.EnsureCreated();
                 // Загружаем данные из базы данных
             }
         }

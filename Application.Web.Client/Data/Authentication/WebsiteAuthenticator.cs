@@ -71,7 +71,10 @@ namespace Application.Web.Client.Data.Authentication
                 Password = regFormModel.Password,
                 Role = regFormModel.Role,
                 DateCreated = DateTime.Now,
-                Age = 18
+                Age = 18,
+                Fio = regFormModel.FIO,
+                DateOfBirth = regFormModel.Date,
+                Phone = regFormModel.Phone
             });
 
             ((TourAgencyContext)_context).SaveChanges();

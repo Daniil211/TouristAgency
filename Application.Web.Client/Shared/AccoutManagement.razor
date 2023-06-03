@@ -57,6 +57,24 @@
                     </label>
                 </div>
                 <div>
+                    <label>
+                        Full Name:
+                        <InputText @bind-Value="regFormModel.FIO"></InputText>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Select a date:
+                        <AntDesign.DatePicker @bind-Value="regFormModel.Date"></AntDesign.DatePicker>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Phone:
+                        <InputText @bind-Value="regFormModel.Phone"></InputText>
+                    </label>
+                </div>
+                <div>
                     <button @onclick="TryReg">Submit</button>
                 </div>
             </EditForm>
@@ -164,6 +182,7 @@
     private bool switchValue { get; set; }
 
     private User User => _currentUserService.AuthorizedUser!;
+
 
     private readonly List<string> _roles = new List<string>
     {
