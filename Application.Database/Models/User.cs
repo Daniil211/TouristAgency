@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,32 +12,52 @@ namespace Application.Database.Models
     {
         public User()
         {
-            UserRoles = new HashSet<UserRole>();
-            UserTokens = new HashSet<UserToken>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-
+        /// <summary>
+        /// Gets or sets the username.
+        /// </summary>
+        /// <value>The username.</value>
+        [Required]
         public string Username { get; set; }
 
+        /// <summary>
+        /// Gets or sets the password.
+        /// </summary>
+        /// <value>The password.</value>
+        [Required]
         public string Password { get; set; }
 
-        public string DisplayName { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public DateTimeOffset? LastLoggedIn { get; set; }
+        /// <summary>
+        /// Gets or sets the age.
+        /// </summary>
+        /// <value>The age.</value>
+        public int Age { get; set; }
 
         /// <summary>
-        /// every time the user changes his Password,
-        /// or an admin changes his Roles or stat/IsActive,
-        /// create a new `SerialNumber` GUID and store it in the DB.
+        /// Gets or sets a value indicating whether this instance is premium member.
         /// </summary>
-        public string SerialNumber { get; set; }
+        /// <value><c>true</c> if this instance is premium member; otherwise, <c>false</c>.</value>
+        public bool IsPremiumMember { get; set; }
 
-        public virtual ICollection<UserRole> UserRoles { get; set; }
+        /// <summary>
+        /// Gets or sets the role.
+        /// </summary>
+        /// <value>The role.</value>
+        public string? Role { get; set; }
 
-        public virtual ICollection<UserToken> UserTokens { get; set; }
+        /// <summary>
+        /// Gets or sets the date created.
+        /// </summary>
+        /// <value>The date created.</value>
+        public DateTime? DateCreated { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="User"/> is sex.
+        /// </summary>
+        /// <value><c>true</c> if sex; otherwise, <c>false</c>.</value>
+        public bool Sex { get; set; }
     }
 }
