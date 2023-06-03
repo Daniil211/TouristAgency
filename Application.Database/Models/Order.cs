@@ -9,13 +9,13 @@ public partial class Order
 
     public int TourId { get; set; }
 
-    public int ClientId { get; set; }
+    public int UserId { get; set; }
 
     public int? ToutOperatorId { get; set; }
 
-    public virtual Client Client { get; set; } = null!;
+    public virtual User? User { get; set; } = null!;
 
-    public virtual Tour Tour { get; set; } = null!;
+    public virtual Tour? Tour { get; set; } = null!;
 
     public virtual TourOperator? ToutOperator { get; set; }
 }

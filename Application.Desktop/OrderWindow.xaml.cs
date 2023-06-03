@@ -34,24 +34,24 @@ namespace Application.Desktop
         {
             try
             {
-                Order ord = new Order();
-                Client client = new Client();
-                client.Fio = FIO_tb.Text;
-                client.DateOfBirth = Convert.ToDateTime(DateOfB_tb.Text);
-                client.Phone = Phone_tb.Text;
-                db.Clients.Add(client);
-                db.SaveChanges();
-                // MessageBox.Show("User added");
-                if (Tour_cb.SelectedIndex > 0) { ord.TourId = Tour_cb.SelectedIndex; }
+                //Order ord = new Order();
+                //Client client = new Client();
+                //client.Fio = FIO_tb.Text;
+                //client.DateOfBirth = Convert.ToDateTime(DateOfB_tb.Text);
+                //client.Phone = Phone_tb.Text;
+                //db.Clients.Add(client);
+                //db.SaveChanges();
+                //// MessageBox.Show("User added");
+                //if (Tour_cb.SelectedIndex > 0) { ord.TourId = Tour_cb.SelectedIndex; }
 
-                var selectedClient = db.Clients.Where(p => p.Fio == FIO_tb.Text);
-                foreach (Client clientt in selectedClient)
-                {
-                    ord.ClientId = clientt.ClientId;
-                }
-                db.Orders.Add(ord);
-                db.SaveChanges();
-                MessageBox.Show("Заявка оставлена");
+                //var selectedClient = db.Clients.Where(p => p.Fio == FIO_tb.Text);
+                //foreach (Client clientt in selectedClient)
+                //{
+                //    ord.ClientId = clientt.ClientId;
+                //}
+                //db.Orders.Add(ord);
+                //db.SaveChanges();
+                //MessageBox.Show("Заявка оставлена");
             }
             catch { MessageBox.Show("Заполните все поля"); }
 

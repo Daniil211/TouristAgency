@@ -14,8 +14,6 @@ namespace Application.Database
     {
         public DbSet<City> Cities { get; set; }
 
-        public DbSet<Client> Clients { get; set; }
-
         public DbSet<Hotel> Hotels { get; set; }
 
         public DbSet<HotelsOfTour> HotelsOfTours { get; set; }
@@ -45,8 +43,6 @@ namespace Application.Database
         {}
 
         public virtual DbSet<City> Cities { get; set; }
-
-        public virtual DbSet<Client> Clients { get; set; }
 
         public virtual DbSet<Hotel> Hotels { get; set; }
 
@@ -79,18 +75,6 @@ namespace Application.Database
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Client>(entity =>
-            {
-                entity.Property(e => e.DateOfBirth).HasColumnType("date");
-                entity.Property(e => e.Fio)
-                    .HasMaxLength(100)
-                    .IsUnicode(false)
-                    .HasColumnName("FIO");
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-            });
-
             modelBuilder.Entity<Hotel>(entity =>
             {
                 entity.Property(e => e.HotelName)
@@ -117,9 +101,9 @@ namespace Application.Database
 
             modelBuilder.Entity<Order>(entity =>
             {
-                entity.HasOne(d => d.Client).WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.ClientId)
-                    .HasConstraintName("FK_Orders_Clients");
+                entity.HasOne(d => d.User).WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_Orders_Users");
 
                 entity.HasOne(d => d.Tour).WithMany(p => p.Orders)
                     .HasForeignKey(d => d.TourId)
@@ -191,6 +175,14 @@ namespace Application.Database
                 entity.Property(e => e.Username).HasMaxLength(450).IsRequired();
                 entity.HasIndex(e => e.Username).IsUnique();
                 entity.Property(e => e.Password).IsRequired();
+                entity.Property(e => e.DateOfBirth).HasColumnType("date");
+                entity.Property(e => e.Fio)
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("FIO");
+                entity.Property(e => e.Phone)
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
             });
             modelBuilder = DataSeederUsers.SeedData(modelBuilder);
 

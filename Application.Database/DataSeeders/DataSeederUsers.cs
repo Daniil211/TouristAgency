@@ -8,6 +8,7 @@ namespace Application.Persistence.DataSeeders
     {
         public static ModelBuilder SeedData(ModelBuilder modelBuilder)
         {
+            DateTime dateOfBirth = new DateTime(1990, 10, 31);
             List<User> Users = new()
             {
                 new()
@@ -17,7 +18,11 @@ namespace Application.Persistence.DataSeeders
                     Password = "User1",
                     Age = 19,
                     IsPremiumMember = false,
-                    Role = "User"
+                    Role = "User",
+                    Fio = "Spiridonov",
+                    DateOfBirth = dateOfBirth,
+                    Phone = "79797979"
+
                 },
                 new()
                 {
@@ -26,7 +31,10 @@ namespace Application.Persistence.DataSeeders
                     Password = "User2",
                     Age = 10,
                     IsPremiumMember = true,
-                    Role = "User"
+                    Role = "User",
+                    Fio = "Spiridonov",
+                    DateOfBirth = dateOfBirth,
+                    Phone = "79797979"
                 },
                 new()
                 {
@@ -35,7 +43,10 @@ namespace Application.Persistence.DataSeeders
                     Password = "User3",
                     Age = 20,
                     IsPremiumMember = true,
-                    Role = "Admin"
+                    Role = "Admin",
+                    Fio = "Spiridonov",
+                    DateOfBirth = dateOfBirth,
+                    Phone = "79797979"
                 },
                 new()
                 {
@@ -44,7 +55,10 @@ namespace Application.Persistence.DataSeeders
                     Password = "Studio",
                     Age = 20,
                     IsPremiumMember = true,
-                    Role = "Studio"
+                    Role = "Studio",
+                    Fio = "Spiridonov",
+                    DateOfBirth = dateOfBirth,
+                    Phone = "79797979"
                 }
             };
             modelBuilder.Entity<User>().HasData(Users);
