@@ -1,0 +1,72 @@
+﻿@using Application.Web.Client.Data.Repository;
+@using Microsoft.EntityFrameworkCore
+@using Application.Database
+
+@inject IRepository _db
+
+@if (ListOfItems is null)
+{
+    <div class="row text-center">
+        <div class="col">
+            <img src="https://i.gifer.com/origin/b4/b4d657e7ef262b88eb5f7ac021edda87_w200.gif" height="500" />
+        </div>
+    </div>
+}
+else if (ListOfItems.Count == 0)
+{
+    <div class="row text-center">
+        <div class="col">
+            <img src="https://www.ibellstore.com/images/no-item-found-here.png" height="500" />
+        </div>
+    </div>
+}
+else
+{
+    <div class="typeahead">
+        <div class="typeahead-contols">
+            <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Name..." @bind="newGameName">
+        </div>
+    </div>
+    
+    <div class="row ">
+        @foreach (var item in ListOfItems)
+        {
+            <IndividualGame Game="item" OnDeleteGame="DeleteGame" OnEditGame="EditGame"/>
+        }
+    </div>
+}
+
+
+@code {
+    [Parameter]
+    public List<Tour> ListOfItems { get; set; }
+
+    private string newGameName;
+
+    void DeleteGame(Tour game)
+    {
+        // Remove game from the list
+        ListOfItems.Remove(game);
+        _db.RemoveGame(game);
+    }
+
+    void EditGame(Tour game)
+    {
+        // Find the game in the list
+        var gameToEdit = ListOfItems.FirstOrDefault(g => g.TourId == game.TourId);
+
+        if (gameToEdit != null)
+        {
+            // Update the game's name
+            gameToEdit.TourName = newGameName;
+
+            // Update the game in the database
+            _db.UpdateGame(gameToEdit);
+        }
+    }
+
+    void UpdateGame()
+    {
+        EditGame(ListOfItems.FirstOrDefault());
+    }
+}

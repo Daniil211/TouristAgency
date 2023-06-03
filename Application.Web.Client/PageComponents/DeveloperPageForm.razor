@@ -1,0 +1,40 @@
+﻿@using Application.Database.Models
+<EditForm Model="Developer" OnValidSubmit="OnValidSubmitHandler">
+    <div class="form-group">
+        <label>Developer Name: </label>
+        <div>
+            <InputText class="form-control" @bind-Value="Developer.Fio"/>
+            <ValidationMessage For="(()=>Developer.Fio)"/>
+        </div>
+    </div>
+    
+    <InputImage Label="Image" OnImageFileSelected="ImageFileSelectedHandler" ImageUrl="@imageUrl"/>
+    
+    <div class="form-group form-markdown">
+        <MarkdownInput @bind-Value="Developer.Standing" Label="Description" OnFor="(() => Developer.Standing)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create New Studio</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public TourOperator Developer { get; set; }
+
+    [Parameter]
+    public EventCallback OnValidSubmitHandler { get; set; }
+
+    string imageUrl;
+
+    protected override void OnInitialized()
+    {
+        imageUrl = Developer.Image;
+        Developer.Image = null;
+    }
+
+    void ImageFileSelectedHandler(string imageBase64)
+    {
+        Developer.Image = imageBase64;
+        imageUrl = null;
+    }
+}

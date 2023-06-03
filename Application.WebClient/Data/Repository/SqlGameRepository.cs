@@ -1,8 +1,7 @@
 ﻿using Application.Database;
 using Application.Database.Models;
-using Application.Web.Client.Data.Repository;
 
-namespace Application.Web.Client.Data.Repository
+namespace Application.WebClient.Data.Repository
 {
     public class SqlGameRepository : IRepository
     {
