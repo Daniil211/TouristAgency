@@ -5,21 +5,21 @@
     <DataAnnotationsValidator />
 
     <div class="form-group">
-        <label>Name:</label>
+        <label>Tour Name:</label>
         <div>
             <InputText class="form-control" @bind-Value="Game.TourName" />
             <ValidationMessage For="@(() => Game.TourName)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
-        <label>Gameplay Video:</label>
+        <label>Video presentation of the tour:</label>
         <div>
             <InputText class="form-control" @bind-Value="Game.VideoTour" />
             <ValidationMessage For="@(() => Game.VideoTour)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
-        <label>Release date:</label>
+        <label>Sales start date:</label>
         <div>
             <InputDate class="form-control" @bind-Value="Game.Time" />
             <ValidationMessage For="@(() => Game.Time)"></ValidationMessage>
@@ -39,11 +39,11 @@
     </div>
     
     <div clas="form-group">
-        <label>Game Genres</label>
+        <label>Type Transport</label>
         <MultipleSelector OnSelected="Selected" OnNotSelected="NotSelected"/>
     </div>
     
-    <div class="form-group">
+    @*<div class="form-group">
         <label>Developers:</label>
         <MultipleSelectorTypeahead Context="GameDeveloper" OnSearch="SearchHandler" OnSelectedElements="SelectedDevelopers">
             <ResultTemplate>
@@ -54,7 +54,7 @@
                 @GameDeveloper.Fio
             </ListTemplate>
         </MultipleSelectorTypeahead>
-    </div>
+    </div>*@
 
     <button class="btn btn-primary" type="submit">Save Changes</button>
 </EditForm>
