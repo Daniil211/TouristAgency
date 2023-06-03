@@ -3,7 +3,7 @@
 @inject WebsiteAuthenticator WebsiteAuthenticator
 @page "/"
 
-<AuthorizeView Context="Account">
+<AuthorizeView Context="Admin">
     <NotAuthorized>
         <div>
             <Switch @bind-Checked="switchValue" />

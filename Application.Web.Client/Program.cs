@@ -3,9 +3,7 @@ using Application.Web.Client.Data;
 using Application.Web.Client.Data.Authentication;
 using Application.Web.Client.Data.Repository;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 using Tewr.Blazor.FileReader;
 
