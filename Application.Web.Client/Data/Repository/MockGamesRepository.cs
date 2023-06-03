@@ -145,6 +145,11 @@ namespace Application.Web.Client.Data.Repository
             throw new NotImplementedException();
         }
 
+        public bool CreateNewCity(City city)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool CreateNewStudio(TourOperator Developer)
         {
             throw new NotImplementedException();

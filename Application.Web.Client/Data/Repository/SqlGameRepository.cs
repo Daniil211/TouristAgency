@@ -42,6 +42,14 @@ namespace Application.Web.Client.Data.Repository
             _db.SaveChanges();
             return true;
         }
+        public bool CreateNewCity(City city)
+        {
+            if (city is null)
+                return false;
+            _db.Add(city);
+            _db.SaveChanges();
+            return true;
+        }
 
         public Tour GetGameById(int id)
         {

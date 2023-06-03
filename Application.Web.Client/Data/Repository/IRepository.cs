@@ -8,6 +8,7 @@ namespace Application.Web.Client.Data.Repository
         List<Transport> GetAllGenres();
         bool CreateNewGame(Tour newGame);
         bool CreateNewGenre(Transport genre);
+        bool CreateNewCity(City city);
         bool CreateNewStudio(TourOperator Developer);
         Tour GetGameById(int id);
         Transport GetGenreById(int id);

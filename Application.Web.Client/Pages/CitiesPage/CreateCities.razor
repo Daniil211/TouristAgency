@@ -1,25 +1,25 @@
-﻿@page "/transport/create"
+﻿@page "/cities/create"
 @using Application.Web.Client.Data.Repository
 @inject NavigationManager navManager
 @inject IRepository _db
 
 <div class="row">
     <div class="col">
-        <h1 class="text-info">Add Transport</h1>
+        <h1 class="text-info">Add Citites</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-6">
-        <FormForGenre Genre="genre" OnValidSubmit="AddNewGenre" />
+        <FormForCities City="city" OnValidSubmit="AddNewCity" />
     </div>
 </div>
 
 @code {
-    Transport genre = new();
+    City city = new();
 
-    void AddNewGenre()
+    void AddNewCity()
     {
-        bool result = _db.CreateNewGenre(genre);
+        bool result = _db.CreateNewCity(city);
 
         if (result)
             navManager.NavigateTo("/");

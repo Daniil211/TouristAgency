@@ -1,0 +1,18 @@
+﻿<EditForm Model="City" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <label>New City:</label>
+        <div>
+            <InputText class="form-control mb-2" @bind-Value="City.CityName"/>
+            <ValidationMessage For="(() => City.CityName)" />
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Save</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public City City { get; set; }
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+}
