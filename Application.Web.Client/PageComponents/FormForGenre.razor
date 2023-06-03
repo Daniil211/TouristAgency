@@ -1,7 +1,7 @@
 ﻿<EditForm Model="Genre" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
-        <label>Genre Name:</label>
+        <label>Type transport:</label>
         <div>
             <InputText class="form-control mb-2" @bind-Value="Genre.TypeOfTransport"/>
             <ValidationMessage For="(() => Genre.TypeOfTransport)"/>
