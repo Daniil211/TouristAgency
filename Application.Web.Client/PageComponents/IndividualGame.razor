@@ -54,7 +54,7 @@
     protected override void OnInitialized()
     {
         //url = $"games/{Game.Id}/{Game.Name.Replace(" ", "-")}";
-        url = $"games/{Game.TourId}/{Uri.EscapeDataString(Game.TourName)}";
+        url = $"tours/{Game.TourId}/{Uri.EscapeDataString(Game.TourName)}";
     }
 
     bool IsBase64(string value)
