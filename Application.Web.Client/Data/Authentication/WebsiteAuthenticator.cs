@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using Application.Database;
 using Application.Database.Models;
+using Application.Web.Client.Data.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Newtonsoft.Json;
@@ -14,7 +15,7 @@ namespace Application.Web.Client.Data.Authentication
 
         private readonly ICurrentUserService _currentUserService;
 
-        public WebsiteAuthenticator(IApplicationDbContext context, 
+        public WebsiteAuthenticator(ProtectedLocalStorage protectedLocalStorage, IApplicationDbContext context, 
             ICurrentUserService currentUserService)
         {
             _protectedLocalStorage = protectedLocalStorage;

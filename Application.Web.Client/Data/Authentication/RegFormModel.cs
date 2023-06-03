@@ -1,4 +1,4 @@
-﻿namespace Application.WebClient.Data.Authentication;
+﻿namespace Application.Web.Client.Data.Authentication;
 public class RegFormModel
 {
     public string Name { get; set; }

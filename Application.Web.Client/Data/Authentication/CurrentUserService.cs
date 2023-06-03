@@ -2,7 +2,7 @@
 using Application.Database.Models;
 //using Microsoft.AspNetCore.Authentication;
 
-namespace Application.WebClient.Data.Authentication;
+namespace Application.Web.Client.Data.Authentication;
 
 public interface ICurrentUserService
 {

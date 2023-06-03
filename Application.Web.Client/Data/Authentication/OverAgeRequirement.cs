@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Application.WebClient.Data.Authentication;
+namespace Application.Web.Client.Data.Authentication;
 
 public class OverAgeRequirement: IAuthorizationRequirement
 {
