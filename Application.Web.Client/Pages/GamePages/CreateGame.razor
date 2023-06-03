@@ -1,0 +1,37 @@
+﻿@page "/games/create"
+@using Application.Persistence.Models
+
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info text-center text-uppercase ">Create Game</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+       <GameForm Game="game" OnValidSubmit="AddNewGame" NotSelectedGenres="notSelectedGenres"></GameForm>
+    </div>
+</div>
+
+@code {
+
+    GameModel game = new();
+
+    List<Genre> notSelectedGenres = new();
+
+    protected override void OnInitialized()
+    {
+        notSelectedGenres = _db.GetAllGenres();
+    }
+
+    void AddNewGame()
+    {
+        bool result = _db.CreateNewGame(game);
+
+        if(result)
+            navManager.NavigateTo("/");
+    }
+}

@@ -1,9 +1,31 @@
-﻿@page "/"
+﻿@page "/home"
+@page "/index"
+@using Application.Persistence.Models
+@inject IRepository repository
 
-<PageTitle>Index</PageTitle>
+<Typeahead OnSearchHandler="SearchHandler" OnPlaceHolder="Type some here...">
+    <ResultTemplate>
+        @context
+    </ResultTemplate>
+</Typeahead>
 
-<h1>Hello, world!</h1>
+<GameList ListOfItems="gameItemsList" />
 
-Welcome to your new app.
+@code
+{
+    List<GameModel> gameItemsList = new();
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    protected override void OnInitialized()
+    {
+        gameItemsList = repository.GetAllGames();
+    }
+
+    async Task<IEnumerable<string>> SearchHandler(string searchText)
+    {
+        await Task.Delay(2000);
+        if (string.IsNullOrEmpty(searchText))
+            return Enumerable.Empty<string>();
+        var games = repository.GetAllGames().Where(g => g.Name.Contains(searchText)).Select(g => g.Name);
+        return games;
+    }
+}

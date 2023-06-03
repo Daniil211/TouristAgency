@@ -1,0 +1,28 @@
+﻿@page "/games/{GameId:int}"
+@page "/games/{GameId:int}/{GameName}"
+
+
+
+<h3>GameDetails</h3>
+<div class="form-group">
+    <label>GameId: </label>
+    <div>
+        <label>@GameId</label>
+    </div>
+</div>
+<div class="form-group">
+    <label>GameName: </label>
+    <div>
+        <label>@GameName</label>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public int GameId { get; set; }
+
+    [Parameter]
+    public string GameName { get; set; }
+
+}

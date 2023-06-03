@@ -1,0 +1,32 @@
+﻿@page "/studio/create"
+@using Application.Persistence.Models
+
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Create Developer Studio</h1>
+    </div>
+</div>
+<div class="row">
+	<div class="col-10">
+        <DeveloperPageForm Developer="Developer" OnValidSubmitHandler="AddNewStudio" />
+	</div>
+	<div class="col">
+
+	</div>
+</div>
+
+@code {
+
+    GameDeveloper Developer = new();
+
+    void AddNewStudio()
+    {
+        bool result = _db.CreateNewStudio(Developer);
+
+        if (result)
+            navManager.NavigateTo("/");
+    }
+}

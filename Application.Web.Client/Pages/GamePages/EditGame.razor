@@ -1,0 +1,32 @@
+﻿@page "/games/edit/{GameId:int}"
+@using Application.Persistence.Models
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info text-center text-uppercase ">Edit Game</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <GameForm Game="game" OnValidSubmit="EditTheGame"></GameForm>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int GameId { get; set; }
+
+    GameModel game;
+
+    protected override void OnInitialized()
+    {
+        game = _db.GetGameById(GameId);
+    }
+
+    void EditTheGame()
+    {
+
+    }
+}

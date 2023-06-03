@@ -1,0 +1,28 @@
+﻿@page "/genres/create"
+@using Application.Persistence.Models
+@using Application.Persistence
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Create Genre</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <FormForGenre Genre="genre" OnValidSubmit="AddNewGenre" />
+    </div>
+</div>
+
+@code {
+    Genre genre = new();
+
+    void AddNewGenre()
+    {
+        bool result = _db.CreateNewGenre(genre);
+
+        if (result)
+            navManager.NavigateTo("/");
+    }
+}
