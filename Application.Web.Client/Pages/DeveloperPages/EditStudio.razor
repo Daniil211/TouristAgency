@@ -1,5 +1,4 @@
 ﻿@page "/studio/edit/{StudioId:int}"
-@using Application.Persistence.Models
 
 <div class="row">
     <div class="col">
@@ -21,7 +20,7 @@
     [Parameter]
     public int StudioId { get; set; }
 
-    GameDeveloper Developer;
+    TourOperator Developer;
 
     void Edit()
     {

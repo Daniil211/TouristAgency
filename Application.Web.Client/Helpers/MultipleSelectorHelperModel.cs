@@ -1,4 +1,4 @@
-﻿namespace Application.WebClient.Helpers
+﻿namespace Application.Web.Client.Helpers
 {
     public struct MultipleSelectorHelperModel
     {

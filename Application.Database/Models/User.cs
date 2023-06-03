@@ -58,6 +58,6 @@ namespace Application.Database.Models
         /// Gets or sets a value indicating whether this <see cref="User"/> is sex.
         /// </summary>
         /// <value><c>true</c> if sex; otherwise, <c>false</c>.</value>
-        public bool Sex { get; set; }
+        public bool? Sex { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page "/studio/create"
-@using Application.Persistence.Models
+@using Application.Web.Client.Data.Repository
 
 @inject NavigationManager navManager
 @inject IRepository _db
@@ -20,7 +20,7 @@
 
 @code {
 
-    GameDeveloper Developer = new();
+    TourOperator Developer = new();
 
     void AddNewStudio()
     {

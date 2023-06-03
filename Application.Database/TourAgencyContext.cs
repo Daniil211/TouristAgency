@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Persistence.DataSeeders;
 
 namespace Application.Database
 {
@@ -191,7 +192,9 @@ namespace Application.Database
                 entity.HasIndex(e => e.Username).IsUnique();
                 entity.Property(e => e.Password).IsRequired();
             });
+            modelBuilder = DataSeederUsers.SeedData(modelBuilder);
 
+            base.OnModelCreating(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

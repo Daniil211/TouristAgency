@@ -1,6 +1,6 @@
 ﻿@page "/home"
 @page "/index"
-@using Application.Persistence.Models
+@using Application.Web.Client.Data.Repository
 @inject IRepository repository
 
 <Typeahead OnSearchHandler="SearchHandler" OnPlaceHolder="Type some here...">
@@ -13,7 +13,7 @@
 
 @code
 {
-    List<GameModel> gameItemsList = new();
+    List<Tour> gameItemsList = new();
 
     protected override void OnInitialized()
     {
@@ -25,7 +25,7 @@
         await Task.Delay(2000);
         if (string.IsNullOrEmpty(searchText))
             return Enumerable.Empty<string>();
-        var games = repository.GetAllGames().Where(g => g.Name.Contains(searchText)).Select(g => g.Name);
+        var games = repository.GetAllGames().Where(g => g.TourName.Contains(searchText)).Select(g => g.TourName);
         return games;
     }
 }

@@ -1,5 +1,5 @@
 ﻿@page "/games/create"
-@using Application.Persistence.Models
+@using Application.Web.Client.Data.Repository
 
 @inject NavigationManager navManager
 @inject IRepository _db
@@ -18,9 +18,9 @@
 
 @code {
 
-    GameModel game = new();
+    Tour game = new();
 
-    List<Genre> notSelectedGenres = new();
+    List<Transport> notSelectedGenres = new();
 
     protected override void OnInitialized()
     {

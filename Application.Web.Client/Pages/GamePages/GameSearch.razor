@@ -1,5 +1,5 @@
 ﻿@page "/games/search"
-@using Application.Persistence.Models
+@using Application.Web.Client.Data.Repository
 @inject IRepository _db
 
 <div class="row">
@@ -16,7 +16,7 @@
             <option value="-1">-- Select Game Genre --</option>
             @foreach (var item in Genres)
             {
-                <option value="@item.Id">@item.Name</option>  
+                <option value="@item.TransportId">@item.TypeOfTransport</option>  
             }
         </select>
         <div class="row mb-2">
@@ -53,8 +53,8 @@
 @code {
     string gameName = string.Empty;
     string selectedGameGenre = "-1";
-    List<Genre> Genres = new();
-    List<GameModel> Games = new();
+    List<Transport> Genres = new();
+    List<Tour> Games = new();
     bool featureRelease = false;
     bool canBay = false;
 
@@ -74,13 +74,13 @@
         Games = _db.GetAllGames();
 
         if (!string.IsNullOrWhiteSpace(gameName))
-            Games = Games.Where(x => x.Name.ToLower().Contains(gameName.ToLower())).ToList();
+            Games = Games.Where(x => x.TourName.ToLower().Contains(gameName.ToLower())).ToList();
         //if (selectedGameGenre != "-1")
         //    Games = Games.Where(x => x.GenreId.ToString().Equals(selectedGameGenre)).ToList();
         if (featureRelease)
-            Games = Games.Where(x => x.ReleaseDate > DateTime.Now).ToList();
+            Games = Games.Where(x => x.Time > DateTime.Now).ToList();
         if (canBay)
-            Games = Games.Where(x => x.ReleaseDate <= DateTime.Now).ToList();
+            Games = Games.Where(x => x.Time <= DateTime.Now).ToList();
     }
 
     void ResetValues()

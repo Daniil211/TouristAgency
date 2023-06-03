@@ -20,7 +20,7 @@ builder.Services.AddScoped<IApplicationDbContext, TourAgencyContext>();
 builder.Services.AddServerSideBlazor();
 
 builder.Services.AddScoped<IRepository, SqlGameRepository>();
-
+builder.Services.AddAntDesign();
 builder.Services.AddScoped<WebsiteAuthenticator>();
 builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<WebsiteAuthenticator>());
 builder.Services.AddAuthorization(config =>

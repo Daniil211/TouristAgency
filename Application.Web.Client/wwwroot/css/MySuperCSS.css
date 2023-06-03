@@ -1,0 +1,111 @@
+﻿.game-name {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: dodgerblue;
+    background-color: #e9e6ff;
+    border-radius: 5px 5px 0 0;
+}
+
+.hrfix {
+    margin: 5px 0 !important;
+}
+
+.card-image {
+    background-color: rgba(0, 0, 0, .1);
+    padding: 5px 0;
+}
+
+.game-image {
+    max-width: 200px;
+    max-height: 250px;
+}
+
+.game-card-footer {
+    background-color: #e9e6ff;
+    border-radius: 0 0 5px 5px;
+}
+
+.form-markdown textarea {
+    width: 500px;
+    height: 500px;
+    margin-right: 15px;
+}
+
+.form-markdown .container-markdown {
+    border: 1px dashed #000;
+    width: 500px;
+    height: 500px;
+}
+.selectable-list {
+    padding: 20px;
+    border: 1px groove #6c757d;
+    border-radius: 3px;
+    min-width: 150px;
+}
+.list-group-item:hover {
+    cursor: pointer;
+    border: 1px dashed #000;
+}
+.typeahead {
+    position: relative;
+    width: 100%;
+    border: 1px groove #bfbfbf;
+    border-radius: 5px;
+}
+
+.typeahead-controls {
+    position: relative;
+    cursor: text;
+    display: flex;
+}
+
+.typeahead-input {
+    flex: 1;
+    max-width: 100%;
+    border: none;
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+.typeahead:focus-within {
+    box-shadow: 0 0 0 0.2rem rgba(38,143,255,.5);
+}
+
+.typeahead-input:focus {
+    outline: none;
+}
+
+.typeahead-all-results {
+    position: absolute;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    border: 1px groove #dbdbdb;
+    border-radius: 0 0 5px 5px;
+    min-height: 2rem;
+    max-height: 30rem;
+    overflow-y: auto;
+    z-index: 10;
+    width: 100%;
+    background: #fff;
+}
+
+.typeahead-result {
+    padding: .5rem;
+    border-top: 1px groove #fff;
+    border-bottom: 1px groove #fff;
+}
+
+.typeahead-result:hover,
+.typeahead-result:focus {
+    background-color: #17a2b8;
+    border-top: 1px groove #000;
+    border-bottom: 1px groove #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+input::placeholder {
+    color: #cbcbcb99;
+    font-size: 1.2em;
+    font-style: italic;
+}

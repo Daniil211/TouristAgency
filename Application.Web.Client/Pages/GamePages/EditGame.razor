@@ -1,5 +1,5 @@
 ﻿@page "/games/edit/{GameId:int}"
-@using Application.Persistence.Models
+@using Application.Web.Client.Data.Repository
 @inject IRepository _db
 
 <div class="row">
@@ -18,7 +18,7 @@
     [Parameter]
     public int GameId { get; set; }
 
-    GameModel game;
+    Tour game;
 
     protected override void OnInitialized()
     {

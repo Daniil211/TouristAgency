@@ -1,6 +1,7 @@
 ﻿@page "/genres/create"
-@using Application.Persistence.Models
-@using Application.Persistence
+@using Application.Database.Models
+@using Application.Database
+@using Application.Web.Client.Data.Repository
 @inject NavigationManager navManager
 @inject IRepository _db
 
@@ -16,7 +17,7 @@
 </div>
 
 @code {
-    Genre genre = new();
+    Transport genre = new();
 
     void AddNewGenre()
     {
