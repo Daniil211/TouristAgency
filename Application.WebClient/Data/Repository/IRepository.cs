@@ -1,19 +1,19 @@
-﻿using Application.Persistence.Models;
+﻿using Application.Database.Models;
 
-namespace GameIndustry_v2.Data.Repository
+namespace Application.WebClient.Data.Repository
 {
     public interface IRepository
     {
-        List<GameModel> GetAllGames();
-        bool CreateNewGame(GameModel newGame);
-        bool CreateNewGenre(Genre genre);
-        bool CreateNewStudio(GameDeveloper Developer);
-        GameModel GetGameById(int id);
-        List<Genre> GetAllGenres();
-        Genre GetGenreById(int id);
-        List<GameModel> RemoveGame(GameModel game);
-        List<GameModel> UpdateGame(GameModel game);
-        bool EditGenre(Genre editedGenre);
-        List<GameDeveloper> GetAllDevelopers();
+        List<Tour> GetAllGames();
+        List<Transport> GetAllGenres();
+        bool CreateNewGame(Tour newGame);
+        bool CreateNewGenre(Transport genre);
+        bool CreateNewStudio(TourOperator Developer);
+        Tour GetGameById(int id);
+        Transport GetGenreById(int id);
+        List<Tour> RemoveGame(Tour game);
+        List<Tour> UpdateGame(Tour game);
+        bool EditGenre(Transport editedGenre);
+        List<TourOperator> GetAllDevelopers();
     }
 }

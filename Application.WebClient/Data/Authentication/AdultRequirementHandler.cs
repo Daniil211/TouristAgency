@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace GameIndustry_v2.Data.Authentication;
+namespace Application.WebClient.Data.Authentication;
 
 public class AdultRequirementHandler : AuthorizationHandler<AdultRequirement>
 {

@@ -1,23 +1,22 @@
-﻿using Application.Persistence;
-using Application.Persistence.Models;
-using GameIndustry_v2.Pages.GenrePages;
+﻿using Application.Database;
+using Application.Database.Models;
 
-namespace GameIndustry_v2.Data.Repository
+namespace Application.WebClient.Data.Repository
 {
     public class SqlGameRepository : IRepository
     {
-        private readonly ApplicationDbContext _db;
-        public SqlGameRepository(ApplicationDbContext db)
+        private readonly TourAgencyContext _db;
+        public SqlGameRepository(TourAgencyContext db)
         {
             _db = db;
         }
-        public List<GameModel> GetAllGames()
+        public List<Tour> GetAllGames()
         {
-            var games = _db.GameModels.ToList();
+            var games = _db.Tours.ToList();
             return games;
         }
 
-        public bool CreateNewGame(GameModel newGame)
+        public bool CreateNewGame(Tour newGame)
         {
             if (newGame is null)
                 return false;
@@ -25,7 +24,7 @@ namespace GameIndustry_v2.Data.Repository
             _db.SaveChanges();
             return true;
         }
-        public bool CreateNewStudio(GameDeveloper Developer)
+        public bool CreateNewStudio(TourOperator Developer)
         {
             if (Developer is null)
                 return false;
@@ -34,7 +33,7 @@ namespace GameIndustry_v2.Data.Repository
             return true;
         }
 
-        public bool CreateNewGenre(Genre genre)
+        public bool CreateNewGenre(Transport genre)
         {
             if(genre is null)
                 return false;
@@ -43,57 +42,57 @@ namespace GameIndustry_v2.Data.Repository
             return true;
         }
 
-        public GameModel GetGameById(int id)
+        public Tour GetGameById(int id)
         {
-            var game = _db.GameModels.FirstOrDefault(x => x.Id == id);
+            var game = _db.Tours.FirstOrDefault(x => x.TourId == id);
             return game;
         }
 
-        public List<Genre> GetAllGenres()
+        public List<Transport> GetAllGenres()
         {
-            var genres = _db.Genres.ToList();
+            var genres = _db.Transports.ToList();
             return genres;
         }
 
-        public Genre GetGenreById(int id)
+        public Transport GetGenreById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool EditGenre(Genre editedGenre)
+        public bool EditGenre(Transport editedGenre)
         {
             if(editedGenre is null)
                 return false;
-            _db.Genres.Update(editedGenre);
+            _db.Transports.Update(editedGenre);
             _db.SaveChanges();
             return true;
         }
 
-        public List<GameDeveloper> GetAllDevelopers()
+        public List<TourOperator> GetAllDevelopers()
         {
-            var developers = _db.GameDevelopers.ToList();
+            var developers = _db.TourOperators.ToList();
             return developers;
         }
-        //public List<GameModel> RemoveGame()
+        //public List<Tour> RemoveGame()
         //{
-        //    var game = _db.GameModels.ToList();
+        //    var game = _db.Tours.ToList();
         //    _db.Remove(game);
         //    _db.SaveChanges();
         //    return game;
         //}
-        public List<GameModel> RemoveGame(GameModel game)
+        public List<Tour> RemoveGame(Tour game)
         {
-           // var games = _db.GameModels.ToList();
+           // var games = _db.Tours.ToList();
             _db.Remove(game);
             _db.SaveChanges();
-            var games = _db.GameModels.ToList();
+            var games = _db.Tours.ToList();
             return games;
         }
-        public List<GameModel> UpdateGame(GameModel game)
+        public List<Tour> UpdateGame(Tour game)
         {
             _db.Update(game);
             _db.SaveChanges();
-            var games = _db.GameModels.ToList();
+            var games = _db.Tours.ToList();
             return games;
         }
     }

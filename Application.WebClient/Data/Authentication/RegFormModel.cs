@@ -1,5 +1,4 @@
-﻿namespace GameIndustry_v2.Data.Authentication;
-
+﻿namespace Application.WebClient.Data.Authentication;
 public class RegFormModel
 {
     public string Name { get; set; }

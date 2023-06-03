@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.WebApi", "Appli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Authorize", "Application.Authorize\Application.Authorize.csproj", "{2D8BA4B1-A0EB-436F-B29A-8A986C898BF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.WebClient", "Application.WebClient\Application.WebClient.csproj", "{DDCC5535-216E-459E-9009-2823F0612B97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.WebClient", "Application.WebClient\Application.WebClient.csproj", "{DDCC5535-216E-459E-9009-2823F0612B97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -9,12 +9,35 @@ using System.Threading.Tasks;
 
 namespace Application.Database
 {
-    public partial class TourAgencyContext : DbContext
+    public interface IApplicationDbContext
+    {
+        public DbSet<City> Cities { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
+
+        public DbSet<Hotel> Hotels { get; set; }
+
+        public DbSet<HotelsOfTour> HotelsOfTours { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Tour> Tours { get; set; }
+
+        public DbSet<TourOperator> TourOperators { get; set; }
+
+        public DbSet<Transport> Transports { get; set; }
+
+        public DbSet<TransportOfTour> TransportOfTours { get; set; }
+
+
+        public DbSet<User> Users { set; get; }
+    }
+    public partial class TourAgencyContext : DbContext, IApplicationDbContext
     {
         public TourAgencyContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
         }
 
         public TourAgencyContext(DbContextOptions<TourAgencyContext> options) : base(options)

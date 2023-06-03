@@ -1,21 +1,20 @@
 ﻿using System.Security.Claims;
-using Application.Persistence;
-using Application.Persistence.Models;
+using Application.Database;
+using Application.Database.Models;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Newtonsoft.Json;
 
-namespace GameIndustry_v2.Data.Authentication
+namespace Application.WebClient.Data.Authentication
 {
     public class WebsiteAuthenticator : AuthenticationStateProvider
     {
-        private readonly ProtectedLocalStorage _protectedLocalStorage;
+        private readonly ILocalStorage _protectedLocalStorage;
         private readonly IApplicationDbContext _context;
 
         private readonly ICurrentUserService _currentUserService;
 
-        public WebsiteAuthenticator(ProtectedLocalStorage protectedLocalStorage, 
-            IApplicationDbContext context, 
+        public WebsiteAuthenticator(ProtectedLocalStorage protectedLocalStorage, IApplicationDbContext context, 
             ICurrentUserService currentUserService)
         {
             _protectedLocalStorage = protectedLocalStorage;
@@ -74,7 +73,7 @@ namespace GameIndustry_v2.Data.Authentication
                 Age = 18
             });
 
-            ((ApplicationDbContext)_context).SaveChanges();
+            ((TourAgencyContext)_context).SaveChanges();
         }
 
         public async Task LogoutAsync()
