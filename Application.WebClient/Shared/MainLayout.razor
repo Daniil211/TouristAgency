@@ -1,4 +1,8 @@
-﻿@inherits LayoutComponentBase
+﻿@using Application.WebClient.Data.Authentication
+@inject WebsiteAuthenticator WebsiteAuthenticator
+@inherits LayoutComponentBase
+
+<PageTitle>Tourist Agency</PageTitle>
 
 <div class="page">
     <div class="sidebar">
@@ -15,3 +19,11 @@
         </article>
     </main>
 </div>
+
+@code
+{
+    //private async Task TryLogout()
+    //{
+    //    await WebsiteAuthenticator.LogoutAsync();
+    //}
+}

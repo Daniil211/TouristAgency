@@ -1,28 +1,28 @@
 ﻿@inject IRepository _db
-@using GameIndustry_v2.Helpers
-@using Application.Persistence.Models
+@using Application.WebClient.Data.Repository;
+@using Application.WebClient.Helpers
 <EditForm Model="Game" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
     <div class="form-group">
         <label>Name:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Game.Name" />
-            <ValidationMessage For="@(() => Game.Name)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="Game.TourName" />
+            <ValidationMessage For="@(() => Game.TourName)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Gameplay Video:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Game.GamePlayVideo" />
-            <ValidationMessage For="@(() => Game.GamePlayVideo)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="Game.VideoTour" />
+            <ValidationMessage For="@(() => Game.VideoTour)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Release date:</label>
         <div>
-            <InputDate class="form-control" @bind-Value="Game.ReleaseDate" />
-            <ValidationMessage For="@(() => Game.ReleaseDate)"></ValidationMessage>
+            <InputDate class="form-control" @bind-Value="Game.Time" />
+            <ValidationMessage For="@(() => Game.Time)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
@@ -48,10 +48,10 @@
         <MultipleSelectorTypeahead Context="GameDeveloper" OnSearch="SearchHandler" OnSelectedElements="SelectedDevelopers">
             <ResultTemplate>
                 <img style="width: 50px;" src="@GameDeveloper.Image"/>
-                @GameDeveloper.Name
+                @GameDeveloper.Fio
             </ResultTemplate>
             <ListTemplate>
-                @GameDeveloper.Name
+                @GameDeveloper.Fio
             </ListTemplate>
         </MultipleSelectorTypeahead>
     </div>
@@ -61,17 +61,17 @@
 
 @code {
     [Parameter]
-    public GameModel Game { get; set; }
+    public Tour Game { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 
     [Parameter]
-    public List<GameDeveloper> SelectedDevelopers { get; set; } = new();
+    public List<TourOperator> SelectedDevelopers { get; set; } = new();
 
     [Parameter]
-    public List<Genre> SelectedGenres { get; set; } = new();
+    public List<Transport> SelectedGenres { get; set; } = new();
     [Parameter]
-    public List<Genre> NotSelectedGenres { get; set; } = new();
+    public List<Transport> NotSelectedGenres { get; set; } = new();
 
     [Parameter]
     public List<MultipleSelectorHelperModel> Selected { get; set; } = new();
@@ -82,12 +82,12 @@
 
     protected override void OnInitialized()
     {
-        Selected = SelectedGenres.Select(x => new MultipleSelectorHelperModel(x.Id.ToString(), x.Name)).ToList();
-        NotSelected = NotSelectedGenres.Select(x => new MultipleSelectorHelperModel(x.Id.ToString(), x.Name)).ToList();
+        Selected = SelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
+        NotSelected = NotSelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
 
 
-        if (Game.ReleaseDate is null)
-            Game.ReleaseDate = DateTime.Now;
+        if (Game.Time is null)
+            Game.Time = DateTime.Now;
 
         if (!string.IsNullOrWhiteSpace(Game.Image))
         {
@@ -102,7 +102,7 @@
         imageUrl = null;
     }
 
-    async Task<IEnumerable<GameDeveloper>> SearchHandler(string searchText)
+    async Task<IEnumerable<TourOperator>> SearchHandler(string searchText)
     {
         return _db.GetAllDevelopers();
     }

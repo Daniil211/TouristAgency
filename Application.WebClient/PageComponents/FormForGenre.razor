@@ -1,11 +1,10 @@
-﻿@using Application.Persistence.Models
-<EditForm Model="Genre" OnValidSubmit="OnValidSubmit">
+﻿<EditForm Model="Genre" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
         <label>Genre Name:</label>
         <div>
-            <InputText class="form-control mb-2" @bind-Value="Genre.Name"/>
-            <ValidationMessage For="(() => Genre.Name)"/>
+            <InputText class="form-control mb-2" @bind-Value="Genre.TypeOfTransport"/>
+            <ValidationMessage For="(() => Genre.TypeOfTransport)"/>
         </div>
     </div>
     <button class="btn btn-outline-primary">Save</button>
@@ -13,7 +12,7 @@
 
 @code {
     [Parameter]
-    public Genre Genre { get; set; }
+    public Transport Genre { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 }

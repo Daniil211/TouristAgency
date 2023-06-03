@@ -1,6 +1,6 @@
-﻿@using Application.Persistence.Models
+﻿@using Application.WebClient.Data.Repository;
 @using Microsoft.EntityFrameworkCore
-@using Application.Persistence
+@using Application.Database
 
 @inject IRepository _db
 
@@ -39,26 +39,26 @@ else
 
 @code {
     [Parameter]
-    public List<GameModel> ListOfItems { get; set; }
+    public List<Tour> ListOfItems { get; set; }
 
     private string newGameName;
 
-    void DeleteGame(GameModel game)
+    void DeleteGame(Tour game)
     {
         // Remove game from the list
         ListOfItems.Remove(game);
         _db.RemoveGame(game);
     }
 
-    void EditGame(GameModel game)
+    void EditGame(Tour game)
     {
         // Find the game in the list
-        var gameToEdit = ListOfItems.FirstOrDefault(g => g.Id == game.Id);
+        var gameToEdit = ListOfItems.FirstOrDefault(g => g.TourId == game.TourId);
 
         if (gameToEdit != null)
         {
             // Update the game's name
-            gameToEdit.Name = newGameName;
+            gameToEdit.TourName = newGameName;
 
             // Update the game in the database
             _db.UpdateGame(gameToEdit);

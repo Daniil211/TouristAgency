@@ -1,4 +1,4 @@
-﻿namespace GameIndustry_v2.Helpers
+﻿namespace Application.WebClient.Helpers
 {
     public struct MultipleSelectorHelperModel
     {
