@@ -2,10 +2,10 @@
 using Application.Database;
 using Application.Database.Models;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Components.ProtectedBrowserStorage;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Newtonsoft.Json;
 
-namespace Application.WebClient.Data.Authentication
+namespace Application.Web.Client.Data.Authentication
 {
     public class WebsiteAuthenticator : AuthenticationStateProvider
     {
