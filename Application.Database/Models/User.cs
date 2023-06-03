@@ -53,11 +53,5 @@ namespace Application.Database.Models
         /// </summary>
         /// <value>The date created.</value>
         public DateTime? DateCreated { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="User"/> is sex.
-        /// </summary>
-        /// <value><c>true</c> if sex; otherwise, <c>false</c>.</value>
-        public bool? Sex { get; set; }
     }
 }

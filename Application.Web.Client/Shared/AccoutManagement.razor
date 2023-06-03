@@ -3,7 +3,7 @@
 @inject WebsiteAuthenticator WebsiteAuthenticator
 @page "/"
 
-<AuthorizeView Context="Admin">
+<AuthorizeView Context="Account">
     <NotAuthorized>
         <div>
             <Switch @bind-Checked="switchValue" />
@@ -136,7 +136,6 @@
                                 <tr><td class="active">Логин:</td><td>@User?.Username</td></tr>
                                 <tr><td class="active">Роль:</td><td>@User?.Role</td></tr>
                                 <tr><td class="active">Пароль:</td><td>@User?.Password</td></tr>
-                                <tr><td class="active">Пол:</td><td>@((bool)User?.Sex ? "Женский" : "Мужской")</td></tr>
                                 <tr><td class="active">Полных лет:</td><td>@User?.Age</td></tr>
                             }
                             </tbody>
