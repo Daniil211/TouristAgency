@@ -1,7 +1,7 @@
 ﻿@using Application.Database.Models
 <EditForm Model="Developer" OnValidSubmit="OnValidSubmitHandler">
     <div class="form-group">
-        <label>Developer Name: </label>
+        <label>Operator Name: </label>
         <div>
             <InputText class="form-control" @bind-Value="Developer.Fio"/>
             <ValidationMessage For="(()=>Developer.Fio)"/>
@@ -14,7 +14,7 @@
         <MarkdownInput @bind-Value="Developer.Standing" Label="Description" OnFor="(() => Developer.Standing)" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Create New Studio</button>
+    <button type="submit" class="btn btn-primary">Add New Tour Operator</button>
 </EditForm>
 
 @code {

@@ -4,16 +4,16 @@
 
 <div class="row">
     <div class="col">
-        <h1 class="text-info">Search Game</h1>
+        <h1 class="text-info">Search Tour</h1>
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm-12 col-md-6">
-        <input type="text" class="form-control mb-2" placeholder="Enter Game Name..." @bind-value="gameName" @bind-value:event="oninput" 
+        <input type="text" class="form-control mb-2" placeholder="Enter Tour Name..." @bind-value="gameName" @bind-value:event="oninput" 
                @onkeypress="((KeyboardEventArgs args)=> GameNameKeyPressHandler(args))" />
         <select class="form-control mb-2" @bind="selectedGameGenre">
-            <option value="-1">-- Select Game Genre --</option>
+            <option value="-1">-- Select Transport Tour --</option>
             @foreach (var item in Genres)
             {
                 <option value="@item.TransportId">@item.TypeOfTransport</option>  
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-outline-primary form-control mb-2" @onclick="SearchTheGame">Search Game</button>
+        <button type="button" class="btn btn-outline-primary form-control mb-2" @onclick="SearchTheGame">Search Tour</button>
         <button type="button" class="btn btn-outline-danger form-control mb-2" @onclick="ResetValues">Reset</button>
     </div>
     <div class="col-sm-12 col-md-6">
