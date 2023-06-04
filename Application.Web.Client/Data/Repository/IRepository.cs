@@ -21,6 +21,7 @@ namespace Application.Web.Client.Data.Repository
         bool CreateNewTourOperator(TourOperator tourOperator);
         Tour GetTourById(int id);
         Transport GetTransportById(int id);
+        Order GetOrderById(int id);
         List<Tour> RemoveTour(Tour tour);
         List<Tour> UpdateTour(Tour tour);
         bool EditTransport(Transport editedTransport);
