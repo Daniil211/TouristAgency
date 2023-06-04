@@ -1,0 +1,55 @@
+﻿@page "/tours/{TourId:int}"
+@page "/tours/{TourId:int}/{TourName}"
+@using Application.Web.Client.Data.Repository
+@using System.Text.RegularExpressions
+@inject IRepository _db
+
+<h1 class="text-info">Available Cities</h1>
+<div class="row">
+    <div class="col">
+        <h2>Name tour: @tour.TourName</h2>
+        <p>Tour ID: @tour.TourId</p>
+        <p>Duration: @tour.Duration</p>
+        <p>Price: @tour.Price</p>
+        <p>Video Presentation: @tour.VideoTour</p>
+        <p>In Sale: @tour.InSale</p>
+        <p>Poster:</p>
+        <div >
+            <a href="@tour">
+                @if (IsBase64(tour.Image))
+                {
+                    <img src="data:image/jpeg;base64,@tour.Image" class="tour-image" />
+                }
+                else
+                {
+                    <img src="@tour.Image" alt="@tour.TourName" class="tour-image" />
+                }
+            </a>
+        </div>
+        <p>Start of sales: @tour.Time</p>
+        <p>Description: @tour.Description</p>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public int TourId { get; set; }
+
+    [Parameter]
+    public string TourName { get; set; }
+
+    Tour tour;
+
+    protected override void OnInitialized()
+    {
+        tour = _db.GetTourById(TourId);
+    }
+
+
+    bool IsBase64(string value)
+    {
+        value = value.Trim();
+        return ((value.Length % 4 == 0) && Regex.IsMatch(value, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None));
+    }
+}
