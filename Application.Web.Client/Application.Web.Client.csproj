@@ -33,4 +33,13 @@
     <ProjectReference Include="..\Application.Database\Application.Database.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\OrderPage\CreateOrder.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Update="Pages\OrderPage\IndexOrder.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>

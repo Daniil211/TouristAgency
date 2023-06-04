@@ -10,15 +10,66 @@ namespace Application.Web.Client.Data.Repository
         private List<TourOperator> _tourOperators;
         private IRepository _repositoryImplementation;
         private List<City> _city;
-        public List<Tour> RemoveTour(Tour tour)
-        {
-            throw new NotImplementedException();
-        }
+
+        #region Implemented Method
+        #region Tour
+
         public List<Tour> UpdateTour(Tour tour)
         {
             throw new NotImplementedException();
         }
+        public List<Tour> RemoveTour(Tour tour)
+        {
+            throw new NotImplementedException();
+        }
 
+        #endregion
+        #region City
+
+        public List<City> GetAllCity()
+        {
+            throw new NotImplementedException();
+        }
+
+        
+
+        public bool CreateNewCity(City city)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+        #region Hotel
+
+        public bool CreateNewHotel(Hotel hotel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Hotel> GetAllHotel()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+        #region Transport
+
+        
+
+        public bool CreateNewTransport(Transport transport)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+        #region TourOperator
+
+        public bool CreateNewTourOperator(TourOperator tourOperator)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+        #endregion
         public bool EditTransport(Transport editedTransport)
         {
             var oldGenre = _transports.FirstOrDefault(x => x.TransportId.Equals(editedTransport.TransportId));
@@ -31,42 +82,27 @@ namespace Application.Web.Client.Data.Repository
             else
                 return false;
         }
-
+        public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
+        {
+            throw new NotImplementedException();
+        }
+        public List<TransportOfTour> GetAllTransportOfTour()
+        {
+            throw new NotImplementedException();
+        }
+        public bool CreateNewOrder(Order order)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Order> GetAllOrder()
+        {
+            throw new NotImplementedException();
+        }
         public List<Tour> GetAllTours() => _tours;
-
         public List<Transport> GetAllTransport() => _transports;
-        public bool CreateNewHotel(Hotel hotel)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Hotel> GetAllHotel()
-        {
-            throw new NotImplementedException();
-        }
-        public List<City> GetAllCity()
-        {
-            throw new NotImplementedException();
-        }
         public List<TourOperator> GetAllTourOperators() => _tourOperators;
         public Transport GetTransportById(int id) => _transports.FirstOrDefault(x => x.TransportId.Equals(id));
-        public bool CreateNewTransport(Transport transport)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CreateNewCity(City city)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CreateNewTourOperator(TourOperator tourOperator)
-        {
-            throw new NotImplementedException();
-        }
-
         public Tour GetTourById(int id) => _tours.FirstOrDefault(x => x.TourId.Equals(id));
-
         public bool CreateNewTour(Tour tour)
         {
             if (tour is null)

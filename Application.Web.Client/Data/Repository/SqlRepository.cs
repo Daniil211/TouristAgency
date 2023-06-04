@@ -21,12 +21,40 @@ namespace Application.Web.Client.Data.Repository
             var city = _db.Cities.ToList();
             return city;
         }
+        public List<Order> GetAllOrder()
+        {
+            var order = _db.Orders.ToList();
+            return order;
+        }
+
+        public List<TransportOfTour> GetAllTransportOfTour()
+        {
+            var transportOfTours = _db.TransportOfTours.ToList();
+            return transportOfTours;
+        }
+
+        public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
+        {
+            if (transportOfTour is null)
+                return false;
+            _db.Add(transportOfTour);
+            _db.SaveChanges();
+            return true;
+        }
 
         public bool CreateNewHotel(Hotel hotel)
         {
             if (hotel is null)
                 return false;
             _db.Add(hotel);
+            _db.SaveChanges();
+            return true;
+        }
+        public bool CreateNewOrder(Order order)
+        {
+            if (order is null)
+                return false;
+            _db.Add(order);
             _db.SaveChanges();
             return true;
         }

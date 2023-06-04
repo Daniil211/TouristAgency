@@ -5,11 +5,13 @@
         <div>
             <h3>Name Hotel</h3>
             <InputText class="form-control mb-2" @bind-Value="Hotel.HotelName"/>
+            <ValidationMessage For="(() => Hotel.HotelName)" />
             <h3>Count Of Stars</h3>
             <Input class="form-control mb-2" @bind-Value="Hotel.CountOfStars"/>
+            <ValidationMessage For="(() => Hotel.CountOfStars)" />
             <h3>Id City</h3>
             <Input class="form-control mb-2" @bind-Value="Hotel.CityId"/>
-            <ValidationMessage For="(() => Hotel.HotelName)"/>
+            <ValidationMessage For="(() => Hotel.CityId)" />
         </div>
     </div>
     <button class="btn btn-outline-primary">Save</button>

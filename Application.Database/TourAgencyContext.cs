@@ -134,10 +134,7 @@ namespace Application.Database
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("FIO");
-                entity.Property(e => e.Profession)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-                entity.Property(e => e.Standing)
+                entity.Property(e => e.Resume)
                     .HasMaxLength(100)
                     .IsUnicode(false);
             });

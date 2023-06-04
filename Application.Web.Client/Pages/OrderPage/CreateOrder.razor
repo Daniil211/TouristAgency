@@ -1,0 +1,27 @@
+﻿@page "/order/create"
+@using Application.Web.Client.Data.Repository
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Place on Order</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <FormForOrders Order="order" OnValidSubmit="AddNewOrder" />
+    </div>
+</div>
+
+@code {
+    Order order = new();
+
+    void AddNewOrder()
+    {
+        bool result = _db.CreateNewOrder(order);
+
+        if (result)
+            navManager.NavigateTo("/");
+    }
+}

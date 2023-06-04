@@ -1,0 +1,27 @@
+﻿@page "/transportOfTour/create"
+@using Application.Web.Client.Data.Repository
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Add Сonnection Transport Of Tour</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <FormForTransportOfTours TransportOfTour="transportOfTour" OnValidSubmit="AddNewTransportOfTour" />
+    </div>
+</div>
+
+@code {
+    TransportOfTour transportOfTour = new();
+
+    void AddNewTransportOfTour()
+    {
+        bool result = _db.CreateNewTransportOfTour(transportOfTour);
+
+        if (result)
+            navManager.NavigateTo("/");
+    }
+}
