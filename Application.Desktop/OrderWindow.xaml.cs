@@ -35,27 +35,10 @@ namespace Application.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
                 Order ord = new Order();
-            //    var curtourcb = Tour_cb.SelectedItem.ToString();
-             var curtourdb = db.Tours.Where(x=>x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
-            var currentTr = from ct in db.Transports select ct.TypeOfTransport;
-            Tour_cb.ItemsSource = currentTr.ToList();
+            var curtourdb = db.Tours.Where(x => x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
             ord.TourId = curtourdb;
+            //тут добавить потом фиксацию айдишника при авторизации
                 ord.UserId = 1;
-                ord.TourOperatorId = 1;
-                //Client client = new Client();
-                //client.Fio = FIO_tb.Text;
-                //client.DateOfBirth = Convert.ToDateTime(DateOfB_tb.Text);
-                //client.Phone = Phone_tb.Text;
-                //db.Clients.Add(client);
-                //db.SaveChanges();
-                //// MessageBox.Show("User added");
-                //if (Tour_cb.SelectedIndex > 0) { ord.TourId = Tour_cb.SelectedIndex; }
-
-                //var selectedClient = db.Clients.Where(p => p.Fio == FIO_tb.Text);
-                //foreach (Client clientt in selectedClient)
-                //{
-                //    ord.ClientId = clientt.ClientId;
-                //}
                 db.Orders.Add(ord);
                 db.SaveChanges();
                 MessageBox.Show("Заявка оставлена");
