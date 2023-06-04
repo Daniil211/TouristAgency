@@ -24,14 +24,14 @@ else
 {
     <div class="typeahead">
         <div class="typeahead-contols">
-            <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Name..." @bind="newGameName">
+            <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Name..." @bind="newTourName">
         </div>
     </div>
     
     <div class="row ">
         @foreach (var item in ListOfItems)
         {
-            <IndividualGame Game="item" OnDeleteGame="DeleteGame" OnEditGame="EditGame"/>
+            <IndividualGame Game="item" OnDeleteGame="DeleteTour" OnEditGame="EditTour"/>
         }
     </div>
 }
@@ -41,32 +41,28 @@ else
     [Parameter]
     public List<Tour> ListOfItems { get; set; }
 
-    private string newGameName;
+    private string newTourName;
 
-    void DeleteGame(Tour game)
+    void DeleteTour(Tour tour)
     {
-        // Remove game from the list
-        ListOfItems.Remove(game);
-        _db.RemoveGame(game);
+        ListOfItems.Remove(tour);
+        _db.RemoveTour(tour);
     }
 
-    void EditGame(Tour game)
+    void EditTour(Tour tour)
     {
-        // Find the game in the list
-        var gameToEdit = ListOfItems.FirstOrDefault(g => g.TourId == game.TourId);
+        var tourToEdit = ListOfItems.FirstOrDefault(g => g.TourId == tour.TourId);
 
-        if (gameToEdit != null)
+        if (tourToEdit != null)
         {
-            // Update the game's name
-            gameToEdit.TourName = newGameName;
+            tourToEdit.TourName = newTourName;
 
-            // Update the game in the database
-            _db.UpdateGame(gameToEdit);
+            _db.UpdateTour(tourToEdit);
         }
     }
 
-    void UpdateGame()
+    void UpdateTour()
     {
-        EditGame(ListOfItems.FirstOrDefault());
+        EditTour(ListOfItems.FirstOrDefault());
     }
 }

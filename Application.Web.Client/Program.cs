@@ -17,7 +17,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddScoped<IApplicationDbContext, TourAgencyContext>();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddScoped<IRepository, SqlGameRepository>();
+builder.Services.AddScoped<IRepository, SqlRepository>();
 builder.Services.AddAntDesign();
 builder.Services.AddScoped<WebsiteAuthenticator>();
 builder.Services.AddScoped<AuthenticationStateProvider>(sp => sp.GetRequiredService<WebsiteAuthenticator>());
@@ -35,7 +35,7 @@ builder.Services.AddSingleton<IAuthorizationHandler, AdultRequirementHandler>();
 builder.Services.AddSingleton<IAuthorizationHandler, OverAgeRequirementHandler>();
 builder.Services.AddSingleton<ICurrentUserService, CurrentUserService>();
 
-//builder.Services.AddSingleton<IRepository, MockGamesRepository>();
+//builder.Services.AddSingleton<IRepository, MockRepository>();
 //Если у вас не отображает ваши изменения  после создания новой игры
 //-то там где мы подключали   в сервисы IRepository, замените AddTransient на AddSingletone ,незачто
 

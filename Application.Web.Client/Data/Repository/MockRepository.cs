@@ -3,14 +3,14 @@ using Application.Web.Client.Data.Repository;
 
 namespace Application.Web.Client.Data.Repository
 {
-    public class MockGamesRepository : IRepository
+    public class MockRepository : IRepository
     {
-        private List<Tour> _games;
-        private List<Transport> _genres;
-        private List<TourOperator> _developers;
+        private List<Tour> _tours;
+        private List<Transport> _transports;
+        private List<TourOperator> _tourOperators;
         private IRepository _repositoryImplementation;
 
-        public MockGamesRepository()
+        public MockRepository()
         {
             #region Стартовые данные
             //_genres = new()
@@ -112,41 +112,39 @@ namespace Application.Web.Client.Data.Repository
             //};
             #endregion
         }
-
-
-        public List<Tour> RemoveGame(Tour game)
+        public List<Tour> RemoveTour(Tour tour)
         {
             throw new NotImplementedException();
         }
-        public List<Tour> UpdateGame(Tour game)
+        public List<Tour> UpdateTour(Tour tour)
         {
             throw new NotImplementedException();
         }
 
-        public bool EditGenre(Transport editedGenre)
+        public bool EditTransport(Transport editedTransport)
         {
-            var oldGenre = _genres.FirstOrDefault(x => x.TransportId.Equals(editedGenre.TransportId));
+            var oldGenre = _transports.FirstOrDefault(x => x.TransportId.Equals(editedTransport.TransportId));
 
             if (oldGenre is not null)
             {
-                oldGenre = editedGenre;
+                oldGenre = editedTransport;
                 return true;
             }
             else
                 return false;
         }
 
-        public List<Tour> GetAllGames() => _games;
+        public List<Tour> GetAllTours() => _tours;
 
-        public List<Transport> GetAllGenres() => _genres;
+        public List<Transport> GetAllTransport() => _transports;
         public List<City> GetAllCity()
         {
             throw new NotImplementedException();
         }
 
-        public List<TourOperator> GetAllDevelopers() => _developers;
-        public Transport GetGenreById(int id) => _genres.FirstOrDefault(x => x.TransportId.Equals(id));
-        public bool CreateNewGenre(Transport genre)
+        public List<TourOperator> GetAllTourOperators() => _tourOperators;
+        public Transport GetTransportById(int id) => _transports.FirstOrDefault(x => x.TransportId.Equals(id));
+        public bool CreateNewTransport(Transport transport)
         {
             throw new NotImplementedException();
         }
@@ -156,42 +154,33 @@ namespace Application.Web.Client.Data.Repository
             throw new NotImplementedException();
         }
 
-        public bool CreateNewStudio(TourOperator Developer)
+        public bool CreateNewTourOperator(TourOperator tourOperator)
         {
             throw new NotImplementedException();
         }
 
-        public Tour GetGameById(int id) => _games.FirstOrDefault(x => x.TourId.Equals(id));
+        public Tour GetTourById(int id) => _tours.FirstOrDefault(x => x.TourId.Equals(id));
 
-        public bool CreateNewGame(Tour newGame)
+        public bool CreateNewTour(Tour tour)
         {
-            if (newGame is null)
+            if (tour is null)
                 return false;
 
-            newGame.TourId = _games.Max(x => x.TourId) + 1;
-            _games.Add(newGame);
+            tour.TourId = _tours.Max(x => x.TourId) + 1;
+            _tours.Add(tour);
             return true;
         }
 
-        List<TransportOfTour> GetRandomGenres(int gameId)
+        List<TransportOfTour> GetRandomGenres(int tourId)
         {
             Random rnd = new Random(DateTime.Now.Millisecond);
-            var randomGenreCount = rnd.Next(1, _genres.Count);
+            var randomGenreCount = rnd.Next(1, _transports.Count);
             List<TransportOfTour> genresForReturning = new List<TransportOfTour>();
 
             for (int i = 0; i < randomGenreCount; i++)
             {
-                var genreId = rnd.Next(1, _genres.Count);
-                var result = _genres.FirstOrDefault(x => x.TransportId == genreId);
-                //if (result is not null)
-                //{
-                //    genresForReturning.Add(
-                //        new GamesGenres
-                //        {
-                //            GameId = gameId,
-                //            GenreId = genreId
-                //        });
-                //}
+                var genreId = rnd.Next(1, _transports.Count);
+                var result = _transports.FirstOrDefault(x => x.TransportId == genreId);
             }
             return genresForReturning;
         }

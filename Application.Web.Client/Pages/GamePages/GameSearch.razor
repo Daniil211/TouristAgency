@@ -10,8 +10,8 @@
 
 <div class="row">
     <div class="col-sm-12 col-md-6">
-        <input type="text" class="form-control mb-2" placeholder="Enter Tour Name..." @bind-value="gameName" @bind-value:event="oninput" 
-               @onkeypress="((KeyboardEventArgs args)=> GameNameKeyPressHandler(args))" />
+        <input type="text" class="form-control mb-2" placeholder="Enter Tour Name..." @bind-value="tourName" @bind-value:event="oninput" 
+               @onkeypress="((KeyboardEventArgs args)=> TourNameKeyPressHandler(args))" />
         <select class="form-control mb-2" @bind="selectedGameGenre">
             <option value="-1">-- Select Transport Tour --</option>
             @foreach (var item in Genres)
@@ -33,12 +33,12 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-outline-primary form-control mb-2" @onclick="SearchTheGame">Search Tour</button>
+        <button type="button" class="btn btn-outline-primary form-control mb-2" @onclick="SearchTheTour">Search Tour</button>
         <button type="button" class="btn btn-outline-danger form-control mb-2" @onclick="ResetValues">Reset</button>
     </div>
     <div class="col-sm-12 col-md-6">
         <div class="border border-primary rounded p-4">
-            <p>Game Name: @gameName</p>
+            <p>Tour Name: @tourName</p>
             <p>Genre Choosed: @selectedGameGenre</p>
             <p>Future Release?: @featureRelease</p>
             <p>Can Bay?: @canBay</p>
@@ -51,14 +51,14 @@
 </div>
 
 @code {
-    string gameName = string.Empty;
+    string tourName = string.Empty;
     string selectedGameGenre = "-1";
     List<Transport> Genres = new();
     List<Tour> Games = new();
     bool featureRelease = false;
     bool canBay = false;
 
-    void GameNameKeyPressHandler(KeyboardEventArgs args)
+    void TourNameKeyPressHandler(KeyboardEventArgs args)
     {
         //if(args.Key == "Enter")
             //TODO: Search
@@ -66,17 +66,15 @@
 
     protected override void OnInitialized()
     {
-        Genres = _db.GetAllGenres();
+        Genres = _db.GetAllTransport();
     }
 
-    void SearchTheGame()
+    void SearchTheTour()
     {
-        Games = _db.GetAllGames();
+        Games = _db.GetAllTours();
 
-        if (!string.IsNullOrWhiteSpace(gameName))
-            Games = Games.Where(x => x.TourName.ToLower().Contains(gameName.ToLower())).ToList();
-        //if (selectedGameGenre != "-1")
-        //    Games = Games.Where(x => x.GenreId.ToString().Equals(selectedGameGenre)).ToList();
+        if (!string.IsNullOrWhiteSpace(tourName))
+            Games = Games.Where(x => x.TourName.ToLower().Contains(tourName.ToLower())).ToList();
         if (featureRelease)
             Games = Games.Where(x => x.Time > DateTime.Now).ToList();
         if (canBay)
@@ -85,7 +83,7 @@
 
     void ResetValues()
     {
-        gameName = string.Empty;
+        tourName = string.Empty;
         selectedGameGenre = "-1";
         featureRelease = false;
         canBay = false;

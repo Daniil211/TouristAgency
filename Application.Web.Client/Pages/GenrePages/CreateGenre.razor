@@ -10,16 +10,16 @@
 </div>
 <div class="row">
     <div class="col-6">
-        <FormForGenre Genre="genre" OnValidSubmit="AddNewGenre" />
+        <FormForGenre Genre="transport" OnValidSubmit="AddNewGenre" />
     </div>
 </div>
 
 @code {
-    Transport genre = new();
+    Transport transport = new();
 
     void AddNewGenre()
     {
-        bool result = _db.CreateNewGenre(genre);
+        bool result = _db.CreateNewTransport(transport);
 
         if (result)
             navManager.NavigateTo("/");

@@ -12,24 +12,24 @@
 
 <div class="row">
     <div class="col">
-       <GameForm Game="game" OnValidSubmit="AddNewGame" NotSelectedGenres="notSelectedGenres"></GameForm>
+        <GameForm Game="tour" OnValidSubmit="AddNewTour" NotSelectedGenres="notSelectedTransports"></GameForm>
     </div>
 </div>
 
 @code {
 
-    Tour game = new();
+    Tour tour = new();
 
-    List<Transport> notSelectedGenres = new();
+    List<Transport> notSelectedTransports = new();
 
     protected override void OnInitialized()
     {
-        notSelectedGenres = _db.GetAllGenres();
+        notSelectedTransports = _db.GetAllTransport();
     }
 
-    void AddNewGame()
+    void AddNewTour()
     {
-        bool result = _db.CreateNewGame(game);
+        bool result = _db.CreateNewTour(tour);
 
         if(result)
             navManager.NavigateTo("/");

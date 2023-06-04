@@ -4,14 +4,14 @@
 
 <div class="row">
     <div class="col">
-        <h1 class="text-info">Edit Genre</h1>
+        <h1 class="text-info">Edit Transport</h1>
     </div>
 </div>
 <div class="row">
     <div class="col-6">
-        @if (genre is not null)
+        @if (transport is not null)
         {
-            <FormForGenre Genre="genre" OnValidSubmit="Edit"/>
+            <FormForGenre Genre="transport" OnValidSubmit="Edit"/>
         }
         else
         {
@@ -24,7 +24,7 @@
         @if (message is not null)
         {
             <div class="@cssClass text-center py-2">@message</div>
-            @foreach (var item in allGenres)
+            @foreach (var item in allTransports)
             {
                 <div class="row justify-content-lg-between m-1 text-white">
                     <div class="col-6 bg-primary">
@@ -43,19 +43,19 @@
     [Parameter]
     public int GenreId { get; set; }
 
-    Transport genre;
+    Transport transport;
     string message = string.Empty;
     string cssClass = string.Empty;
-    List<Transport> allGenres = new();
+    List<Transport> allTransports = new();
 
     protected override void OnInitialized()
     {
-        genre = _db.GetGenreById(GenreId);
+        transport = _db.GetTransportById(GenreId);
     }
 
     void Edit()
     {
-        var result = _db.EditGenre(genre);
+        var result = _db.EditTransport(transport);
 
         if (result)
         {
@@ -72,7 +72,7 @@
 
     void UpdateGenrList()
     {
-        allGenres = new();
-        allGenres = _db.GetAllGenres();
+        allTransports = new();
+        allTransports = _db.GetAllTransport();
     }
 }

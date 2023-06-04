@@ -9,15 +9,15 @@
     </ResultTemplate>
 </Typeahead>
 
-<GameList ListOfItems="gameItemsList" />
+<GameList ListOfItems="tourItemsList" />
 
 @code
 {
-    List<Tour> gameItemsList = new();
+    List<Tour> tourItemsList = new();
 
     protected override void OnInitialized()
     {
-        gameItemsList = repository.GetAllGames();
+        tourItemsList = repository.GetAllTours();
     }
 
     async Task<IEnumerable<string>> SearchHandler(string searchText)
@@ -25,7 +25,7 @@
         await Task.Delay(2000);
         if (string.IsNullOrEmpty(searchText))
             return Enumerable.Empty<string>();
-        var games = repository.GetAllGames().Where(g => g.TourName.Contains(searchText)).Select(g => g.TourName);
-        return games;
+        var tours = repository.GetAllTours().Where(g => g.TourName.Contains(searchText)).Select(g => g.TourName);
+        return tours;
     }
 }

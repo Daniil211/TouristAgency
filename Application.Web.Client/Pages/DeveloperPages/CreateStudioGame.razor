@@ -11,7 +11,7 @@
 </div>
 <div class="row">
 	<div class="col-10">
-        <DeveloperPageForm Developer="Developer" OnValidSubmitHandler="AddNewStudio" />
+        <DeveloperPageForm Developer="tourOperator" OnValidSubmitHandler="AddNewStudio" />
 	</div>
 	<div class="col">
 
@@ -20,11 +20,11 @@
 
 @code {
 
-    TourOperator Developer = new();
+    TourOperator tourOperator = new();
 
     void AddNewStudio()
     {
-        bool result = _db.CreateNewStudio(Developer);
+        bool result = _db.CreateNewTourOperator(tourOperator);
 
         if (result)
             navManager.NavigateTo("/");
