@@ -8,21 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Icons\adminPanelIcon.png" />
-    <None Remove="Icons\logoIcon.png" />
-    <None Remove="Images\Altai.jpg" />
-    <None Remove="Images\Baikal.jpg" />
-    <None Remove="Images\Dagestan.jpg" />
-    <None Remove="Images\Kaliningrad.jpg" />
-    <None Remove="Images\Karelia.jpg" />
-    <None Remove="Images\Kazan.jpg" />
-    <None Remove="Images\Murmansk.jpg" />
-    <None Remove="Images\SantPet.jpg" />
-    <None Remove="Images\Ustug.jpg" />
-    <None Remove="Images\Volgograd.jpg" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -37,21 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Application.Database\Application.Database.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Icons\adminPanelIcon.png" />
-    <Resource Include="Icons\logoIcon.png" />
-    <Resource Include="Images\Altai.jpg" />
-    <Resource Include="Images\Baikal.jpg" />
-    <Resource Include="Images\Dagestan.jpg" />
-    <Resource Include="Images\Kaliningrad.jpg" />
-    <Resource Include="Images\Karelia.jpg" />
-    <Resource Include="Images\Kazan.jpg" />
-    <Resource Include="Images\Murmansk.jpg" />
-    <Resource Include="Images\SantPet.jpg" />
-    <Resource Include="Images\Ustug.jpg" />
-    <Resource Include="Images\Volgograd.jpg" />
   </ItemGroup>
 
 </Project>
