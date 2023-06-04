@@ -4,9 +4,18 @@
     <div class="col">
         <h1 class="text-info">Tour Operators</h1>
     </div>
-    <div class="col-3 text-right">
-        <NavLink class="btn btn-info mt-2" href="touroperator/create">Create New Tour Operator</NavLink>
-    </div>
+    <AuthorizeView Roles="Admin">
+        <NotAuthorized>
+
+        </NotAuthorized>
+        <Authorized>
+
+            <div class="col-3 text-right">
+                <NavLink class="btn btn-info mt-2" href="touroperator/create">Create New Tour Operator</NavLink>
+            </div>
+        </Authorized>
+    </AuthorizeView>
+
 </div>
 <div class="row">
     <div class="col">

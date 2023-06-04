@@ -14,29 +14,36 @@
     <div class="col">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th scope="col">City ID</th>
+                <tr>
+                    <th scope="col">City ID</th>
                     <th scope="col">City Name</th>
-            </tr>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var item in City)
-            {
+                @foreach (var item in City)
+                {
                     <tr scope="row">
-                    <td>@item.CityId</td>
-                    <td>@item.CityName</td>
-                </tr>
-            }
+                        <td>@item.CityId</td>
+                        <td>@item.CityName</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
-   
-<div class="row">
-    <div class="col">
-        <a class="btn btn-info" href="/cities/create">Add New cities</a>
-    </div>
-</div>
+<AuthorizeView Roles="Admin">
+    <NotAuthorized>
+
+    </NotAuthorized>
+    <Authorized>
+
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-info" href="/cities/create">Add New cities</a>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
 
 @code {
 

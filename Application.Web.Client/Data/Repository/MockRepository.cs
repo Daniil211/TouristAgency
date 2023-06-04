@@ -53,7 +53,7 @@ namespace Application.Web.Client.Data.Repository
         #endregion
         #region Transport
 
-        
+       
 
         public bool CreateNewTransport(Transport transport)
         {
@@ -82,6 +82,15 @@ namespace Application.Web.Client.Data.Repository
             else
                 return false;
         }
+        public bool CreateNewHotelsOfTour(HotelsOfTour hotelsOfTour)
+        {
+            throw new NotImplementedException();
+        }
+        public List<HotelsOfTour> GetAllHotelsOfTour()
+        {
+            throw new NotImplementedException();
+        }
+
         public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
         {
             throw new NotImplementedException();

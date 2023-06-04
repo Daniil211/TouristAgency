@@ -1,0 +1,27 @@
+﻿@page "/hotelOfTour/create"
+@using Application.Web.Client.Data.Repository
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Add Сonnection Hotels Of Tour</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <FormForHotelOfTours HotelsOfTour="hotelsOfTour" OnValidSubmit="AddNewHotelsOfTour" />
+    </div>
+</div>
+
+@code {
+    HotelsOfTour hotelsOfTour = new();
+
+    void AddNewHotelsOfTour()
+    {
+        bool result = _db.CreateNewHotelsOfTour(hotelsOfTour);
+
+        if (result)
+            navManager.NavigateTo("/");
+    }
+}
