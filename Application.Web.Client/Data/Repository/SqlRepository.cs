@@ -22,6 +22,21 @@ namespace Application.Web.Client.Data.Repository
             return city;
         }
 
+        public bool CreateNewHotel(Hotel hotel)
+        {
+            if (hotel is null)
+                return false;
+            _db.Add(hotel);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public List<Hotel> GetAllHotel()
+        {
+            var hotel = _db.Hotels.ToList();
+            return hotel;
+        }
+
         public bool CreateNewTour(Tour tour)
         {
             if (tour is null)

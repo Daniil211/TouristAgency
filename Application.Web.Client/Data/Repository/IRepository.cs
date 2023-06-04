@@ -7,6 +7,8 @@ namespace Application.Web.Client.Data.Repository
         List<Tour> GetAllTours();
         List<Transport> GetAllTransport();
         List<City> GetAllCity();
+        bool CreateNewHotel(Hotel hotel);
+        List<Hotel> GetAllHotel();
         bool CreateNewTour(Tour tour);
         bool CreateNewTransport(Transport transport);
         bool CreateNewCity(City city);

@@ -12,6 +12,20 @@
         </div>
     </div>
     <div class="form-group">
+        <label>Duration:</label>
+        <div>
+            <InputText class="form-control" @bind-Value="Game.Duration" />
+            <ValidationMessage For="@(() => Game.Duration)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Price:</label>
+        <div>
+            <Input class="form-control" @bind-Value="Game.Price" />
+            <ValidationMessage For="@(() => Game.Price)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="form-group">
         <label>Video presentation of the tour:</label>
         <div>
             <InputText class="form-control" @bind-Value="Game.VideoTour" />
@@ -37,24 +51,6 @@
                        Label="Description"
                        OnFor="(() => Game.Description)" />
     </div>
-    
-    <div clas="form-group">
-        <label>Type Transport</label>
-        <MultipleSelector OnSelected="Selected" OnNotSelected="NotSelected"/>
-    </div>
-    
-    @*<div class="form-group">
-        <label>Developers:</label>
-        <MultipleSelectorTypeahead Context="GameDeveloper" OnSearch="SearchHandler" OnSelectedElements="SelectedDevelopers">
-            <ResultTemplate>
-                <img style="width: 50px;" src="@GameDeveloper.Image"/>
-                @GameDeveloper.Fio
-            </ResultTemplate>
-            <ListTemplate>
-                @GameDeveloper.Fio
-            </ListTemplate>
-        </MultipleSelectorTypeahead>
-    </div>*@
 
     <button class="btn btn-primary" type="submit">Save Changes</button>
 </EditForm>
