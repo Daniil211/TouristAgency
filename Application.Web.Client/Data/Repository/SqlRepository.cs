@@ -27,6 +27,21 @@ namespace Application.Web.Client.Data.Repository
             return order;
         }
 
+        public List<TransportOfTour> GetAllTransportOfTour()
+        {
+            var transportOfTours = _db.TransportOfTours.ToList();
+            return transportOfTours;
+        }
+
+        public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
+        {
+            if (transportOfTour is null)
+                return false;
+            _db.Add(transportOfTour);
+            _db.SaveChanges();
+            return true;
+        }
+
         public bool CreateNewHotel(Hotel hotel)
         {
             if (hotel is null)

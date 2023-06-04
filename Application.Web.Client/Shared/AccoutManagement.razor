@@ -1,6 +1,7 @@
 ﻿@using Application.Web.Client.Data.Authentication;
 @inject IMessageService _message
 @inject WebsiteAuthenticator WebsiteAuthenticator
+@inject NavigationManager NavigationManager
 @page "/"
 
 <AuthorizeView Context="Account">
@@ -153,7 +154,7 @@
                                 <tr><td class="active">Зарегистрирован:</td><td>@User?.DateCreated.ToString()</td></tr>
                                 <tr><td class="active">Логин:</td><td>@User?.Username</td></tr>
                                 <tr><td class="active">Роль:</td><td>@User?.Role</td></tr>
-                                <tr><td class="active">Пароль:</td><td>@User?.Password</td></tr>
+                                @*<tr><td class="active">Пароль:</td><td>@User?.Password</td></tr>*@
                                 <tr><td class="active">Полных лет:</td><td>@User?.Age</td></tr>
                             }
                             </tbody>

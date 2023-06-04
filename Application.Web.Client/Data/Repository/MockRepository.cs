@@ -82,6 +82,14 @@ namespace Application.Web.Client.Data.Repository
             else
                 return false;
         }
+        public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
+        {
+            throw new NotImplementedException();
+        }
+        public List<TransportOfTour> GetAllTransportOfTour()
+        {
+            throw new NotImplementedException();
+        }
         public bool CreateNewOrder(Order order)
         {
             throw new NotImplementedException();

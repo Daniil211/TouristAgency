@@ -1,14 +1,20 @@
-﻿<EditForm Model="Order" OnValidSubmit="OnValidSubmit">
+﻿@using System.Security.Claims
+@page "/order/{UserId:int}"
+@page "/order/{UserId:int}/{UserName}"
+<EditForm Model="Order" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
         <label>New Order:</label>
         <div>
+            <h3>Tour Id</h3>
             <Input class="form-control mb-2" @bind-Value="Order.TourId"/>
-            <ValidationMessage For="(() => Order.TourId)" />
+            <ValidationMessage For="(() => Order.TourId)"/>
+            <h3>Tour Operator Id</h3>
             <Input class="form-control mb-2" @bind-Value="Order.ToutOperatorId"/>
-            <ValidationMessage For="(() => Order.ToutOperatorId)" />
-            <Input class="form-control mb-2" @bind-Value="Order.UserId" />
-            <ValidationMessage For="(() => Order.UserId)" />
+            <ValidationMessage For="(() => Order.ToutOperatorId)"/>
+            <h3>User Id</h3>
+            <Input class="form-control mb-2" @bind-Value="Order.UserId"/>
+            <ValidationMessage For="(() => Order.UserId)"/>
         </div>
     </div>
     <button class="btn btn-outline-primary">Save</button>
@@ -16,7 +22,10 @@
 
 @code {
     [Parameter]
+    public int UserId { get; set; }
+    [Parameter]
     public Order Order { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
+
 }

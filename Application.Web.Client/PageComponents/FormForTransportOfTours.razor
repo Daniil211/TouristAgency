@@ -1,0 +1,28 @@
+﻿@using System.Security.Claims
+<EditForm Model="TransportOfTour" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-info">New Transport Of Tours:</h1>
+            </div>
+        </div>
+        <div>
+            <h3>Tour Id</h3>
+            <Input class="form-control mb-2" @bind-Value="TransportOfTour.TourId"/>
+            <ValidationMessage For="(() => TransportOfTour.TourId)"/>
+            <h3>Transport Id</h3>
+            <Input class="form-control mb-2" @bind-Value="TransportOfTour.TransportId"/>
+            <ValidationMessage For="(() => TransportOfTour.TransportId)"/>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Save</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public TransportOfTour TransportOfTour { get; set; }
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+
+}
