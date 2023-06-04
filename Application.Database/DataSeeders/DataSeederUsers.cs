@@ -51,11 +51,11 @@ namespace Application.Persistence.DataSeeders
                 new()
                 {
                     Id = 4,
-                    Username = "Studio",
-                    Password = "Studio",
+                    Username = "Admin",
+                    Password = "Admin",
                     Age = 20,
                     IsPremiumMember = true,
-                    Role = "Studio",
+                    Role = "Admin",
                     Fio = "Spiridonov",
                     DateOfBirth = dateOfBirth,
                     Phone = "79797979"
