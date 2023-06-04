@@ -1,10 +1,10 @@
-﻿<EditForm Model="Genre" OnValidSubmit="OnValidSubmit">
+﻿<EditForm Model="Transport" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
         <label>Type transport:</label>
         <div>
-            <InputText class="form-control mb-2" @bind-Value="Genre.TypeOfTransport"/>
-            <ValidationMessage For="(() => Genre.TypeOfTransport)"/>
+            <InputText class="form-control mb-2" @bind-Value="Transport.TypeOfTransport" />
+            <ValidationMessage For="(() => Transport.TypeOfTransport)" />
         </div>
     </div>
     <button class="btn btn-outline-primary">Save</button>
@@ -12,7 +12,7 @@
 
 @code {
     [Parameter]
-    public Transport Genre { get; set; }
+    public Transport Transport { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 }

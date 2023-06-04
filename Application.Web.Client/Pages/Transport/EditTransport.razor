@@ -1,4 +1,4 @@
-﻿@page "/transport/edit/{GenreId:int}"
+﻿@page "/transport/edit/{TransportId:int}"
 @using Application.Web.Client.Data.Repository
 @inject IRepository _db
 
@@ -41,7 +41,7 @@
 
 @code {
     [Parameter]
-    public int GenreId { get; set; }
+    public int TransportId { get; set; }
 
     Transport transport;
     string message = string.Empty;
@@ -50,7 +50,7 @@
 
     protected override void OnInitialized()
     {
-        transport = _db.GetTransportById(GenreId);
+        transport = _db.GetTransportById(TransportId);
     }
 
     void Edit()

@@ -1,24 +1,24 @@
 ﻿@using Application.Database.Models
-<EditForm Model="Developer" OnValidSubmit="OnValidSubmitHandler">
+<EditForm Model="TourOperator" OnValidSubmit="OnValidSubmitHandler">
     <div class="form-group">
         <label>Operator Name: </label>
         <div>
-            <InputText class="form-control" @bind-Value="Developer.Fio"/>
-            <ValidationMessage For="(()=>Developer.Fio)"/>
+            <InputText class="form-control" @bind-Value="TourOperator.Fio" />
+            <ValidationMessage For="(()=>TourOperator.Fio)" />
         </div>
     </div>
     <div class="form-group">
-        <label>Age: </label>
+        <label>Age:</label>
         <div>
-            <Input class="form-control" @bind-Value="Developer.Age"/>
-            <ValidationMessage For="(()=>Developer.Age)"/>
+            <Input class="form-control" @bind-Value="TourOperator.Age" />
+            <ValidationMessage For="(()=>TourOperator.Age)" />
         </div>
     </div>
     
     <InputImage Label="Image" OnImageFileSelected="ImageFileSelectedHandler" ImageUrl="@imageUrl"/>
     
     <div class="form-group form-markdown">
-        <MarkdownInput @bind-Value="Developer.Resume" Label="Resume" OnFor="(() => Developer.Resume)" />
+        <MarkdownInput @bind-Value="TourOperator.Resume" Label="Resume" OnFor="(() => TourOperator.Resume)" />
     </div>
 
     <button type="submit" class="btn btn-primary">Add New Tour Operator</button>
@@ -26,7 +26,7 @@
 
 @code {
     [Parameter]
-    public TourOperator Developer { get; set; }
+    public TourOperator TourOperator { get; set; }
 
     [Parameter]
     public EventCallback OnValidSubmitHandler { get; set; }
@@ -35,13 +35,13 @@
 
     protected override void OnInitialized()
     {
-        imageUrl = Developer.Image;
-        Developer.Image = null;
+        imageUrl = TourOperator.Image;
+        TourOperator.Image = null;
     }
 
     void ImageFileSelectedHandler(string imageBase64)
     {
-        Developer.Image = imageBase64;
+        TourOperator.Image = imageBase64;
         imageUrl = null;
     }
 }

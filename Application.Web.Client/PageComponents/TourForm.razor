@@ -1,55 +1,55 @@
 ﻿@inject IRepository _db
 @using Application.Web.Client.Data.Repository;
 @using Application.Web.Client.Helpers
-<EditForm Model="Game" OnValidSubmit="OnValidSubmit">
+<EditForm Model="Tour" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
     <div class="form-group">
         <label>Tour Name:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Game.TourName" />
-            <ValidationMessage For="@(() => Game.TourName)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="Tour.TourName" />
+            <ValidationMessage For="@(() => Tour.TourName)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Duration:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Game.Duration" />
-            <ValidationMessage For="@(() => Game.Duration)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="Tour.Duration" />
+            <ValidationMessage For="@(() => Tour.Duration)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Price:</label>
         <div>
-            <Input class="form-control" @bind-Value="Game.Price" />
-            <ValidationMessage For="@(() => Game.Price)"></ValidationMessage>
+            <Input class="form-control" @bind-Value="Tour.Price" />
+            <ValidationMessage For="@(() => Tour.Price)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Video presentation of the tour:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Game.VideoTour" />
-            <ValidationMessage For="@(() => Game.VideoTour)"></ValidationMessage>
+            <InputText class="form-control" @bind-Value="Tour.VideoTour" />
+            <ValidationMessage For="@(() => Tour.VideoTour)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Sales start date:</label>
         <div>
-            <InputDate class="form-control" @bind-Value="Game.Time" />
-            <ValidationMessage For="@(() => Game.Time)"></ValidationMessage>
+            <InputDate class="form-control" @bind-Value="Tour.Time" />
+            <ValidationMessage For="@(() => Tour.Time)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <InputImage Label="Image" OnImageFileSelected="ImageFileSelectedHandler" ImageUrl="@imageUrl" />
     </div>
     <div class="form-check">
-        <InputCheckbox @bind-Value="Game.InSale" class="form-check-input" id="gridCheck1" />
+        <InputCheckbox @bind-Value="Tour.InSale" class="form-check-input" id="gridCheck1" />
         <label class="form-check-label" for="gridCheck1">In Sale?:</label>
     </div>
     <div class="form-group form-markdown">
-        <MarkdownInput @bind-Value="Game.Description"
+        <MarkdownInput @bind-Value="Tour.Description"
                        Label="Description"
-                       OnFor="(() => Game.Description)" />
+                       OnFor="(() => Tour.Description)" />
     </div>
 
     <button class="btn btn-primary" type="submit">Save Changes</button>
@@ -57,7 +57,7 @@
 
 @code {
     [Parameter]
-    public Tour Game { get; set; }
+    public Tour Tour { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
 
@@ -82,19 +82,19 @@
         NotSelected = NotSelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
 
 
-        if (Game.Time is null)
-            Game.Time = DateTime.Now;
+        if (Tour.Time is null)
+            Tour.Time = DateTime.Now;
 
-        if (!string.IsNullOrWhiteSpace(Game.Image))
+        if (!string.IsNullOrWhiteSpace(Tour.Image))
         {
-            imageUrl = Game.Image;
-            Game.Image = null;
+            imageUrl = Tour.Image;
+            Tour.Image = null;
         }
     }
 
     void ImageFileSelectedHandler(string imageBase64)
     {
-        Game.Image = imageBase64;
+        Tour.Image = imageBase64;
         imageUrl = null;
     }
 

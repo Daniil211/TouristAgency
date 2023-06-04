@@ -1,0 +1,29 @@
+﻿@page "/touroperator/edit/{OpearatorId:int}"
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Edit Tour Operator</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        @if (TourOperator is not null)
+        {
+            <TourOperatorPageForm Developer="TourOperator" OnValidSubmitHandler="Edit" />
+        }
+    </div>
+    <div class="col-6">
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int OpearatorId { get; set; }
+
+    TourOperator TourOperator;
+
+    void Edit()
+    {
+        //TODO: Edit TourOperator logic
+    }
+}
