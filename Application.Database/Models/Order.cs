@@ -11,11 +11,11 @@ public partial class Order
 
     public int UserId { get; set; }
 
-    public int? ToutOperatorId { get; set; }
+    public int? TourOperatorId { get; set; }
 
     public virtual User? User { get; set; } = null!;
 
     public virtual Tour? Tour { get; set; } = null!;
 
-    public virtual TourOperator? ToutOperator { get; set; }
+    public virtual TourOperator? TourOperator { get; set; }
 }

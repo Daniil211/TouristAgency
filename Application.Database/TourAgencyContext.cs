@@ -35,9 +35,8 @@ namespace Application.Database
     {
         public TourAgencyContext()
         {
-
-            //Database.EnsureDeleted();
-            //Database.EnsureCreated();
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         public TourAgencyContext(DbContextOptions<TourAgencyContext> options) : base(options)
@@ -109,8 +108,8 @@ namespace Application.Database
                     .HasForeignKey(d => d.TourId)
                     .HasConstraintName("FK_Orders_Tours");
 
-                entity.HasOne(d => d.ToutOperator).WithMany(p => p.Orders)
-                    .HasForeignKey(d => d.ToutOperatorId)
+                entity.HasOne(d => d.TourOperator).WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.TourOperatorId)
                     .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK_Orders_TourOperators");
             });

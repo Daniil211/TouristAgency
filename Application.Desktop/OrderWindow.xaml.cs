@@ -41,7 +41,7 @@ namespace Application.Desktop
             Tour_cb.ItemsSource = currentTr.ToList();
             ord.TourId = curtourdb;
                 ord.UserId = 1;
-                ord.ToutOperatorId = 1;
+                ord.TourOperatorId = 1;
                 //Client client = new Client();
                 //client.Fio = FIO_tb.Text;
                 //client.DateOfBirth = Convert.ToDateTime(DateOfB_tb.Text);

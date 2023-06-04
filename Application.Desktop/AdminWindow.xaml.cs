@@ -29,7 +29,7 @@ namespace Application.Desktop
             //var tbOrders = from ord in db.Orders
             //               join us in db.Users on ord.UserId equals us.ClientId
             //               join tour in db.Tours on ord.TourId equals tour.TourId
-            //               join op in db.TourOperators on ord.ToutOperatorId equals op.OperatorId
+            //               join op in db.TourOperators on ord.TourOperatorId equals op.OperatorId
 
             //               select new
             //               {
@@ -63,13 +63,13 @@ namespace Application.Desktop
                 //    var men = cbmen.SelectedItem.ToString();
                 //    int meni = fcon.TourOperators.Where(c => c.Fio == men).FirstOrDefault().OperatorId;
                 //    var zakaz = fcon.Orders.Where(c => c.OrderId.ToString() == num).FirstOrDefault();
-                //    zakaz.ToutOperatorId = meni;
+                //    zakaz.TourOperatorId = meni;
                 //    fcon.SaveChanges();
                 //    MessageBox.Show("Заказ изменен");
                 //    var tbOrders = from ord in db.Orders
                 //                   join us in db.Users on ord.UserId equals us.ClientId
                 //                   join tour in db.Tours on ord.TourId equals tour.TourId
-                //                   join op in db.TourOperators on ord.ToutOperatorId equals op.OperatorId
+                //                   join op in db.TourOperators on ord.TourOperatorId equals op.OperatorId
 
                 //                   select new
                 //                   {
