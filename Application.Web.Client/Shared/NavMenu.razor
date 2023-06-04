@@ -89,7 +89,7 @@
                 </NotAuthorized>
                 <Authorized>
                     <NavLink class="nav-link" href="tours/create">
-                        <span class="oi oi-star" aria-hidden="true"></span> Create New Tour
+                        <span class="oi oi-star" aria-hidden="true"></span> Tour
                     </NavLink>
                 </Authorized>
             </AuthorizeView>
@@ -100,7 +100,7 @@
                 </NotAuthorized>
                 <Authorized>
                     <NavLink class="nav-link" href="cities">
-                        <span class="oi oi-key" aria-hidden="true"></span> Create New City
+                        <span class="oi oi-key" aria-hidden="true"></span> City
                     </NavLink>
                 </Authorized>
             </AuthorizeView>
@@ -111,7 +111,18 @@
                 </NotAuthorized>
                 <Authorized>
                     <NavLink class="nav-link" href="hotels">
-                        <span class="oi oi-eye" aria-hidden="true"></span> Create New Hotel
+                        <span class="oi oi-eye" aria-hidden="true"></span> Hotel
+                    </NavLink>
+                </Authorized>
+            </AuthorizeView>
+        </div>
+        <div class="nav-item px-3">
+            <AuthorizeView Roles="Admin,User">
+                <NotAuthorized>
+                </NotAuthorized>
+                <Authorized>
+                    <NavLink class="nav-link" href="hotelOfTour">
+                        <span class="oi oi-fire" aria-hidden="true"></span> Hotel Of Tours
                     </NavLink>
                 </Authorized>
             </AuthorizeView>
@@ -120,6 +131,7 @@
 </div>
 
 @code {
+    
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;

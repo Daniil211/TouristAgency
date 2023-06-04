@@ -1,0 +1,50 @@
+﻿@page "/hotelOfTour"
+@using Application.Web.Client.Data.Repository
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Hotels Of Tours</h1>
+    </div>
+</div>
+
+<h1 class="text-info">All Hotels Of Tour</h1>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Tour Id</th>
+                    <th scope="col">Hotel ID</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in HotelsOfTour)
+                {
+                    <tr scope="row">
+                    <td>@item.Id</td>
+                        <td>@item.TourId</td>
+                        <td>@item.HotelId</td>
+                    </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+   
+<div class="row">
+    <div class="col">
+        <a class="btn btn-info" href="/hotelOfTour/create">Add New Hotel Of Tour</a>
+    </div>
+</div>
+
+@code {
+
+    List<HotelsOfTour> HotelsOfTour = new();
+    protected override void OnInitialized()
+    {
+        HotelsOfTour = _db.GetAllHotelsOfTour();
+    }
+}

@@ -33,6 +33,12 @@ namespace Application.Web.Client.Data.Repository
             return transportOfTours;
         }
 
+        public List<HotelsOfTour> GetAllHotelsOfTour()
+        {
+            var hotelsOfTours = _db.HotelsOfTours.ToList();
+            return hotelsOfTours;
+        }
+
         public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
         {
             if (transportOfTour is null)
@@ -55,6 +61,15 @@ namespace Application.Web.Client.Data.Repository
             if (order is null)
                 return false;
             _db.Add(order);
+            _db.SaveChanges();
+            return true;
+        }
+
+        public bool CreateNewHotelsOfTour(HotelsOfTour hotelsOfTour)
+        {
+            if (hotelsOfTour is null)
+                return false;
+            _db.Add(hotelsOfTour);
             _db.SaveChanges();
             return true;
         }
