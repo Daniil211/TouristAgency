@@ -5,6 +5,7 @@ namespace Application.Web.Client.Data.Repository
     public interface IRepository
     {
         List<Tour> GetAllTours();
+        List<TourOperator> GetAllTourOperator();
         List<Transport> GetAllTransport();
         List<City> GetAllCity();
         List<Order> GetAllOrder();

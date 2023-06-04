@@ -115,6 +115,11 @@ namespace Application.Web.Client.Data.Repository
             throw new NotImplementedException();
         }
         public List<Tour> GetAllTours() => _tours;
+        public List<TourOperator> GetAllTourOperator()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Transport> GetAllTransport() => _transports;
         public List<TourOperator> GetAllTourOperators() => _tourOperators;
         public Transport GetTransportById(int id) => _transports.FirstOrDefault(x => x.TransportId.Equals(id));

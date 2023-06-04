@@ -1,4 +1,7 @@
 ﻿@page "/touroperator"
+@using Application.Web.Client.Data.Repository
+@using System.Text.RegularExpressions
+@inject IRepository _db
 
 <div class="row border border-info">
     <div class="col">
@@ -21,7 +24,57 @@
     <div class="col">
     </div>
 </div>
-
+<h1 class="text-info">All Tour Operator</h1>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Operator ID</th>
+                    <th scope="col">FIO</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Resume</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in TourOperator)
+                {
+                    <tr scope="row">
+                        <td>@item.OperatorId</td>
+                        <td>@item.Fio</td>
+                        <td>@item.Age</td>
+                        <td>@item.Resume</td>
+                        <td>
+                            <div>
+                                <a href="@TourOperator">
+                                    @if (IsBase64(@item.Image))
+                                    {
+                                        <img src="data:image/jpeg;base64,@item.Image" class="tour-image" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@item.Image" alt="@item.Fio" class="tour-image" />
+                                    }
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 @code {
+    List<TourOperator> TourOperator = new();
 
+    protected override void OnInitialized()
+    {
+        TourOperator = _db.GetAllTourOperator();
+    }
+    bool IsBase64(string value)
+    {
+        value = value.Trim();
+        return ((value.Length % 4 == 0) && Regex.IsMatch(value, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None));
+    }
 }
