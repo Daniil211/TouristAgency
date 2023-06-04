@@ -7,11 +7,18 @@
             <ValidationMessage For="(()=>Developer.Fio)"/>
         </div>
     </div>
+    <div class="form-group">
+        <label>Age: </label>
+        <div>
+            <Input class="form-control" @bind-Value="Developer.Age"/>
+            <ValidationMessage For="(()=>Developer.Age)"/>
+        </div>
+    </div>
     
     <InputImage Label="Image" OnImageFileSelected="ImageFileSelectedHandler" ImageUrl="@imageUrl"/>
     
     <div class="form-group form-markdown">
-        <MarkdownInput @bind-Value="Developer.Standing" Label="Description" OnFor="(() => Developer.Standing)" />
+        <MarkdownInput @bind-Value="Developer.Resume" Label="Resume" OnFor="(() => Developer.Resume)" />
     </div>
 
     <button type="submit" class="btn btn-primary">Add New Tour Operator</button>
