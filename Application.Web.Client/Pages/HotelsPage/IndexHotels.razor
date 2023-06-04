@@ -14,33 +14,40 @@
     <div class="col">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th scope="col">Hotel ID</th>
-                <th scope="col">Hotel Name</th>
-                <th scope="col">Count Of Stars Hotel</th>
+                <tr>
+                    <th scope="col">Hotel ID</th>
+                    <th scope="col">Hotel Name</th>
+                    <th scope="col">Count Of Stars Hotel</th>
                     <th scope="col">City Id</th>
-            </tr>
+                </tr>
             </thead>
             <tbody>
                 @foreach (var item in Hotel)
                 {
                     <tr scope="row">
-                    <td>@item.HotelId</td>
+                        <td>@item.HotelId</td>
                         <td>@item.HotelName</td>
                         <td>@item.CountOfStars</td>
                         <td>@item.CityId</td>
-                </tr>
-            }
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
-   
-<div class="row">
-    <div class="col">
-        <a class="btn btn-info" href="/hotels/create">Add New hotel</a>
-    </div>
-</div>
+<AuthorizeView Roles="Admin">
+    <NotAuthorized>
+
+    </NotAuthorized>
+    <Authorized>
+
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-info" href="/hotels/create">Add New hotel</a>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
 
 @code {
 
