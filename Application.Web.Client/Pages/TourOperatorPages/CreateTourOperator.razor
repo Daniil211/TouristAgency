@@ -11,7 +11,7 @@
 </div>
 <div class="row">
 	<div class="col-10">
-        <DeveloperPageForm Developer="tourOperator" OnValidSubmitHandler="AddNewStudio" />
+        <TourOperatorPageForm TourOperator="tourOperator" OnValidSubmitHandler="AddNewTourOperator" />
 	</div>
 	<div class="col">
 
@@ -22,7 +22,7 @@
 
     TourOperator tourOperator = new();
 
-    void AddNewStudio()
+    void AddNewTourOperator()
     {
         bool result = _db.CreateNewTourOperator(tourOperator);
 
