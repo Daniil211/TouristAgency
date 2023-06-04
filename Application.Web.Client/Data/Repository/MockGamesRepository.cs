@@ -137,7 +137,13 @@ namespace Application.Web.Client.Data.Repository
         }
 
         public List<Tour> GetAllGames() => _games;
+
         public List<Transport> GetAllGenres() => _genres;
+        public List<City> GetAllCity()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<TourOperator> GetAllDevelopers() => _developers;
         public Transport GetGenreById(int id) => _genres.FirstOrDefault(x => x.TransportId.Equals(id));
         public bool CreateNewGenre(Transport genre)

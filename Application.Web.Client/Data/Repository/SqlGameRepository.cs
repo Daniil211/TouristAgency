@@ -17,6 +17,12 @@ namespace Application.Web.Client.Data.Repository
             return games;
         }
 
+        public List<City> GetAllCity()
+        {
+            var city = _db.Cities.ToList();
+            return city;
+        }
+
         public bool CreateNewGame(Tour newGame)
         {
             if (newGame is null)

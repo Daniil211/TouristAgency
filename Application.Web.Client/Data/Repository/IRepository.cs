@@ -6,6 +6,7 @@ namespace Application.Web.Client.Data.Repository
     {
         List<Tour> GetAllGames();
         List<Transport> GetAllGenres();
+        List<City> GetAllCity();
         bool CreateNewGame(Tour newGame);
         bool CreateNewGenre(Transport genre);
         bool CreateNewCity(City city);

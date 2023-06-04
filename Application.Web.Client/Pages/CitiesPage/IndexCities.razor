@@ -1,10 +1,37 @@
 ﻿@page "/cities"
+@using Application.Web.Client.Data.Repository
+@inject NavigationManager navManager
+@inject IRepository _db
 
 <div class="row">
     <div class="col">
         <h1 class="text-info">Cities</h1>
     </div>
 </div>
+
+<h1 class="text-info">Available Cities</h1>
+<div class="row">
+    <div class="col">
+        <table >
+            <thead>
+            <tr>
+                <th>City ID</th>
+                <th>City Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in City)
+            {
+                <tr>
+                    <td>@item.CityId</td>
+                    <td>@item.CityName</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+   
 <div class="row">
     <div class="col">
         <a class="btn btn-info" href="/cities/create">Add New cities</a>
@@ -13,4 +40,9 @@
 
 @code {
 
+    List<City> City = new();
+    protected override void OnInitialized()
+    {
+        City = _db.GetAllCity();
+    }
 }
