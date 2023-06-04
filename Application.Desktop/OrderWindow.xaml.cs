@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Application.Database;
 using Application.Database.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Desktop
 {
@@ -25,16 +26,22 @@ namespace Application.Desktop
         public OrderWindow()
         {
             InitializeComponent();
-            using var db = new TourAgencyContext();
-            var currentTours = db.Tours.ToList();
-            Tour_cb.ItemsSource = currentTours;
+            db = new TourAgencyContext();
+            var currentTours = from ct in db.Tours select ct.TourName;
+            Tour_cb.ItemsSource = currentTours.ToList();  
+      
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                //Order ord = new Order();
+                Order ord = new Order();
+            //    var curtourcb = Tour_cb.SelectedItem.ToString();
+             var curtourdb = db.Tours.Where(x=>x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
+            var currentTr = from ct in db.Transports select ct.TypeOfTransport;
+            Tour_cb.ItemsSource = currentTr.ToList();
+            ord.TourId = curtourdb;
+                ord.UserId = 1;
+                ord.ToutOperatorId = 1;
                 //Client client = new Client();
                 //client.Fio = FIO_tb.Text;
                 //client.DateOfBirth = Convert.ToDateTime(DateOfB_tb.Text);
@@ -49,11 +56,10 @@ namespace Application.Desktop
                 //{
                 //    ord.ClientId = clientt.ClientId;
                 //}
-                //db.Orders.Add(ord);
-                //db.SaveChanges();
-                //MessageBox.Show("Заявка оставлена");
-            }
-            catch { MessageBox.Show("Заполните все поля"); }
+                db.Orders.Add(ord);
+                db.SaveChanges();
+                MessageBox.Show("Заявка оставлена");
+           
 
         }
     }
