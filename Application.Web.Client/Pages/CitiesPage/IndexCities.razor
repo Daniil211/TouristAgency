@@ -12,17 +12,17 @@
 <h1 class="text-info">Available Cities</h1>
 <div class="row">
     <div class="col">
-        <table >
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th>City ID</th>
-                <th>City Name</th>
+                <th scope="col">City ID</th>
+                    <th scope="col">City Name</th>
             </tr>
             </thead>
             <tbody>
             @foreach (var item in City)
             {
-                <tr>
+                    <tr scope="row">
                     <td>@item.CityId</td>
                     <td>@item.CityName</td>
                 </tr>
