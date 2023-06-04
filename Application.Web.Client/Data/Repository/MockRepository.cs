@@ -9,7 +9,7 @@ namespace Application.Web.Client.Data.Repository
         private List<Transport> _transports;
         private List<TourOperator> _tourOperators;
         private IRepository _repositoryImplementation;
-
+        private List<City> _city;
         public List<Tour> RemoveTour(Tour tour)
         {
             throw new NotImplementedException();
@@ -35,11 +35,19 @@ namespace Application.Web.Client.Data.Repository
         public List<Tour> GetAllTours() => _tours;
 
         public List<Transport> GetAllTransport() => _transports;
-        public List<City> GetAllCity()
+        public bool CreateNewHotel(Hotel hotel)
         {
             throw new NotImplementedException();
         }
 
+        public List<Hotel> GetAllHotel()
+        {
+            throw new NotImplementedException();
+        }
+        public List<City> GetAllCity()
+        {
+            throw new NotImplementedException();
+        }
         public List<TourOperator> GetAllTourOperators() => _tourOperators;
         public Transport GetTransportById(int id) => _transports.FirstOrDefault(x => x.TransportId.Equals(id));
         public bool CreateNewTransport(Transport transport)

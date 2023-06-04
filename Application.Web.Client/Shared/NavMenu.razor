@@ -83,6 +83,17 @@
                 </Authorized>
             </AuthorizeView>
         </div>
+        <div class="nav-item px-3">
+            <AuthorizeView Roles="Admin,User">
+                <NotAuthorized>
+                </NotAuthorized>
+                <Authorized>
+                    <NavLink class="nav-link" href="hotels">
+                        <span class="oi oi-puzzle-piece" aria-hidden="true"></span> Create New Hotel
+                    </NavLink>
+                </Authorized>
+            </AuthorizeView>
+        </div>
     </nav>
 </div>
 

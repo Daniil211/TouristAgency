@@ -1,0 +1,23 @@
+﻿@using Application.Web.Client.Helpers
+<EditForm Model="Hotel" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <div>
+            <h3>Name Hotel</h3>
+            <InputText class="form-control mb-2" @bind-Value="Hotel.HotelName"/>
+            <h3>Count Of Stars</h3>
+            <Input class="form-control mb-2" @bind-Value="Hotel.CountOfStars"/>
+            <h3>Id City</h3>
+            <Input class="form-control mb-2" @bind-Value="Hotel.CityId"/>
+            <ValidationMessage For="(() => Hotel.HotelName)"/>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Save</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public Hotel Hotel { get; set; }
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+}
