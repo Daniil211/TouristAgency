@@ -1,0 +1,22 @@
+﻿<EditForm Model="Order" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <label>New Order:</label>
+        <div>
+            <Input class="form-control mb-2" @bind-Value="Order.TourId"/>
+            <ValidationMessage For="(() => Order.TourId)" />
+            <Input class="form-control mb-2" @bind-Value="Order.ToutOperatorId"/>
+            <ValidationMessage For="(() => Order.ToutOperatorId)" />
+            <Input class="form-control mb-2" @bind-Value="Order.UserId" />
+            <ValidationMessage For="(() => Order.UserId)" />
+        </div>
+    </div>
+    <button class="btn btn-outline-primary">Save</button>
+</EditForm>
+
+@code {
+    [Parameter]
+    public Order Order { get; set; }
+    [Parameter]
+    public EventCallback OnValidSubmit { get; set; }
+}

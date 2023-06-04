@@ -21,12 +21,25 @@ namespace Application.Web.Client.Data.Repository
             var city = _db.Cities.ToList();
             return city;
         }
+        public List<Order> GetAllOrder()
+        {
+            var order = _db.Orders.ToList();
+            return order;
+        }
 
         public bool CreateNewHotel(Hotel hotel)
         {
             if (hotel is null)
                 return false;
             _db.Add(hotel);
+            _db.SaveChanges();
+            return true;
+        }
+        public bool CreateNewOrder(Order order)
+        {
+            if (order is null)
+                return false;
+            _db.Add(order);
             _db.SaveChanges();
             return true;
         }

@@ -7,9 +7,11 @@ namespace Application.Web.Client.Data.Repository
         List<Tour> GetAllTours();
         List<Transport> GetAllTransport();
         List<City> GetAllCity();
+        List<Order> GetAllOrder();
         bool CreateNewHotel(Hotel hotel);
         List<Hotel> GetAllHotel();
         bool CreateNewTour(Tour tour);
+        bool CreateNewOrder(Order order);
         bool CreateNewTransport(Transport transport);
         bool CreateNewCity(City city);
         bool CreateNewTourOperator(TourOperator tourOperator);

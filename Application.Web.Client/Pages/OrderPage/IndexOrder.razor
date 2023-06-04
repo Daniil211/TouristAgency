@@ -1,0 +1,52 @@
+﻿@page "/order"
+@using Application.Web.Client.Data.Repository
+@inject NavigationManager navManager
+@inject IRepository _db
+
+<div class="row">
+    <div class="col">
+        <h1 class="text-info">Orders</h1>
+    </div>
+</div>
+
+<h1 class="text-info">All orders</h1>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Order ID</th>
+                <th scope="col">Tour Id</th>
+                    <th scope="col">Tour Operator ID</th>
+                    <th scope="col">User Id</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Order)
+            {
+                    <tr scope="row">
+                    <td>@item.OrderId</td>
+                        <td>@item.TourId</td>
+                        <td>@item.ToutOperatorId</td>
+                        <td>@item.UserId</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+   
+<div class="row">
+    <div class="col">
+        <a class="btn btn-info" href="/order/create">Add New order</a>
+    </div>
+</div>
+
+@code {
+
+    List<Order> Order = new();
+    protected override void OnInitialized()
+    {
+        Order = _db.GetAllOrder();
+    }
+}
