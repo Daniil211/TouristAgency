@@ -25,7 +25,7 @@ namespace Application.Desktop
         public AdminWindow()
         {
             InitializeComponent();
-            //db = new TourAgencyContext();
+            db = new TourAgencyContext();
             //var tbOrders = from ord in db.Orders
             //               join us in db.Users on ord.UserId equals us.ClientId
             //               join tour in db.Tours on ord.TourId equals tour.TourId

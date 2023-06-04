@@ -35,6 +35,7 @@ namespace Application.Database
     {
         public TourAgencyContext()
         {
+
             //Database.EnsureDeleted();
             //Database.EnsureCreated();
         }
