@@ -28,28 +28,28 @@
             <Image Grid.Column="0" Grid.Row="0" Source="/Images/Altai.jpg" />
             <Label Grid.Column="0" Grid.Row="1" Content="Горный Алтай" HorizontalAlignment="Center" FontSize="12"></Label>
             <Label Grid.Column="0" Grid.Row="2" Content="50,000 Руб" DockPanel.Dock="Left" Margin="10,0,0,0"></Label>
-            <Label Grid.Column="0" Grid.Row="2" Content="6дней" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
+            <Label Grid.Column="0" Grid.Row="2" Content="6 дней" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
             <Button Grid.Column="0" Grid.Row="3" Style="{DynamicResource buttonCallBack}" Click="Btn_MakeOrder_Click" Content="Оставить заявку" ></Button>
 
             <!-- SecondCard Dagestan -->
             <Image Grid.Column="1" Grid.Row="0" Source="/Images/Dagestan.jpg"/>
             <Label Grid.Column="1" Grid.Row="1" Content="Жемчужины Дагестана" HorizontalAlignment="Center" FontSize="12"></Label>
             <Label Grid.Column="1" Grid.Row="2" Content="20,000 Руб" DockPanel.Dock="Left" Margin="10,0,0,0"></Label>
-            <Label Grid.Column="1" Grid.Row="2" Content="4дня" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
+            <Label Grid.Column="1" Grid.Row="2" Content="4 дня" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
             <Button Grid.Column="1" Grid.Row="3" Style="{DynamicResource buttonCallBack}" Click="Btn_MakeOrder_Click" Content="Оставить заявку" ></Button>
 
             <!-- ThirdCard Baikal -->
             <Image Grid.Column="2" Grid.Row="0" Source="/Images/Baikal.jpg"/>
             <Label Grid.Column="2" Grid.Row="1" Content="Ледовый Байкал" HorizontalAlignment="Center" FontSize="12"></Label>
             <Label Grid.Column="2" Grid.Row="2" Content="60,000 Руб" DockPanel.Dock="Left" Margin="10,0,0,0"></Label>
-            <Label Grid.Column="2" Grid.Row="2" Content="7дней" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
+            <Label Grid.Column="2" Grid.Row="2" Content="7 дней" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
             <Button Grid.Column="2" Grid.Row="3" Style="{DynamicResource buttonCallBack}" Click="Btn_MakeOrder_Click" Content="Оставить заявку" ></Button>
 
             <!-- FourthCard Kazan -->
             <Image Grid.Column="3" Grid.Row="0" Source="/Images/Kazan.jpg"/>
             <Label Grid.Column="3" Grid.Row="1" Content="Гастрономический тур в Казань" HorizontalAlignment="Center" FontSize="12"></Label>
             <Label Grid.Column="3" Grid.Row="2" Content="15,000 Руб" DockPanel.Dock="Left" Margin="10,0,0,0"></Label>
-            <Label Grid.Column="3" Grid.Row="2" Content="4дня" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
+            <Label Grid.Column="3" Grid.Row="2" Content="4 дня" DockPanel.Dock="Right" FlowDirection="RightToLeft" Margin="0,0,10,0"></Label>
             <Button Grid.Column="3" Grid.Row="3" Style="{DynamicResource buttonCallBack}" Click="Btn_MakeOrder_Click" Content="Оставить заявку" ></Button>
 
         </Grid>
