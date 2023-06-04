@@ -18,6 +18,9 @@ namespace Application.Web.Client.Data.Repository
         {
             throw new NotImplementedException();
         }
+
+        
+
         public List<Tour> RemoveTour(Tour tour)
         {
             throw new NotImplementedException();
@@ -81,6 +84,10 @@ namespace Application.Web.Client.Data.Repository
             }
             else
                 return false;
+        }
+        public Order GetOrderById(int id)
+        {
+            throw new NotImplementedException();
         }
         public bool CreateNewHotelsOfTour(HotelsOfTour hotelsOfTour)
         {

@@ -1,8 +1,10 @@
 ﻿@using Application.Web.Client.Data.Authentication;
+@using Application.Web.Client.Data.Repository
 @inject IMessageService _message
 @inject WebsiteAuthenticator WebsiteAuthenticator
 @inject NavigationManager NavigationManager
 @page "/"
+@inject IRepository _db
 
 <AuthorizeView Context="Account">
     <NotAuthorized>
@@ -52,11 +54,11 @@
                     </label>
                 </div>
                 @*<div>
-                    <label>
-                        Select role:
-                        <Select DataSource="_roles" type="role" @bind-Value="regFormModel.Role"></Select>
-                    </label>
-                </div>*@
+            <label>
+            Select role:
+            <Select DataSource="_roles" type="role" @bind-Value="regFormModel.Role"></Select>
+            </label>
+            </div>*@
                 <div>
                     <label>
                         Full Name:
@@ -154,13 +156,46 @@
                                 <tr><td class="active">Зарегистрирован:</td><td>@User?.DateCreated.ToString()</td></tr>
                                 <tr><td class="active">Логин:</td><td>@User?.Username</td></tr>
                                 <tr><td class="active">Роль:</td><td>@User?.Role</td></tr>
-                                @*<tr><td class="active">Пароль:</td><td>@User?.Password</td></tr>*@
+                                    @*<tr><td class="active">Пароль:</td><td>@User?.Password</td></tr>*@
                                 <tr><td class="active">Полных лет:</td><td>@User?.Age</td></tr>
                             }
                             </tbody>
                         </table>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1 class="text-info">My orders</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Tour Id</th>
+                            <th scope="col">Tour Operator ID</th>
+                            <th scope="col">User Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in orders)
+                        {
+                            @if (@item.UserId == @User?.Id)
+                            {
+                                <tr scope="row">
+                                    <td>@item.OrderId</td>
+                                    <td>@item.TourId</td>
+                                    <td>@item.TourOperatorId</td>
+                                    <td>@item.UserId</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </Authorized>
@@ -184,7 +219,11 @@
 
     private User User => _currentUserService.AuthorizedUser!;
 
-
+    List<Order> orders = new();
+    protected override void OnInitialized()
+    {
+        orders = _db.GetAllOrder();
+    }
     private readonly List<string> _roles = new List<string>
     {
         "Admin",

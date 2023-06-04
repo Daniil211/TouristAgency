@@ -131,6 +131,12 @@ namespace Application.Web.Client.Data.Repository
             throw new NotImplementedException();
         }
 
+        public Order GetOrderById(int id)
+        {
+            var order = _db.Orders.FirstOrDefault(x => x.OrderId == id);
+            return order;
+        }
+
         public bool EditTransport(Transport editedTransport)
         {
             if(editedTransport is null)
