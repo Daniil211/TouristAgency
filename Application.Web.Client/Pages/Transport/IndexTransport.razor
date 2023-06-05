@@ -1,8 +1,32 @@
 ﻿@page "/transport"
+@using Application.Web.Client.Data.Repository
+@inject IRepository _db
 
 <div class="row">
     <div class="col">
         <h1 class="text-info">Transport</h1>
+    </div>
+</div>
+<h1 class="text-info">All Transport</h1>
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Transport ID</th>
+                <th scope="col">Type Of Transport</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Transport)
+                {
+                <tr scope="row">
+                    <td>@item.TransportId</td>
+                    <td>@item.TypeOfTransport</td>
+                </tr>
+            }
+            </tbody>
+        </table>
     </div>
 </div>
 <div class="row">
@@ -21,5 +45,9 @@
 </div>
 
 @code {
-
+    List<Transport> Transport = new();
+    protected override void OnInitialized()
+    {
+        Transport = _db.GetAllTransport();
+    }
 }

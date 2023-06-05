@@ -8,43 +8,113 @@
         <h1 class="text-info">Orders</h1>
     </div>
 </div>
+<AuthorizeView Roles="Admin">
+    <NotAuthorized>
 
+    </NotAuthorized>
+    <Authorized>
 <h1 class="text-info">All orders</h1>
 <div class="row">
     <div class="col">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th scope="col">Order ID</th>
-                <th scope="col">Tour Id</th>
+                <tr>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Tour Id</th>
                     <th scope="col">Tour Operator ID</th>
                     <th scope="col">User Id</th>
-            </tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var item in Order)
-            {
-                    <tr scope="row">
-                    <td>@item.OrderId</td>
-                        <td>@item.TourId</td>
-                        <td>@item.TourOperatorId</td>
-                        <td>@item.UserId</td>
-                </tr>
-            }
+                @foreach (var item in Order)
+                {
+                    <IndividualOrder Order="item" OnDeleteOrder="DeleteOrder" OnEditOrder="EditOrder" />
+                }
             </tbody>
         </table>
     </div>
 </div>
-   
+
+        <div class="row">
+            <div class="col">
+                <h1 class="text-info">View Mode/Edit Mode</h1>
+            </div>
+        </div>
+        <div>
+            <Switch @bind-Checked="switchValue" />
+        </div>
+
+        @if (!switchValue)
+        {
+
+        }
+        else
+        {
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-info">Fill in the fields before editing</h1>
+                </div>
+            </div>
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Id..." @bind="newTourId">
+                </div>
+            </div>
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New User Id..." @bind="newUserIdId">
+                </div>
+            </div>
+
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Operator Id..." @bind="newTourOperator">
+                </div>
+            </div>
+        }
+    </Authorized>
+</AuthorizeView>
 <div class="row">
     <div class="col">
         <a class="btn btn-info" href="/order/create">Add New order</a>
     </div>
 </div>
-
 @code {
+    [Parameter]
+    public Order order { get; set; }
 
+    [Parameter]
+    public EventCallback<Order> OnDeleteOrder { get; set; }
+    [Parameter]
+    public EventCallback<Order> OnEditOrder { get; set; }
     List<Order> Order = new();
+    private bool switchValue { get; set; }
+    private int newTourId;
+    private int newUserIdId;
+    private int newTourOperator;
+    void DeleteOrder(Order order)
+    {
+        Order.Remove(order);
+        _db.RemoveOrder(order);
+    }
+    void EditOrder(Order order)
+    {
+        var tourToEditTourId = Order.FirstOrDefault(g => g.TourId == order.TourId);
+        var tourToEditUserId = Order.FirstOrDefault(g => g.UserId == order.UserId);
+        var tourToEditTourOperator = Order.FirstOrDefault(g => g.TourOperatorId == order.TourOperatorId);
+        if (tourToEditTourId != null && tourToEditUserId != null && tourToEditTourOperator != null)
+        {
+            tourToEditTourId.TourId = newTourId;
+            tourToEditUserId.UserId = newUserIdId;
+            tourToEditTourOperator.TourOperatorId = newTourOperator;
+            _db.UpdateOrder(tourToEditTourId);
+            _db.UpdateOrder(tourToEditUserId);
+            _db.UpdateOrder(tourToEditTourOperator);
+        }
+    }
+
     protected override void OnInitialized()
     {
         Order = _db.GetAllOrder();

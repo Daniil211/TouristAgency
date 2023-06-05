@@ -12,9 +12,9 @@
     <div class="col-sm-12 col-md-6">
         <input type="text" class="form-control mb-2" placeholder="Enter Tour Name..." @bind-value="tourName" @bind-value:event="oninput" 
                @onkeypress="((KeyboardEventArgs args)=> TourNameKeyPressHandler(args))" />
-        <select class="form-control mb-2" @bind="selectedGameGenre">
+        <select class="form-control mb-2" @bind="selectedTourTransport">
             <option value="-1">-- Select Transport Tour --</option>
-            @foreach (var item in Genres)
+            @foreach (var item in Transports)
             {
                 <option value="@item.TransportId">@item.TypeOfTransport</option>  
             }
@@ -29,7 +29,7 @@
             <div class="col">
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="canBayId" @bind="canBay" />
-                    <label class="custom-control-label" for="canBayId">Can Bay The Game?</label>
+                    <label class="custom-control-label" for="canBayId">Can Bay The Tour?</label>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
     <div class="col-sm-12 col-md-6">
         <div class="border border-primary rounded p-4">
             <p>Tour Name: @tourName</p>
-            <p>Genre Choosed: @selectedGameGenre</p>
+            <p>Transport Choosed: @selectedTourTransport</p>
             <p>Future Release?: @featureRelease</p>
             <p>Can Bay?: @canBay</p>
         </div>
@@ -47,14 +47,14 @@
 </div>
 
 <div class="border border-success rounded p-3 my-3 mx-1">
-    <GameList ListOfItems="Games"/>
+    <TourList ListOfItems="Tours" />
 </div>
 
 @code {
     string tourName = string.Empty;
-    string selectedGameGenre = "-1";
-    List<Transport> Genres = new();
-    List<Tour> Games = new();
+    string selectedTourTransport = "-1";
+    List<Transport> Transports = new();
+    List<Tour> Tours = new();
     bool featureRelease = false;
     bool canBay = false;
 
@@ -66,28 +66,28 @@
 
     protected override void OnInitialized()
     {
-        Genres = _db.GetAllTransport();
+        Transports = _db.GetAllTransport();
     }
 
     void SearchTheTour()
     {
-        Games = _db.GetAllTours();
+        Tours = _db.GetAllTours();
 
         if (!string.IsNullOrWhiteSpace(tourName))
-            Games = Games.Where(x => x.TourName.ToLower().Contains(tourName.ToLower())).ToList();
+            Tours = Tours.Where(x => x.TourName.ToLower().Contains(tourName.ToLower())).ToList();
         if (featureRelease)
-            Games = Games.Where(x => x.Time > DateTime.Now).ToList();
+            Tours = Tours.Where(x => x.Time > DateTime.Now).ToList();
         if (canBay)
-            Games = Games.Where(x => x.Time <= DateTime.Now).ToList();
+            Tours = Tours.Where(x => x.Time <= DateTime.Now).ToList();
     }
 
     void ResetValues()
     {
         tourName = string.Empty;
-        selectedGameGenre = "-1";
+        selectedTourTransport = "-1";
         featureRelease = false;
         canBay = false;
 
-        Games = new();
+        Tours = new();
     }
 }

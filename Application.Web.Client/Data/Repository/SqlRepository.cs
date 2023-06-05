@@ -15,6 +15,11 @@ namespace Application.Web.Client.Data.Repository
             var tours = _db.Tours.ToList();
             return tours;
         }
+        public List<TourOperator> GetAllTourOperator()
+        {
+            var tourOperator = _db.TourOperators.ToList();
+            return tourOperator;
+        }
 
         public List<City> GetAllCity()
         {
@@ -26,19 +31,16 @@ namespace Application.Web.Client.Data.Repository
             var order = _db.Orders.ToList();
             return order;
         }
-
         public List<TransportOfTour> GetAllTransportOfTour()
         {
             var transportOfTours = _db.TransportOfTours.ToList();
             return transportOfTours;
         }
-
         public List<HotelsOfTour> GetAllHotelsOfTour()
         {
             var hotelsOfTours = _db.HotelsOfTours.ToList();
             return hotelsOfTours;
         }
-
         public bool CreateNewTransportOfTour(TransportOfTour transportOfTour)
         {
             if (transportOfTour is null)
@@ -47,7 +49,6 @@ namespace Application.Web.Client.Data.Repository
             _db.SaveChanges();
             return true;
         }
-
         public bool CreateNewHotel(Hotel hotel)
         {
             if (hotel is null)
@@ -64,7 +65,6 @@ namespace Application.Web.Client.Data.Repository
             _db.SaveChanges();
             return true;
         }
-
         public bool CreateNewHotelsOfTour(HotelsOfTour hotelsOfTour)
         {
             if (hotelsOfTour is null)
@@ -73,13 +73,11 @@ namespace Application.Web.Client.Data.Repository
             _db.SaveChanges();
             return true;
         }
-
         public List<Hotel> GetAllHotel()
         {
             var hotel = _db.Hotels.ToList();
             return hotel;
         }
-
         public bool CreateNewTour(Tour tour)
         {
             if (tour is null)
@@ -96,7 +94,6 @@ namespace Application.Web.Client.Data.Repository
             _db.SaveChanges();
             return true;
         }
-
         public bool CreateNewTransport(Transport transport)
         {
             if(transport is null)
@@ -113,24 +110,34 @@ namespace Application.Web.Client.Data.Repository
             _db.SaveChanges();
             return true;
         }
-
         public Tour GetTourById(int id)
         {
             var tour = _db.Tours.FirstOrDefault(x => x.TourId == id);
             return tour;
         }
-
         public List<Transport> GetAllTransport()
         {
             var genres = _db.Transports.ToList();
             return genres;
         }
-
         public Transport GetTransportById(int id)
         {
             throw new NotImplementedException();
         }
-
+        public List<Order> UpdateOrder(Order order)
+        {
+            _db.Update(order);
+            _db.SaveChanges();
+            var orders = _db.Orders.ToList();
+            return orders;
+        }
+        public List<Order> RemoveOrder(Order order)
+        {
+            _db.Remove(order);
+            _db.SaveChanges();
+            var orders = _db.Orders.ToList();
+            return orders;
+        }
         public bool EditTransport(Transport editedTransport)
         {
             if(editedTransport is null)
@@ -138,12 +145,6 @@ namespace Application.Web.Client.Data.Repository
             _db.Transports.Update(editedTransport);
             _db.SaveChanges();
             return true;
-        }
-
-        public List<TourOperator> GetAllTourOperators()
-        {
-            var developers = _db.TourOperators.ToList();
-            return developers;
         }
         public List<Tour> RemoveTour(Tour tour)
         {

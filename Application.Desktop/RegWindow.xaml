@@ -16,22 +16,14 @@
             <RowDefinition Height="43*"></RowDefinition>
             <RowDefinition Height="223*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0"  Style="{DynamicResource buttonFind}" Height="36" Margin="0,10,0,0" VerticalAlignment="Top" Click="Button_Click_1" >Войти</Button>
+
         <StackPanel Grid.Row="1" >
             <Label>Логин</Label>
             <TextBox x:Name="login_tb"></TextBox>
             <Label>Пароль</Label>
             <TextBox x:Name="pass_tb"></TextBox>
 
-            <Label>Повторите пароль</Label>
-            <TextBox x:Name="pass2_tb"></TextBox>
-            <Label>ФИО</Label>
-            <TextBox x:Name="fio_tb"></TextBox>
-            <Label>Дата</Label>
-            <TextBox  x:Name="date_tb"></TextBox>
-            <Label>Телефон</Label>
-            <TextBox x:Name="phone_tb"></TextBox>
-            <Button  Style="{DynamicResource buttonFind}" Margin="0,20,0,0" Click="Button_Click">Зарегистрироваться</Button>
+
         </StackPanel>
     </Grid>
 </Window>
