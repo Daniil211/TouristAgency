@@ -32,47 +32,55 @@
         </table>
     </div>
 </div>
+<AuthorizeView Roles="Admin">
+    <NotAuthorized>
 
-<div class="row">
-    <div class="col">
-        <h1 class="text-info">View Mode/Edit Mode</h1>
-    </div>
-</div>
-<div>
-    <Switch @bind-Checked="switchValue" />
-</div>
-
-@if (!switchValue)
-{
-    
-}
-else
-{
-    <div class="row">
-        <div class="col">
-            <h1 class="text-info">Fill in the fields before editing</h1>
+    </NotAuthorized>
+    <Authorized>
+        <div class="row">
+            <div class="col">
+                <h1 class="text-info">View Mode/Edit Mode</h1>
+            </div>
         </div>
-    </div>
-<div class="typeahead">
-    <div class="typeahead-contols">
-        <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Id..." @bind="newTourId">
-    </div>
-</div>
-<div class="typeahead">
-    <div class="typeahead-contols">
-        <input type="text" class="typeahead-input" autocomplete="off" placeholder="New User Id..." @bind="newUserIdId">
-    </div>
-</div><div class="typeahead">
-    <div class="typeahead-contols">
-        <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Operator Id..." @bind="newTourOperator">
-    </div>
-</div>
-}
-<div class="row">
-    <div class="col">
-        <a class="btn btn-info" href="/order/create">Add New order</a>
-    </div>
-</div>
+        <div>
+            <Switch @bind-Checked="switchValue" />
+        </div>
+
+        @if (!switchValue)
+        {
+
+        }
+        else
+        {
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-info">Fill in the fields before editing</h1>
+                </div>
+            </div>
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Id..." @bind="newTourId">
+                </div>
+            </div>
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New User Id..." @bind="newUserIdId">
+                </div>
+            </div>
+
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Operator Id..." @bind="newTourOperator">
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-info" href="/order/create">Add New order</a>
+            </div>
+        </div>
+    </Authorized>
+</AuthorizeView>
 @code {
     [Parameter]
     public Order order { get; set; }
@@ -106,10 +114,7 @@ else
             _db.UpdateOrder(tourToEditTourOperator);
         }
     }
-    void UpdateOrder()
-    {
-        EditOrder(Order.FirstOrDefault());
-    }
+
     protected override void OnInitialized()
     {
         Order = _db.GetAllOrder();
