@@ -52,7 +52,6 @@
 
     protected override void OnInitialized()
     {
-        //url = $"games/{Game.Id}/{Game.Name.Replace(" ", "-")}";
         url = $"tours/{Tour.TourId}/{Uri.EscapeDataString(Tour.TourName)}";
     }
 
