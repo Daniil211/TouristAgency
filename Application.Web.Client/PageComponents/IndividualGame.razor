@@ -20,16 +20,23 @@
         </a>
     </div>
     <hr class="hrfix" />
-    <div class="tour-card-footer">
-        <div class="btn-group my-3 text-center" role="group">
-            <button type="button" class="btn btn-outline-info" @onclick="(() => OnEditTour.InvokeAsync(Tour))">
-                <i class="fas fa-edit"></i>
-            </button>
-            <button type="button" class="btn btn-outline-danger" @onclick="(() => OnDeleteTour.InvokeAsync(Tour))">
-                <i class="fas fa-trash-alt"></i>
-            </button>
-        </div>
-    </div>
+    <AuthorizeView Roles="Admin">
+        <NotAuthorized>
+
+        </NotAuthorized>
+        <Authorized>
+            <div class="tour-card-footer">
+                <div class="btn-group my-3 text-center" role="group">
+                    <button type="button" class="btn btn-outline-info" @onclick="(() => OnEditTour.InvokeAsync(Tour))">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" @onclick="(() => OnDeleteTour.InvokeAsync(Tour))">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </Authorized>
+    </AuthorizeView>
 </div>
 
 @code {
