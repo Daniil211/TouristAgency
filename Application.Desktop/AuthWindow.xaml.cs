@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Database;
+using Application.Desktop.Methods;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,23 +21,22 @@ namespace Application.Desktop
     /// </summary>
     public partial class AuthWindow : Window
     {
+        TourAgencyContext db;
         public AuthWindow()
         {
             InitializeComponent();
+            db= new TourAgencyContext();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (FIO_tb.Text == "Elina123" && pass_tb.Text == "12345678")
+            if (login_tb.Text != "" && pass_tb.Text != "")
             {
-                MessageBox.Show("Успешно");
-
-                AdminWindow adminWindow = new AdminWindow();
-                adminWindow.Show();
+                    AuthMet.AuthMethod(login_tb.Text, pass_tb.Text);
             }
             else
             {
-                MessageBox.Show("Неверные данные");
+                MessageBox.Show("Заполните все поля");
             }
         }
 
