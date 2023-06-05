@@ -55,6 +55,7 @@ namespace Application.Desktop
         {
             //здесь переход на вход
             AuthWindow aw = new();
+            this.Close();
             aw.Show();
         }
     }
