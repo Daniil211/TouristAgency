@@ -25,6 +25,8 @@ namespace Application.Web.Client.Data.Repository
         Order GetOrderById(int id);
         List<Tour> RemoveTour(Tour tour);
         List<Tour> UpdateTour(Tour tour);
+        List<Order> RemoveOrder(Order order);
+        List<Order> UpdateOrder(Order order);
         bool EditTransport(Transport editedTransport);
         List<TourOperator> GetAllTourOperators();
     }

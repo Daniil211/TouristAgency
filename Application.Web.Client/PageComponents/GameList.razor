@@ -31,7 +31,7 @@ else
     <div class="row ">
         @foreach (var item in ListOfItems)
         {
-            <IndividualGame Game="item" OnDeleteGame="DeleteTour" OnEditGame="EditTour"/>
+            <IndividualGame Tour="item" OnDeleteTour="DeleteTour" OnEditTour="EditTour" />
         }
     </div>
 }

@@ -19,7 +19,6 @@ namespace Application.Web.Client.Data.Repository
             throw new NotImplementedException();
         }
 
-        
 
         public List<Tour> RemoveTour(Tour tour)
         {
@@ -84,6 +83,15 @@ namespace Application.Web.Client.Data.Repository
             }
             else
                 return false;
+        }
+        public List<Order> RemoveOrder(Order order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Order> UpdateOrder(Order order)
+        {
+            throw new NotImplementedException();
         }
         public Order GetOrderById(int id)
         {

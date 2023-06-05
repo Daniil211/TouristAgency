@@ -143,6 +143,20 @@ namespace Application.Web.Client.Data.Repository
             return order;
         }
 
+        public List<Order> UpdateOrder(Order order)
+        {
+            _db.Update(order);
+            _db.SaveChanges();
+            var orders = _db.Orders.ToList();
+            return orders;
+        }
+        public List<Order> RemoveOrder(Order order)
+        {
+            _db.Remove(order);
+            _db.SaveChanges();
+            var orders = _db.Orders.ToList();
+            return orders;
+        }
         public bool EditTransport(Transport editedTransport)
         {
             if(editedTransport is null)
@@ -171,5 +185,7 @@ namespace Application.Web.Client.Data.Repository
             var tours = _db.Tours.ToList();
             return tours;
         }
+
+        
     }
 }

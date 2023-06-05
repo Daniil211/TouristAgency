@@ -2,20 +2,20 @@
 
 <div class="col-sm-12 col-md-4 p-3 text-center">
     <div class="tour-name">
-        <a href="@url">@Game.TourName</a>
+        <a href="@url">@Tour.TourName</a>
     </div>
 
     <hr class="hrfix" />
 
     <div class="card-image">
         <a href="@url">
-            @if (IsBase64(Game.Image))
+            @if (IsBase64(Tour.Image))
             {
-                <img src="data:image/jpeg;base64,@Game.Image" class="tour-image" />
+                <img src="data:image/jpeg;base64,@Tour.Image" class="tour-image" />
             }
             else
             {
-                <img src="@Game.Image" alt="@Game.TourName" class="tour-image" />
+                <img src="@Tour.Image" alt="@Tour.TourName" class="tour-image" />
             }
         </a>
     </div>
@@ -28,10 +28,10 @@
         <Authorized>
             <div class="tour-card-footer">
                 <div class="btn-group my-3 text-center" role="group">
-                    <button type="button" class="btn btn-outline-info" @onclick="(() => OnEditGame.InvokeAsync(Game))">
+                    <button type="button" class="btn btn-outline-info" @onclick="(() => OnEditTour.InvokeAsync(Tour))">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-danger" @onclick="(() => OnDeleteGame.InvokeAsync(Game))">
+                    <button type="button" class="btn btn-outline-danger" @onclick="(() => OnDeleteTour.InvokeAsync(Tour))">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </div>
@@ -43,18 +43,18 @@
 @code {
 
     [Parameter]
-    public Tour Game { get; set; }
+    public Tour Tour { get; set; }
     [Parameter]
-    public EventCallback<Tour> OnDeleteGame { get; set; }
+    public EventCallback<Tour> OnDeleteTour { get; set; }
     [Parameter]
-    public EventCallback<Tour> OnEditGame { get; set; }
+    public EventCallback<Tour> OnEditTour { get; set; }
 
     string url = string.Empty;
 
     protected override void OnInitialized()
     {
         //url = $"games/{Game.Id}/{Game.Name.Replace(" ", "-")}";
-        url = $"tours/{Game.TourId}/{Uri.EscapeDataString(Game.TourName)}";
+        url = $"tours/{Tour.TourId}/{Uri.EscapeDataString(Tour.TourName)}";
     }
 
     bool IsBase64(string value)

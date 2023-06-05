@@ -1,0 +1,37 @@
+﻿@using System.Text.RegularExpressions
+
+
+    <tr scope="row">
+        <td>@Order.OrderId</td>
+        <td>@Order.TourId</td>
+        <td>@Order.TourOperatorId</td>
+        <td>@Order.UserId</td>
+        <td>
+            <div class="btn-group my-3 text-center" role="group">
+                <button type="button" class="btn btn-outline-info" @onclick="(() => OnEditOrder.InvokeAsync(Order))">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </div>
+
+        </td>
+        <td>
+            <div class="btn-group my-3 text-center" role="group">
+                <button type="button" class="btn btn-outline-danger" @onclick="(() => OnDeleteOrder.InvokeAsync(Order))">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </div>
+        </td>
+    </tr>
+
+
+@code {
+
+    [Parameter]
+    public Order Order { get; set; }
+    [Parameter]
+    public EventCallback<Order> OnDeleteOrder { get; set; }
+    [Parameter]
+    public EventCallback<Order> OnEditOrder { get; set; }
+
+    
+}
