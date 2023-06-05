@@ -26,12 +26,14 @@ namespace Application.Desktop.Methods
                         MessageBox.Show("Админ");
                         AdminWindow aw = new();
                         aw.Show();
+                        return user;
                     }
                     else if(user.Role == "User")
                     {
                         MessageBox.Show("Клиент");
                         MainWindow mw = new();
                         mw.Show();
+                        return user;
                     }
                 }
                 else

@@ -24,17 +24,13 @@ namespace Application.Desktop
         public ToursWindow()
         {
             InitializeComponent();
-            //Переделал под .net 7
-            //var currentTours = TourAgencyContext.GetContext().Tours.ToList();
-            //LViewTours.ItemsSource = currentTours;
             using var db = new TourAgencyContext();
             var currentTours = db.Tours.ToList();
             LViewTours.ItemsSource = currentTours;
         }
         private void Btn_MakeOrder_Click(object sender, RoutedEventArgs e)
         {
-            Order? order = (sender as Button).DataContext as Order;
-            OrderWindow orderWindow = new OrderWindow();
+            OrderWindow orderWindow = new();
             orderWindow.Show();
         }
     }

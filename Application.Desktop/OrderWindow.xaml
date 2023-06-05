@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
         mc:Ignorable="d"
-        Title="OrderWindow" 
+        Title="Оформление заявки" 
         Height="300" Width="400" 
         Icon="Icons/logoIcon.png" 
         WindowStartupLocation="CenterScreen" 
@@ -17,7 +17,6 @@
             <ComboBox x:Name="Tour_cb" ></ComboBox>
             <Label>Выберите транспорт</Label>
             <ComboBox x:Name="Transport_cb" DisplayMemberPath="TypeOfTransport"></ComboBox>
-
             <Button Click="Button_Click" Style="{DynamicResource buttonFind}" Margin="0,20,0,0">Оставить заявку</Button>
         </StackPanel>
     </Grid>
