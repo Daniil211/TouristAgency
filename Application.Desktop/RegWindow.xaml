@@ -15,7 +15,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Click="Button_Click" Style="{DynamicResource buttonFind}" Height="40" >Войти</Button>
+        <Button Grid.Row="0"  Style="{DynamicResource buttonFind}" Height="40" >Войти</Button>
 
         <StackPanel Grid.Row="1" >
             <Label>Логин</Label>
@@ -23,7 +23,7 @@
             <Label>Пароль</Label>
             <TextBox x:Name="pass_tb"></TextBox>
 
-            <Button Click="Button_Click" Style="{DynamicResource buttonFind}" Margin="0,20,0,0">Войти</Button>
+            <Button  Style="{DynamicResource buttonFind}" Margin="0,20,0,0">Войти</Button>
         </StackPanel>
     </Grid>
 </Window>
