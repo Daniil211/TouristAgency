@@ -26,21 +26,19 @@ namespace Application.Desktop
         {
             InitializeComponent();
             db = new TourAgencyContext();
-            //var tbOrders = from ord in db.Orders
-            //               join us in db.Users on ord.UserId equals us.ClientId
-            //               join tour in db.Tours on ord.TourId equals tour.TourId
-            //               join op in db.TourOperators on ord.TourOperatorId equals op.OperatorId
-
-            //               select new
-            //               {
-            //                   Номер_заказа = ord.OrderId,
-            //                   ФИО_клиента = us.Fio,
-            //                   Номер_телефона = us.Phone,
-            //                   Название_тура = tour.TourName,
-            //                   ФИО_туроператора = op.Fio,
-
-            //               };
-            //DataGridOrders.ItemsSource = tbOrders.ToList();
+            var ord = from o in db.Orders
+                      join us in db.Users on o.UserId equals us.Id
+                      join t in db.Tours on o.TourId equals t.TourId
+                      join m in db.TourOperators on o.TourOperatorId equals m.OperatorId
+                      select new
+                      {
+                          IdOrder = o.OrderId,
+                          FIOClient = us.Username,
+                          Phone = us.Phone,
+                          TourName = t.TourName,
+                          FIOMenedger = m.Fio,
+                      };
+            DataGridOrders.ItemsSource = ord.ToList();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
