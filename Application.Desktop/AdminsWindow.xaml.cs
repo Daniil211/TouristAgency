@@ -29,7 +29,9 @@ namespace Application.Desktop
             var tbOrders = from men in db.TourOperators
                            select new
                            {
-                               Менеджер = men.Fio,
+                               IdMenedger = men.OperatorId,
+                               FIOMenedger = men.Fio,
+
                            };
             DataGridMen.ItemsSource = tbOrders.ToList();
         }
