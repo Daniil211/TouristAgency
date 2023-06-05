@@ -23,6 +23,7 @@ namespace Application.Desktop
         {
             InitializeComponent();
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (FIO_tb.Text == "Elina123" && pass_tb.Text == "12345678")
@@ -38,5 +39,10 @@ namespace Application.Desktop
             }
         }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            RegWindow rw = new();
+            rw.Show();
+        }
     }
 }

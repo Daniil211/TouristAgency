@@ -4,26 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
+        xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions"
         mc:Ignorable="d"
-        Title="RegWindow" Height="300" Width="400" 
+        Title="Регистрация" Height="468" Width="400" 
         Icon="Icons/logoIcon.png" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="SingleBorderWindow" 
         MinHeight="300" MinWidth="400">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid  HorizontalAlignment="Center" >
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="43*"></RowDefinition>
+            <RowDefinition Height="223*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0"  Style="{DynamicResource buttonFind}" Height="40" >Войти</Button>
 
         <StackPanel Grid.Row="1" >
             <Label>Логин</Label>
-            <TextBox x:Name="FIO_tb"></TextBox>
+            <TextBox x:Name="login_tb"></TextBox>
             <Label>Пароль</Label>
             <TextBox x:Name="pass_tb"></TextBox>
 
-            <Button  Style="{DynamicResource buttonFind}" Margin="0,20,0,0">Зарегистрироваться</Button>
+
         </StackPanel>
     </Grid>
 </Window>

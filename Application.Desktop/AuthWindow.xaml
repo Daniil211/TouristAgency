@@ -5,19 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
         mc:Ignorable="d"
-        Title="AuthWindow"  
+        Title="Авторизация"  
         Height="300" Width="400" 
         Icon="Icons/logoIcon.png" 
         WindowStartupLocation="CenterScreen" 
         WindowStyle="SingleBorderWindow" 
         MinHeight="300" MinWidth="400">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <StackPanel >
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="255">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"></RowDefinition>
+            <RowDefinition Height="66*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Style="{DynamicResource buttonFind}" Height="38" VerticalAlignment="Center" Click="Button_Click_2" >Зарегистрироваться</Button>
+        <StackPanel Grid.Row="1">
             <Label>Логин</Label>
             <TextBox x:Name="FIO_tb"></TextBox>
             <Label>Пароль</Label>
             <TextBox x:Name="pass_tb"></TextBox>
-
             <Button Click="Button_Click" Style="{DynamicResource buttonFind}" Margin="0,20,0,0">Войти</Button>
         </StackPanel>
     </Grid>
