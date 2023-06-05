@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json.Serialization;
 
-namespace XamWebApiClient.Models
+namespace Application.Mobile.Models
 {
     public class Tour
     {
