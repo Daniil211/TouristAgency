@@ -33,7 +33,7 @@ namespace Application.Desktop
         }
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            AuthWindow aw = new();
+            RegWindow aw = new();
             aw.Show();
 
         }
