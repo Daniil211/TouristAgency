@@ -1,16 +1,20 @@
-﻿using System;
+﻿using Application.Mobile.Services;
+using Application.Mobile.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Application.Mobile
 {
-    public partial class App : global::Xamarin.Forms.Application
+    public partial class App : Xamarin.Forms.Application
     {
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            DependencyService.Register<MockDataStore>();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()
