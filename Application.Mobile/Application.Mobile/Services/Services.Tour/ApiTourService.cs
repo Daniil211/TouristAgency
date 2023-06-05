@@ -5,7 +5,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using XamWebApiClient.Models;
 
 namespace Application.Mobile.Services.Services.Tour
 {
@@ -18,45 +17,45 @@ namespace Application.Mobile.Services.Services.Tour
             _httpClient = httpClient;
         }
 
-        public async Task<IEnumerable<Book>> GetBooks()
+        public async Task<IEnumerable<Models.Tour>> GetTours()
         {
             var response = await _httpClient.GetAsync("Tours");
 
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<IEnumerable<Book>>(responseAsString);
+            return JsonSerializer.Deserialize<IEnumerable<Models.Tour>>(responseAsString);
         }
 
-        public async Task<Book> GetBook(int id)
+        public async Task<Models.Tour> GetTour(int id)
         {
             var response = await _httpClient.GetAsync($"Tours/{id}");
 
             response.EnsureSuccessStatusCode();
 
             var responseAsString = await response.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<Book>(responseAsString);
+            return JsonSerializer.Deserialize<Models.Tour>(responseAsString);
         }
 
-        public async Task AddBook(Book book)
+        public async Task AddTour(Models.Tour tour)
         {
             var response = await _httpClient.PostAsync("Tours",
-                new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));
+                new StringContent(JsonSerializer.Serialize(tour), Encoding.UTF8, "application/json"));
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task DeleteBook(Book book)
+        public async Task DeleteTour(Models.Tour tour)
         {
-            var response = await _httpClient.DeleteAsync($"Tours/{book.TourId}");
+            var response = await _httpClient.DeleteAsync($"Tours/{tour.TourId}");
 
             response.EnsureSuccessStatusCode();
         }
 
-        public async Task SaveBook(Book book)
+        public async Task SaveTour(Models.Tour tour)
         {
-            var response = await _httpClient.PutAsync($"Tours?id={book.TourId}",
-                new StringContent(JsonSerializer.Serialize(book), Encoding.UTF8, "application/json"));
+            var response = await _httpClient.PutAsync($"Tours?id={tour.TourId}",
+                new StringContent(JsonSerializer.Serialize(tour), Encoding.UTF8, "application/json"));
 
             response.EnsureSuccessStatusCode();
         }

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Application.Mobile.Views.Views.Tours.AddTour">
+    <ContentPage.Content>
+        <ScrollView Margin="20">
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="TourName" />
+                    <Entry Text="{Binding TourName}" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Duration" />
+                    <Entry Text="{Binding Duration}" />
+                </StackLayout>
+
+                <StackLayout>
+                    <Label Text="Price" />
+                    <Editor Text="{Binding Price}" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="VideoTour" />
+                    <Editor Text="{Binding VideoTour}" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="InSale" />
+                    <Editor Text="{Binding InSale}" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Image" />
+                    <Editor Text="{Binding Image}" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Time" />
+                    <Editor Text="{Binding Time}" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Description" />
+                    <Editor Text="{Binding Descriptionорма}" />
+                </StackLayout>
+                <Button Text="Save"
+                        Command="{Binding SaveBookCommand}" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
