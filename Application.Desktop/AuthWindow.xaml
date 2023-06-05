@@ -19,7 +19,7 @@
         <Button Style="{DynamicResource buttonFind}" Height="38" VerticalAlignment="Center" Click="Button_Click_2" >Зарегистрироваться</Button>
         <StackPanel Grid.Row="1">
             <Label>Логин</Label>
-            <TextBox x:Name="FIO_tb"></TextBox>
+            <TextBox x:Name="login_tb"></TextBox>
             <Label>Пароль</Label>
             <TextBox x:Name="pass_tb"></TextBox>
             <Button Click="Button_Click" Style="{DynamicResource buttonFind}" Margin="0,20,0,0">Войти</Button>
