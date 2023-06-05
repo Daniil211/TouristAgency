@@ -132,13 +132,13 @@
                 <div class="row" id="real-estates-detail">
                     <div class="panel-body">
                         <div class="text-center" id="author">
-                            <img src="https://bootstraptema.ru/snippets/element/2016/profilesection/myprofile.jpg">
+                            <img height="250px" src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg">
                             @if (User != null)
                             {
                                 <h3>@User.Username</h3>
                             }
-                            <small class="label label-warning">Российская Федерация</small>
-                            <p>Пока тестовое описание(в будущем что нибудь запарсить)</p>
+                            <small class="label label-warning">Russian Federation</small>
+                            <p>@User?.Phone.ToString()</p>
                             <p class="sosmed-author">
                                 <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
@@ -148,16 +148,17 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-xs-12">
-                        <h4>История профиля</h4>
+                        <h4>Profile History</h4>
                         <table class="table table-th-block">
                             <tbody>
                             @if (User != null)
                             {
-                                <tr><td class="active">Зарегистрирован:</td><td>@User?.DateCreated.ToString()</td></tr>
-                                <tr><td class="active">Логин:</td><td>@User?.Username</td></tr>
-                                <tr><td class="active">Роль:</td><td>@User?.Role</td></tr>
-                                    @*<tr><td class="active">Пароль:</td><td>@User?.Password</td></tr>*@
-                                <tr><td class="active">Полных лет:</td><td>@User?.Age</td></tr>
+                                <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
+                                <tr><td class="active">
+                                    Registered:</td><td>@User?.DateCreated.ToString()</td></tr>
+                                <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
+                                <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
+                                    <tr><td class="active">Full years:</td><td>@User?.Age</td></tr>
                             }
                             </tbody>
                         </table>

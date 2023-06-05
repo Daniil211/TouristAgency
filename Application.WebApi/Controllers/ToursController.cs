@@ -12,11 +12,11 @@ namespace Application.WebApi.Controllers
     [EnableCors("AllowAllOrigins")]
     [ApiController]
     [Route("[controller]")]
-    public class DataController : ControllerBase
+    public class ToursController : ControllerBase
     {
         private readonly TourAgencyContext _context;
 
-        public DataController(TourAgencyContext context)
+        public ToursController(TourAgencyContext context)
         {
             _context = context;
         }
