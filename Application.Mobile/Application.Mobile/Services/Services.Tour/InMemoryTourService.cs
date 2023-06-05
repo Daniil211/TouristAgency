@@ -1,47 +1,47 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using XamWebApiClient.Models;
+
 
 namespace Application.Mobile.Services.Services.Tour
 {
     public class InMemoryTourService : ITourService
     {
-        private readonly List<Book> _books = new List<Book>();
+        private readonly List<Models.Tour> _tours = new List<Models.Tour>();
         public InMemoryTourService()
         {
-            _books.Add(new Book { TourName = "Clean code", Duration = "Robert C Martin", Description = "A book about good code", Image = "test", InSale = true, VideoTour = "test", Price = 1000 });
-            _books.Add(new Book { TourName = "Clean code", Duration = "Robert C Martin", Description = "A book about good code", Image = "test", InSale = true, VideoTour = "test", Price = 1000 });
-            _books.Add(new Book { TourName = "Clean code", Duration = "Robert C Martin", Description = "A book about good code", Image = "test", InSale = true, VideoTour = "test", Price = 1000 });
+            _tours.Add(new Models.Tour { TourName = "Clean code", Duration = "Robert C Martin", Description = "A book about good code", Image = "test", InSale = true, VideoTour = "test", Price = 1000 });
+            _tours.Add(new Models.Tour { TourName = "Clean code", Duration = "Robert C Martin", Description = "A book about good code", Image = "test", InSale = true, VideoTour = "test", Price = 1000 });
+            _tours.Add(new Models.Tour { TourName = "Clean code", Duration = "Robert C Martin", Description = "A book about good code", Image = "test", InSale = true, VideoTour = "test", Price = 1000 });
         }
 
-        public Task AddBook(Book book)
+        public Task AddTour(Models.Tour tour)
         {
-            book.TourId = ++_books.Last().TourId;
-            _books.Add(book);
+            tour.TourId = ++_tours.Last().TourId;
+            _tours.Add(tour);
             return Task.CompletedTask;
         }
 
-        public Task DeleteBook(Book book)
+        public Task DeleteTour(Models.Tour tour)
         {
-            _books.Remove(book);
+            _tours.Remove(tour);
             return Task.CompletedTask;
         }
 
-        public Task<Book> GetBook(int id)
+        public Task<Models.Tour> GetTour(int id)
         {
-            var book = _books.FirstOrDefault(b => b.TourId == id);
-            return Task.FromResult(book);
+            var tour = _tours.FirstOrDefault(b => b.TourId == id);
+            return Task.FromResult(tour);
         }
 
-        public Task<IEnumerable<Book>> GetBooks()
+        public Task<IEnumerable<Models.Tour>> GetTours()
         {
-            return Task.FromResult(_books.AsEnumerable());
+            return Task.FromResult(_tours.AsEnumerable());
         }
 
-        public Task SaveBook(Book book)
+        public Task SaveTour(Models.Tour tour)
         {
-            _books[_books.FindIndex(b => b.TourId == book.TourId)] = book;
+            _tours[_tours.FindIndex(b => b.TourId == tour.TourId)] = tour;
             return Task.CompletedTask;
         }
     }
