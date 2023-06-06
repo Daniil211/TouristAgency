@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Application.MobileClient.ToursForClient">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Tour" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <CollectionView 
+            x:Name="ToursCollection"
+            ItemsSource="{Binding Tours}"
+            SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <Grid>
+                            <Label Text="Все доступные туры:"></Label>
+                            <Frame BorderColor="Black" CornerRadius="1">
+                                <StackLayout Padding="10">
+                                    <Label Text="Tour Name" FontSize="Subtitle" />
+                                    <Label Text="Test" FontSize="Subtitle" />
+                                    <Label Text="Duration" FontSize="Subtitle" />
+                                    <Label Text="{Binding Duration}" FontSize="Subtitle" />
+                                    <Label Text="Price" FontSize="Subtitle" />
+                                    <Label Text="{Binding Price}" FontSize="Subtitle" />
+                                    <Label Text="In Sale" FontSize="Subtitle" />
+                                    <Label Text="{Binding InSale}" FontSize="Subtitle" />
+                                    <Label Text="Time" FontSize="Subtitle" />
+                                    <Label Text="{Binding Time}" FontSize="Subtitle" />
+                                    <Label Text="Description" FontSize="Subtitle" />
+                                    <Label Text="{Binding Description}" FontSize="Subtitle" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>

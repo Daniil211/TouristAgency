@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Application.MobileClient.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,7 +40,7 @@ namespace Application.MobileClient
                 if (login.Text == "Admin" && password.Text == "Admin")
                 {
                     DisplayAlert("Успешно", "Вы вошли как админ", "Ок");
-                    OrderList page = new OrderList();
+                    Tours page = new Tours();
                     await Navigation.PushAsync(page);
                 }
                 else if (role == "User")
