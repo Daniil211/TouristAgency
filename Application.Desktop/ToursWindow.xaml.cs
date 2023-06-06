@@ -25,8 +25,19 @@ namespace Application.Desktop
         {
             InitializeComponent();
             using var db = new TourAgencyContext();
-            var currentTours = db.Tours.ToList();
-            LViewTours.ItemsSource = currentTours;
+            var current = db.Tours.ToList();
+       
+          /*  var ord = from o in db.Tours
+                      select new
+                      {
+                          Id = o.TourId,
+                          Imagg = o.Image,
+                          Phone = us.Phone,
+                          TourName = t.TourName,
+                          FIOMenedger = m.Fio,
+                      };*/
+            LViewTours.ItemsSource = current;
+           // LViewTours.ItemsSource = ord.ToList();
         }
         private void Btn_MakeOrder_Click(object sender, RoutedEventArgs e)
         {
