@@ -45,7 +45,6 @@ namespace Application.Desktop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
             var num = from n in db.Orders select n.OrderId;
             num_cb.ItemsSource = num.ToList();
             var men = from m in db.TourOperators
@@ -57,31 +56,29 @@ namespace Application.Desktop
         {
             if (num_cb.SelectedItem.ToString() != "" && cbmen.SelectedItem.ToString() != "")
             {
-                //using (TourAgencyContext fcon = new TourAgencyContext())
-                //{
-                //    var num = num_cb.SelectedItem.ToString();
-                //    var men = cbmen.SelectedItem.ToString();
-                //    int meni = fcon.TourOperators.Where(c => c.Fio == men).FirstOrDefault().OperatorId;
-                //    var zakaz = fcon.Orders.Where(c => c.OrderId.ToString() == num).FirstOrDefault();
-                //    zakaz.TourOperatorId = meni;
-                //    fcon.SaveChanges();
-                //    MessageBox.Show("Заказ изменен");
-                //    var tbOrders = from ord in db.Orders
-                //                   join us in db.Users on ord.UserId equals us.ClientId
-                //                   join tour in db.Tours on ord.TourId equals tour.TourId
-                //                   join op in db.TourOperators on ord.TourOperatorId equals op.OperatorId
-
-                //                   select new
-                //                   {
-                //                       Номер_заказа = ord.OrderId,
-                //                       ФИО_клиента = us.Fio,
-                //                       Номер_телефона = us.Phone,
-                //                       Название_тура = tour.TourName,
-                //                       ФИО_туроператора = op.Fio,
-
-                //                   };
-                //    DataGridOrders.ItemsSource = tbOrders.ToList();
-                //}
+                using (TourAgencyContext fcon = new TourAgencyContext())
+                {
+                    var num = num_cb.SelectedItem.ToString();
+                    var men = cbmen.SelectedItem.ToString();
+                    int meni = fcon.TourOperators.Where(c => c.Fio == men).FirstOrDefault().OperatorId;
+                    var zakaz = fcon.Orders.Where(c => c.OrderId.ToString() == num).FirstOrDefault();
+                    zakaz.TourOperatorId = meni;
+                    fcon.SaveChanges();
+                    MessageBox.Show("Туроператор изменен");
+                    var ord = from o in db.Orders
+                              join us in db.Users on o.UserId equals us.Id
+                              join t in db.Tours on o.TourId equals t.TourId
+                              join m in db.TourOperators on o.TourOperatorId equals m.OperatorId
+                              select new
+                              {
+                                  IdOrder = o.OrderId,
+                                  FIOClient = us.Username,
+                                  Phone = us.Phone,
+                                  TourName = t.TourName,
+                                  FIOMenedger = m.Fio,
+                              };
+                    DataGridOrders.ItemsSource = ord.ToList();
+                }
             }
             else
             {

@@ -26,9 +26,6 @@ namespace Application.Desktop
         {
             InitializeComponent();
             using var db = new TourAgencyContext();
-            var currentTours = db.Tours.ToList();
-            LViewTours.ItemsSource = currentTours;
-            Id = id;
         }
         private void Btn_MakeOrder_Click(object sender, RoutedEventArgs e)
         {
