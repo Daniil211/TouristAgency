@@ -24,14 +24,14 @@ namespace Application.Desktop.Methods
                     if (user.Role == "Admin")
                     {
                         MessageBox.Show("Админ");
-                        AdminWindow aw = new();
+                        AdminWindow aw = new(user.Id);
                         aw.Show();
                         return user;
                     }
                     else if(user.Role == "User")
                     {
                         MessageBox.Show("Клиент");
-                        MainWindow mw = new();
+                        MainWindow mw = new(user.Id);
                         mw.Show();
                         return user;
                     }

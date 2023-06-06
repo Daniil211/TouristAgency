@@ -29,10 +29,12 @@ namespace Application.Desktop
     /// 5. добавить изменение тура insale - true/false
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private int Id { get; }
+        public MainWindow(int id)
         {
             InitializeComponent();
-            PopToursFrame.Navigate(new PopToursPage());
+            Id = id;
+            PopToursFrame.Navigate(new PopToursPage(Id));
         }
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -43,8 +45,7 @@ namespace Application.Desktop
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
-
-            ToursWindow toursWindow = new();
+            ToursWindow toursWindow = new(Id);
             toursWindow.Show();
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,15 +23,17 @@ namespace TourAgDeskNew.Pages
     /// </summary>
     public partial class PopToursPage : Page
     {
-        public PopToursPage()
+        private int Id { get; }
+        public PopToursPage(int id)
         {
             InitializeComponent();
+            Id = id;
         }
 
         private void Btn_MakeOrder_Click(object sender, RoutedEventArgs e)
         {
             Order order = (sender as Button).DataContext as Order;
-            OrderWindow orderWindow = new OrderWindow();
+            OrderWindow orderWindow = new OrderWindow(Id);
             orderWindow.Show();
         }
     }

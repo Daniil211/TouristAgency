@@ -22,7 +22,8 @@ namespace Application.Desktop
     public partial class AdminWindow : Window
     {
         TourAgencyContext db;
-        public AdminWindow()
+        private int Id { get; }
+        public AdminWindow(int id)
         {
             InitializeComponent();
             db = new TourAgencyContext();
@@ -39,6 +40,7 @@ namespace Application.Desktop
                           FIOMenedger = m.Fio,
                       };
             DataGridOrders.ItemsSource = ord.ToList();
+            Id = id;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

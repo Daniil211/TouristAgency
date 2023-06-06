@@ -23,27 +23,27 @@ namespace Application.Desktop
     public partial class OrderWindow : Window
     {
         TourAgencyContext db;
-        public OrderWindow()
+        private int Id { get; }
+        public OrderWindow(int id)
         {
             InitializeComponent();
             db = new TourAgencyContext();
             var currentTours = from ct in db.Tours select ct.TourName;
-            Tour_cb.ItemsSource = currentTours.ToList();  
-      
+            Tour_cb.ItemsSource = currentTours.ToList();
+            Id = id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-                Order ord = new Order();
+            MessageBox.Show(Id.ToString());
+            Order ord = new Order();
             var curtourdb = db.Tours.Where(x => x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
             ord.TourId = curtourdb;
             //тут добавить потом фиксацию айдишника при авторизации
-                ord.UserId = 1;
-                db.Orders.Add(ord);
-                db.SaveChanges();
-                MessageBox.Show("Заявка оставлена");
-           
-
+            ord.UserId = Id;
+            db.Orders.Add(ord);
+            db.SaveChanges();
+            MessageBox.Show("Заявка оставлена");
         }
     }
 }

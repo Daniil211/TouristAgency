@@ -21,16 +21,18 @@ namespace Application.Desktop
     /// </summary>
     public partial class ToursWindow : Window
     {
-        public ToursWindow()
+        private int Id { get; }
+        public ToursWindow(int id)
         {
             InitializeComponent();
             using var db = new TourAgencyContext();
             var currentTours = db.Tours.ToList();
             LViewTours.ItemsSource = currentTours;
+            Id = id;
         }
         private void Btn_MakeOrder_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow = new();
+            OrderWindow orderWindow = new(Id);
             orderWindow.Show();
         }
     }
