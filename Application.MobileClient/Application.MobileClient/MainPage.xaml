@@ -3,21 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Application.MobileClient.MainPage">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="17*"/>
-        </Grid.RowDefinitions>
-        <Label Text="Войти" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="30"></Label>
-        <Label Grid.Row="1" Text="Login" HorizontalTextAlignment="Center" VerticalTextAlignment="End" FontSize="30" ></Label>
-        <Entry Grid.Row="2" x:Name="TextBoxLogin"></Entry>
-        <Label Grid.Row="3" Text="Password" HorizontalTextAlignment="Center" VerticalTextAlignment="End" FontSize="30" ></Label>
-        <Entry Grid.Row="4" x:Name="TextBoxPassword"></Entry>
-        <Button Grid.Row="5" Text="Sign in" FontSize="20" Background="#00b473" TextColor="White" Clicked="Button_OnClicked"></Button>
-    </Grid>
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
+        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
+        <Label FontSize="16" Padding="30,24,30,0">
+            <Label.FormattedText>
+                <FormattedString>
+                    <FormattedString.Spans>
+                        <Span Text="Learn more at "/>
+                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
+                    </FormattedString.Spans>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
 
 </ContentPage>

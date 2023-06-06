@@ -3,7 +3,6 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:tours="clr-namespace:Application.MobileClient.Views"
        xmlns:views="clr-namespace:Application.MobileClient.Views;assembly=Application.MobileClient"
-       xmlns:mobileClient="clr-namespace:Application.MobileClient;assembly=Application.MobileClient"
        Title="Application.MobileClient"
        x:Class="Application.MobileClient.AppShell">
 
@@ -26,7 +25,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="MainPage" Icon="icon_about.png" Route="MainPage" ContentTemplate="{DataTemplate mobileClient:MainPage}" />
+        <ShellContent Title="Tours" Icon="icon_about.png" Route="ToursPage" ContentTemplate="{DataTemplate views:Tours}" />
     </TabBar>
 
 </Shell>
