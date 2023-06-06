@@ -1,55 +1,49 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:Application.MobileClient.ViewModels" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="Application.MobileClient.Views.Tours">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Tour" Command="{Binding AddNewTourCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackLayout Orientation="Horizontal" BackgroundColor="Gray" Padding="10">
-                <Label Text="All Tours" FontSize="24" HorizontalOptions="Start" VerticalOptions="Center"/>
-                <Button Text="Add New Tour" Command="{Binding AddNewTourCommand}" x:DataType="viewmodels:ToursViewModel"/>
-            </StackLayout>
-            <CollectionView 
-                x:Name="ToursCollection"
-                ItemsSource="{Binding Tours}"
-                SelectionMode="Single"
-                SelectedItem="{Binding SelectedTour}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <SwipeView>
-                            <SwipeView.RightItems>
-                                <SwipeItems>
-                                    <SwipeItem Text="Delete"
-                                               BackgroundColor="Red"
-                                               Command="{Binding Source={x:Reference ToursCollection}, Path=BindingContext.DeleteTourCommand}"
-                                               CommandParameter="{Binding}"/>
-                                </SwipeItems>
-                            </SwipeView.RightItems>
-                            <Grid>
-                                <Frame BorderColor="Black" CornerRadius="1">
-                                    <StackLayout Padding="10">
-                                        <Label Text="Tour Name" FontSize="Subtitle" />
-                                        <Label Text="Test" FontSize="Subtitle" />
-                                        <Label Text="Duration" FontSize="Subtitle" />
-                                        <Label Text="{Binding Duration}" FontSize="Subtitle" />
-                                        <Label Text="Price" FontSize="Subtitle" />
-                                        <Label Text="{Binding Price}" FontSize="Subtitle" />
-                                        <Label Text="In Sale" FontSize="Subtitle" />
-                                        <Label Text="{Binding InSale}" FontSize="Subtitle" />
-                                        <Label Text="Time" FontSize="Subtitle" />
-                                        <Label Text="{Binding Time}" FontSize="Subtitle" />
-                                        <Label Text="Description" FontSize="Subtitle" />
-                                        <Label Text="{Binding Description}" FontSize="Subtitle" />
-                                    </StackLayout>
-                                </Frame>
-                            </Grid>
-                        </SwipeView>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </Grid>
+        <CollectionView 
+            x:Name="ToursCollection"
+            ItemsSource="{Binding Tours}"
+            SelectionMode="Single"
+            SelectedItem="{Binding SelectedTour}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={x:Reference ToursCollection}, Path=BindingContext.DeleteTourCommand}"
+                                           CommandParameter="{Binding}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid>
+                            <Label Text="Все доступные туры:"></Label>
+                            <Frame BorderColor="Black" CornerRadius="1">
+                                <StackLayout Padding="10">
+                                    <Label Text="Tour Name" FontSize="Subtitle" />
+                                    <Label Text="Test" FontSize="Subtitle" />
+                                    <Label Text="Duration" FontSize="Subtitle" />
+                                    <Label Text="{Binding Duration}" FontSize="Subtitle" />
+                                    <Label Text="Price" FontSize="Subtitle" />
+                                    <Label Text="{Binding Price}" FontSize="Subtitle" />
+                                    <Label Text="In Sale" FontSize="Subtitle" />
+                                    <Label Text="{Binding InSale}" FontSize="Subtitle" />
+                                    <Label Text="Time" FontSize="Subtitle" />
+                                    <Label Text="{Binding Time}" FontSize="Subtitle" />
+                                    <Label Text="Description" FontSize="Subtitle" />
+                                    <Label Text="{Binding Description}" FontSize="Subtitle" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </ContentPage.Content>
 </ContentPage>
     

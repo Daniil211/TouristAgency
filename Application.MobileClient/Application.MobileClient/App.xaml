@@ -24,29 +24,6 @@
                     </VisualStateGroupList>
                 </Setter>
             </Style>
-            <Style TargetType="Label">
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="14" />
-
-            </Style>
-            <Style x:Key="buttonOrdStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="BackgroundColor" Value="#FFE477" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="CornerRadius" Value="5"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="Margin" Value="5,0,5,5"/>
-            </Style>
-            <Style x:Key="buttonPodStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="#4FB6CA" />
-                <Setter Property="FontSize" Value="14" />
-                <Setter Property="FontAttributes" Value="Bold"/>
-            </Style>
-            <Style TargetType="Picker">
-                <Setter Property="TextColor" Value="Black" />
-                <Setter Property="FontSize" Value="14" />
-            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

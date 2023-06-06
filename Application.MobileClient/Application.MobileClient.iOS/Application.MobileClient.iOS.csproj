@@ -126,5 +126,11 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application.MobileClient\Application.MobileClient.csproj">
+      <Project>{09491839-0964-4D49-B571-CF1B68F0AA49}</Project>
+      <Name>Application.MobileClient</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
