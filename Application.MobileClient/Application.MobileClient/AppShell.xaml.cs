@@ -1,4 +1,4 @@
-﻿using Application.MobileClient.Views.Views.Tours;
+﻿using Application.MobileClient.Views;
 using Xamarin.Forms;
 
 namespace Application.MobileClient

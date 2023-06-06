@@ -5,11 +5,9 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Application.MobileClient.Models;
 using Application.MobileClient.Services;
-using Application.MobileClient.Services.Services.Tour;
 using Application.MobileClient.Views;
-using Application.MobileClient.Views.Views.Tours;
 
-namespace Application.MobileClient.ViewModels.ViewModels.Tours
+namespace Application.MobileClient.ViewModels
 {
     public class ToursViewModel : BaseViewModel
     {
@@ -35,7 +33,7 @@ namespace Application.MobileClient.ViewModels.ViewModels.Tours
             PopulateTours();
         }
 
-        private async Task GoToAddtourView() 
+        private async Task GoToAddtourView()
             => await Shell.Current.GoToAsync(nameof(AddTour));
 
         public async void PopulateTours()
@@ -79,7 +77,7 @@ namespace Application.MobileClient.ViewModels.ViewModels.Tours
             get => selectedTour;
             set
             {
-                if(selectedTour != value)
+                if (selectedTour != value)
                 {
                     selectedTour = value;
 

@@ -1,8 +1,8 @@
-﻿using Application.MobileClient.ViewModels.ViewModels.Tours;
+﻿using Application.MobileClient.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Application.MobileClient.Views.Views.Tours
+namespace Application.MobileClient.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TourDetails : ContentPage

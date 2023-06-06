@@ -1,5 +1,5 @@
 ﻿using System;
-using Application.MobileClient.Views.Views.Tours;
+using Application.MobileClient.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

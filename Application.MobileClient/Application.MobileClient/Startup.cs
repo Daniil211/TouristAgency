@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using Application.MobileClient.Services.Services.Tour;
-using Application.MobileClient.ViewModels.ViewModels.Tours;
+using Application.MobileClient.Services;
+using Application.MobileClient.ViewModels;
 
 namespace Application.MobileClient
 {

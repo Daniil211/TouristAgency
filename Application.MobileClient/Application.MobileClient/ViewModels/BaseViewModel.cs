@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Application.MobileClient.ViewModels.ViewModels.Tours
+namespace Application.MobileClient.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {

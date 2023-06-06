@@ -1,10 +1,10 @@
-﻿using Application.MobileClient.Services.Services.Tour;
+﻿using Application.MobileClient.Services;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Application.MobileClient.ViewModels.ViewModels.Tours
+namespace Application.MobileClient.ViewModels
 {
     public class AddTourViewModel : BaseViewModel
     {
@@ -40,7 +40,7 @@ namespace Application.MobileClient.ViewModels.ViewModels.Tours
                     Description = Description
                 };
 
-                await _tourService.AddTour(tour);              
+                await _tourService.AddTour(tour);
 
                 await Shell.Current.GoToAsync("..");
             }

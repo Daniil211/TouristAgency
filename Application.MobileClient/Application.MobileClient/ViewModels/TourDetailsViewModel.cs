@@ -1,11 +1,11 @@
-﻿using Application.MobileClient.Services.Services.Tour;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Application.MobileClient.Models;
 using Xamarin.Forms;
+using Application.MobileClient.Services;
 
-namespace Application.MobileClient.ViewModels.ViewModels.Tours
+namespace Application.MobileClient.ViewModels
 {
     [QueryProperty(nameof(TourId), nameof(TourId))]
     public class TourDetailsViewModel : BaseViewModel
@@ -60,7 +60,7 @@ namespace Application.MobileClient.ViewModels.ViewModels.Tours
             try
             {
                 var tour = await _tourService.GetTour(int.Parse(tourId));
-                if(tourId != null)
+                if (tourId != null)
                 {
                     TourName = tour.TourName;
                     Duration = tour.Duration;

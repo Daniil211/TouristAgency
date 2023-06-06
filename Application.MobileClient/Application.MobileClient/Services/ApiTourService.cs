@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Application.MobileClient.Services.Services.Tour
+namespace Application.MobileClient.Services
 {
     public class ApiTourService : ITourService
     {

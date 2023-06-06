@@ -29,13 +29,13 @@
     <Compile Update="Views\AboutPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views.Tours\AddTour.xaml.cs">
+    <Compile Update="Views\AddTour.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views.Tours\TourDetails.xaml.cs">
+    <Compile Update="Views\TourDetails.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Views\Views.Tours\Tours.xaml.cs">
+    <Compile Update="Views\Tours.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
   </ItemGroup>
