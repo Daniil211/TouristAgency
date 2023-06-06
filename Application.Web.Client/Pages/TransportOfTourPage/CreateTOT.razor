@@ -20,8 +20,14 @@
     void AddNewTransportOfTour()
     {
         bool result = _db.CreateNewTransportOfTour(transportOfTour);
-
-        if (result)
-            navManager.NavigateTo("/");
+        try
+        {
+            if (result)
+                navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

@@ -47,6 +47,7 @@
 
     async Task OnImageSelectedHandler()
     {
+        try{
         foreach (var item in await _FileReader.CreateReference(inputElement).EnumerateFilesAsync())
         {
             using (MemoryStream ms = await item.CreateMemoryStreamAsync(4 * 1024))
@@ -63,6 +64,11 @@
                 ImageUrl = null;
                 StateHasChanged();
             }
+        }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 }

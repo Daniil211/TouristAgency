@@ -25,8 +25,14 @@
     void AddNewTourOperator()
     {
         bool result = _db.CreateNewTourOperator(tourOperator);
-
-        if (result)
-            navManager.NavigateTo("/");
+        try
+        {
+            if (result)
+                navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

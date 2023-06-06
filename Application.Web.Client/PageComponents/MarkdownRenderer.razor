@@ -13,9 +13,16 @@
 
     protected override void OnParametersSet()
     {
-        if (!string.IsNullOrWhiteSpace(MarkdownContent))
-            HtmlContent = Markdown.ToHtml(MarkdownContent);
-        else
-            HtmlContent = null;
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(MarkdownContent))
+                HtmlContent = Markdown.ToHtml(MarkdownContent);
+            else
+                HtmlContent = null;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

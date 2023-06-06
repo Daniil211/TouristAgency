@@ -30,8 +30,13 @@
     void AddNewTour()
     {
         bool result = _db.CreateNewTour(tour);
-
+        try{
         if(result)
             navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

@@ -20,8 +20,15 @@
     void AddNewOrder()
     {
         bool result = _db.CreateNewOrder(order);
+        try
+        {
+            if (result)
+                navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
 
-        if (result)
-            navManager.NavigateTo("/");
     }
 }

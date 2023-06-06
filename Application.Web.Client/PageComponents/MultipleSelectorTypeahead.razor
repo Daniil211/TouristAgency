@@ -1,6 +1,6 @@
 ﻿@typeparam TValue
 
-<Typeahead OnSearchHandler="((string searchText)=> OnSearch(searchText))" 
+<Typeahead OnSearchHandler="((string searchText)=> OnSearch(searchText))"
            OnValueChangedHandler="((TValue item)=>SelectedHandler(item))">
     <ResultTemplate>
         @ResultTemplate(context)
@@ -9,11 +9,11 @@
 <ul class="list-group">
     @foreach (var item in OnSelectedElements)
     {
-        <li draggable="true" class="list-group-item list-group-item-action" @ondragstart="(()=>DragStartHandler(item))" 
-            @ondragover="(()=>DragOverHandler(item))">
+        <li draggable="true" class="list-group-item list-group-item-action" @ondragstart="(()=>DragStartHandler(item))"
+        @ondragover="(()=>DragOverHandler(item))">
             @ListTemplate(item)
-            <span class="badge badge-primary badge-pill" style="cursor: pointer; vert-align: middle;" 
-                  @onclick="(()=>OnSelectedElements.Remove(item))">X</span>
+            <span class="badge badge-primary badge-pill" style="cursor: pointer; vert-align: middle;"
+              @onclick="(()=>OnSelectedElements.Remove(item))">X</span>
         </li>
     }
 </ul>
@@ -32,7 +32,7 @@
 
     void SelectedHandler(TValue item)
     {
-        if(!OnSelectedElements.Any(x=>x.Equals(item)))
+        if (!OnSelectedElements.Any(x => x.Equals(item)))
             OnSelectedElements.Add(item);
     }
 
@@ -43,13 +43,20 @@
 
     void DragOverHandler(TValue item)
     {
-        if (!item.Equals(draggetItem))
+        try
         {
-            var dragElementIndex = OnSelectedElements.IndexOf(draggetItem);
-            var elementIndex = OnSelectedElements.IndexOf(item);
+            if (!item.Equals(draggetItem))
+            {
+                var dragElementIndex = OnSelectedElements.IndexOf(draggetItem);
+                var elementIndex = OnSelectedElements.IndexOf(item);
 
-            OnSelectedElements[elementIndex] = draggetItem;
-            OnSelectedElements[dragElementIndex] = item;
+                OnSelectedElements[elementIndex] = draggetItem;
+                OnSelectedElements[dragElementIndex] = item;
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 }

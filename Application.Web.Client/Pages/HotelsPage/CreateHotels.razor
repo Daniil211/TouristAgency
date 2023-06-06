@@ -20,9 +20,14 @@
     void AddNewHotel()
     {
         bool result = _db.CreateNewHotel(hotel);
-
+        try{
         if (result)
             navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
 }

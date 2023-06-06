@@ -151,15 +151,19 @@
                         <h4>Profile History</h4>
                         <table class="table table-th-block">
                             <tbody>
-                            @if (User != null)
-                            {
-                                <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
-                                <tr><td class="active">
-                                    Registered:</td><td>@User?.DateCreated.ToString()</td></tr>
-                                <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
-                                <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
+                                @if (User != null)
+                                {
+                                    <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
+                                    <tr>
+                                        <td class="active">
+                                            Registered:
+                                        </td>
+                                        <td>@User?.DateCreated.ToString()</td>
+                                    </tr>
+                                    <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
+                                    <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
                                     <tr><td class="active">Full years:</td><td>@User?.Age</td></tr>
-                            }
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -223,7 +227,14 @@
     List<Order> orders = new();
     protected override void OnInitialized()
     {
-        orders = _db.GetAllOrder();
+        try
+        {
+            orders = _db.GetAllOrder();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
     private readonly List<string> _roles = new List<string>
     {
@@ -239,21 +250,27 @@
 
     private async Task TryReg()
     {
-        if (regFormModel.PasswordConfirm == regFormModel.Password)
+        try
         {
-            await WebsiteAuthenticator.RegAsync(regFormModel);
+            if (regFormModel.PasswordConfirm == regFormModel.Password)
+            {
+                await WebsiteAuthenticator.RegAsync(regFormModel);
 
-            await WebsiteAuthenticator.LoginAsync(new LoginFormModel()
-                {
-                    Username = regFormModel.Name,
-                    Password = regFormModel.Password
-                });
-            _navi.NavigateTo("/");
+                await WebsiteAuthenticator.LoginAsync(new LoginFormModel()
+                    {
+                        Username = regFormModel.Name,
+                        Password = regFormModel.Password
+                    });
+                _navi.NavigateTo("/");
+            }
+            else
+            {
+                _message.Error("Пароли не совпадают!");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            _message.Error("Пароли не совпадают!");
+            Console.WriteLine(ex.Message);
         }
     }
-
 }

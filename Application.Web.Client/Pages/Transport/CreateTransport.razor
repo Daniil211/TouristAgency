@@ -19,9 +19,16 @@
 
     void AddNewGenre()
     {
-        bool result = _db.CreateNewTransport(transport);
+        try
+        {
+            bool result = _db.CreateNewTransport(transport);
 
-        if (result)
-            navManager.NavigateTo("/");
+            if (result)
+                navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

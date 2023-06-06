@@ -20,8 +20,13 @@
     void AddNewHotelsOfTour()
     {
         bool result = _db.CreateNewHotelsOfTour(hotelsOfTour);
-
+        try{
         if (result)
             navManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 }

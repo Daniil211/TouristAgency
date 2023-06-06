@@ -45,12 +45,19 @@ else
 
     void DeleteTour(Tour tour)
     {
+        try{
         ListOfItems.Remove(tour);
         _db.RemoveTour(tour);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
     }
 
     void EditTour(Tour tour)
     {
+        try{
         var tourToEdit = ListOfItems.FirstOrDefault(g => g.TourId == tour.TourId);
 
         if (tourToEdit != null)
@@ -58,6 +65,11 @@ else
             tourToEdit.TourName = newTourName;
 
             _db.UpdateTour(tourToEdit);
+        }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
         }
     }
 
