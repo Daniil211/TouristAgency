@@ -1,4 +1,5 @@
 ﻿using Application.MobileClient.ViewModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +18,6 @@ namespace Application.MobileClient.Views
             _toursViewModel = Startup.Resolve<ToursViewModel>();
             BindingContext = _toursViewModel;
         }
-
         protected override void OnAppearing()
         {
             _toursViewModel?.PopulateTours();

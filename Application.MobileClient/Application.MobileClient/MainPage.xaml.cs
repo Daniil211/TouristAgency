@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.MobileClient.Views;
 using Xamarin.Forms;
 
 namespace Application.MobileClient
@@ -17,7 +18,7 @@ namespace Application.MobileClient
 
         private async void ButtonPod_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new FoundedTours());
+            await Navigation.PushModalAsync(new Tours());
         }
         private async void ButtonAll_Clicked(object sender, EventArgs e)
         {
