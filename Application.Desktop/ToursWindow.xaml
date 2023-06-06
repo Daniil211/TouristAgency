@@ -35,7 +35,7 @@
                             </Grid.RowDefinitions>
                             <Image Width="400" Grid.Row="0" Stretch="UniformToFill" HorizontalAlignment="Center" Margin="5">
                                 <Image.Source>
-                                    <Binding Path="Imagg">
+                                    <Binding Path="Image">
                                         <Binding.TargetNullValue>
                                             <ImageSource>Icons/logoIcon.png</ImageSource>
                                         </Binding.TargetNullValue>
@@ -43,7 +43,7 @@
                                 </Image.Source>
                             </Image>
                             <TextBlock Text="{Binding Name}" VerticalAlignment="Center" TextAlignment="Center" Width="390"
-                                       TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="1"></TextBlock>
+                                   TextWrapping="Wrap" HorizontalAlignment="Center" Margin="5 5" FontSize="26" Grid.Row="1"></TextBlock>
                             <TextBlock Text="{Binding Price, StringFormat={}{0:N0} руб}" Grid.Row="2"  FontSize="14" HorizontalAlignment="Left"></TextBlock>
                             <TextBlock Text="{Binding Duration}" Grid.Row="2" FontSize="14"  HorizontalAlignment="Right"></TextBlock>
                             <Button Name="MakeOrder" Click="Btn_MakeOrder_Click" Grid.Row="3" Style="{DynamicResource buttonCallBack}" Content="Оставить заявку" ></Button>
