@@ -15,7 +15,7 @@ namespace Application.MobileClient
             //add services
             services.AddHttpClient<ITourService, ApiTourService>(c => 
             {
-                c.BaseAddress = new Uri("http://10.0.2.2:13190/api/");
+                c.BaseAddress = new Uri("http://10.0.2.2:13190/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
             });
 

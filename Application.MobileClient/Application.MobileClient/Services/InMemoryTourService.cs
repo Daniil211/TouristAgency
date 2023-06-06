@@ -9,7 +9,12 @@ namespace Application.MobileClient.Services
     public class InMemoryTourService : ITourService
     {
         private readonly List<Tour> _tours = new List<Tour>();
-
+        public InMemoryTourService()
+        {
+            _tours.Add(new Tour {  TourName = "Clean code", Duration = "Robert C Martin", VideoTour = "A book about good code", Price = 1000, Description = "TEST", Image = "test", InSale = true});
+            _tours.Add(new Tour { TourName = "Clean code", Duration = "Robert C Martin", VideoTour = "A book about good code", Price = 1000, Description = "TEST", Image = "test", InSale = true });
+            _tours.Add(new Tour { TourName = "Clean code", Duration = "Robert C Martin", VideoTour = "A book about good code", Price = 1000, Description = "TEST", Image = "test", InSale = true });
+        }
         public Task AddTour(Tour tour)
         {
             tour.TourId = ++_tours.Last().TourId;
