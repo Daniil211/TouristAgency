@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.MobileClient.An
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.MobileClient.iOS", "Application.MobileClient\Application.MobileClient.iOS\Application.MobileClient.iOS.csproj", "{14F2C078-0B3D-4B8B-B8B0-24734A14C2FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.Testing", "Application.Testing\Application.Testing.csproj", "{7CAF46CD-8F4A-4AD1-9FAE-B7DDCE06A746}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.Testing", "Application.Testing\Application.Testing.csproj", "{7CAF46CD-8F4A-4AD1-9FAE-B7DDCE06A746}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
