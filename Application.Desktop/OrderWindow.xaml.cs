@@ -39,6 +39,7 @@ namespace Application.Desktop
             ord.TourId = curtourdb;
             //тут добавить потом фиксацию айдишника при авторизации
                 ord.UserId = 1;
+                ord.TourOperatorId = 1;
                 db.Orders.Add(ord);
                 db.SaveChanges();
                 MessageBox.Show("Заявка оставлена");
