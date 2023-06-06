@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
         mc:Ignorable="d"
-       Title="AdminWindow" 
+       Title="Окно менеджера" 
         Height="750" Width="980" 
         Icon="Icons/logoIcon.png" 
         WindowStartupLocation="CenterScreen" 
@@ -32,7 +32,12 @@
                 <TextBlock Text="Путешествие мечты" VerticalAlignment="Center" DockPanel.Dock="Left"></TextBlock>
                 <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" />
             </DockPanel>
-            <Button Grid.Row="1" Style="{DynamicResource buttonFind}"  x:Name="men_btn" Click="men_btn_Click" Margin="0,2,0,28" Width="223" HorizontalAlignment="Center" >Посмотреть менеджеров</Button>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                <Button  Style="{DynamicResource buttonFind}"  x:Name="men_btn" Click="men_btn_Click" Width="223" HorizontalAlignment="Center" >Посмотреть менеджеров</Button>
+                <Button  Style="{DynamicResource buttonFind}"  x:Name="toursadd_btn" Click="toursadd_btn_Click" Margin="10,0,0,0" Width="223" HorizontalAlignment="Center" >Добавить тур</Button>
+                <Button  Style="{DynamicResource buttonFind}"  x:Name="touropadd_btn" Click="touropadd_btn_Click" Margin="10,0,0,0" Width="223" HorizontalAlignment="Center" >Добавить туроператора</Button>
+            </StackPanel>
+            <Label Grid.Row="2">Заявки</Label>
             <DataGrid Grid.Row="2" x:Name="DataGridOrders" Margin="0,0,0,10" />
             <StackPanel Grid.Row="3" Margin="0,10,0,5" Orientation="Horizontal">
                 <Label HorizontalAlignment="Center">Выберите номер заказа:</Label>

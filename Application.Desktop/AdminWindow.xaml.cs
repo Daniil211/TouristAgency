@@ -92,5 +92,16 @@ namespace Application.Desktop
             AdminsWindow aw = new AdminsWindow();
             aw.Show();
         }
+
+        private async void toursadd_btn_Click(object sender, RoutedEventArgs e)
+        {
+            AddTourWindow atw = new();
+            atw.Show();
+        }
+
+        private void touropadd_btn_Click(object sender, RoutedEventArgs e)
+        {
+            //ПЕРЕХОД НА ОКНО С ДОБАВЛЕНИЕМ ТУРОПЕРАТОРА
+        }
     }
 }
