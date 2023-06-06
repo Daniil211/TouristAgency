@@ -39,8 +39,16 @@ namespace Application.Desktop
             Order ord = new Order();
             var curtourdb = db.Tours.Where(x => x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
             ord.TourId = curtourdb;
-    
-
+            //тут добавить потом фиксацию айдишника при авторизации
+            ord.UserId = Id;
+            db.Orders.Add(ord);
+            db.SaveChanges();
+            MessageBox.Show("Заявка оставлена");
+            ord.UserId = 1;
+            ord.TourOperatorId = 1;
+            db.Orders.Add(ord);
+            db.SaveChanges();
+            MessageBox.Show("Заявка оставлена");
         }
     }
 }
