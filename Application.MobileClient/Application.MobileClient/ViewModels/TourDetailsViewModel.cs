@@ -4,18 +4,20 @@ using System.Windows.Input;
 using Application.MobileClient.Models;
 using Xamarin.Forms;
 using Application.MobileClient.Services;
+using System.IO;
+
 
 namespace Application.MobileClient.ViewModels
 {
     [QueryProperty(nameof(TourId), nameof(TourId))]
     public class TourDetailsViewModel : BaseViewModel
     {
-        private string tourid;
-        private string tourname;
+        private string id;
+        private string name;
         private string duration;
         private decimal price;
-        private string videotour;
-        private bool insale;
+        private string video;
+        private bool sale;
         private string image;
         private DateTime? time;
         private string description;
@@ -79,19 +81,19 @@ namespace Application.MobileClient.ViewModels
         }
         public string TourId
         {
-            get => tourid;
+            get => id;
             set
             {
-                tourid = value;
+                id = value;
                 LoadTour(TourId);
             }
         }
         public string TourName
         {
-            get => tourname;
+            get => name;
             set
             {
-                tourname = value;
+                name = value;
                 OnPropertyChanged(nameof(TourName));
             }
         }
@@ -133,19 +135,19 @@ namespace Application.MobileClient.ViewModels
         }
         public bool InSale
         {
-            get => insale;
+            get => sale;
             set
             {
-                insale = value;
+                sale = value;
                 OnPropertyChanged(nameof(InSale));
             }
         }
         public string VideoTour
         {
-            get => videotour;
+            get => video;
             set
             {
-                videotour = value;
+                video = value;
                 OnPropertyChanged(nameof(VideoTour));
             }
         }

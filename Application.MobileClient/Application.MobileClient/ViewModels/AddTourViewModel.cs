@@ -9,11 +9,11 @@ namespace Application.MobileClient.ViewModels
     public class AddTourViewModel : BaseViewModel
     {
         private readonly ITourService _tourService;
-        private string tourname;
+        private string name;
         private string duration;
         private decimal price;
-        private string videotour;
-        private bool insale;
+        private string video;
+        private bool sale;
         private string image;
         private DateTime? time;
         private string description;
@@ -52,10 +52,10 @@ namespace Application.MobileClient.ViewModels
 
         public string TourName
         {
-            get => tourname;
+            get => name;
             set
             {
-                tourname = value;
+                name = value;
                 OnPropertyChanged(nameof(TourName));
             }
         }
@@ -97,19 +97,19 @@ namespace Application.MobileClient.ViewModels
         }
         public bool InSale
         {
-            get => insale;
+            get => sale;
             set
             {
-                insale = value;
+                sale = value;
                 OnPropertyChanged(nameof(InSale));
             }
         }
         public string VideoTour
         {
-            get => videotour;
+            get => video;
             set
             {
-                videotour = value;
+                video = value;
                 OnPropertyChanged(nameof(VideoTour));
             }
         }

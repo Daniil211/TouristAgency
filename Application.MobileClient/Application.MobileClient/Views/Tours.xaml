@@ -22,17 +22,31 @@
                                            CommandParameter="{Binding}"/>
                             </SwipeItems>
                         </SwipeView.RightItems>
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding TourId}" FontSize="Medium" />
-                            <Label Text="{Binding TourName}" FontSize="Subtitle" />
-                            <Label Text="{Binding Duration}" FontSize="Medium" />
-                            <Label Text="{Binding Price}" FontSize="Subtitle" />
-                            <Label Text="{Binding VideoTour}" FontSize="Medium" />
-                            <Label Text="{Binding InSale}" FontSize="Subtitle" />
-                            <Label Text="{Binding Image}" FontSize="Medium" />
-                            <Label Text="{Binding Time}" FontSize="Subtitle" />
-                            <Label Text="{Binding Description}" FontSize="Subtitle" />
-                        </StackLayout>
+                        <Frame BorderColor="Black" CornerRadius="1">
+                            <StackLayout Padding="10">
+
+                                <Label Text="Tour Name" FontSize="Subtitle" />
+                                <Label Text="{Binding TourName}" FontSize="Subtitle" />
+
+                                <Label Text="Duration" FontSize="Subtitle" />
+                                <Label Text="{Binding Duration}" FontSize="Subtitle" />
+
+                                <Label Text="Price" FontSize="Subtitle" />
+                                <Label Text="{Binding Price}" FontSize="Subtitle" />
+
+                                <Label Text="Video Tour" FontSize="Subtitle" />
+                                <Label Text="{Binding VideoTour}" FontSize="Subtitle" />
+
+                                <Label Text="In Sale" FontSize="Subtitle" />
+                                <Label Text="{Binding InSale}" FontSize="Subtitle" />
+
+                                <Label Text="Time" FontSize="Subtitle" />
+                                <Label Text="{Binding Time}" FontSize="Subtitle" />
+
+                                <Label Text="Description" FontSize="Subtitle" />
+                                <Label Text="{Binding Description}" FontSize="Subtitle" />
+                            </StackLayout>
+                        </Frame>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

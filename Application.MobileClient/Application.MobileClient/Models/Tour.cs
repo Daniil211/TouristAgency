@@ -5,10 +5,10 @@ namespace Application.MobileClient.Models
 {
     public class Tour
     {
-        [JsonPropertyName("tourid")]
+        [JsonPropertyName("id")]
         public int TourId { get; set; }
 
-        [JsonPropertyName("tourname")]
+        [JsonPropertyName("name")]
         public string TourName { get; set; }
 
         [JsonPropertyName("duration")]
@@ -16,9 +16,9 @@ namespace Application.MobileClient.Models
 
         [JsonPropertyName("price")]
         public decimal Price { get; set; }
-        [JsonPropertyName("videotour")]
+        [JsonPropertyName("video")]
         public string VideoTour { get; set; }
-        [JsonPropertyName("insale")]
+        [JsonPropertyName("sale")]
         public bool InSale { get; set; }
         [JsonPropertyName("image")]
         public string Image { get; set; }
