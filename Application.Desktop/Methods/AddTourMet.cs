@@ -12,7 +12,7 @@ namespace Application.Desktop.Methods
 {
     public class AddTourMet
     {
-        public static Tour AddTourMeth(string name, string duration, decimal price, bool insale, string image, string descr)
+        public static Tour AddTourMethod(string name, string duration, decimal price, bool insale, string image, string descr)
         {
             TourAgencyContext db = new();
 

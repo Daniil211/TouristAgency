@@ -5,8 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
         mc:Ignorable="d"
-        Title="AddTourWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+       Title="Добавление тура" 
+        Height="750" Width="980" 
+        Icon="Icons/logoIcon.png" 
+        WindowStartupLocation="CenterScreen" 
+        WindowStyle="SingleBorderWindow" 
+        MinHeight="700" MinWidth="750" >
+
+    <Border CornerRadius="20" Background="#FFFFFCF2">
+        <Grid Margin="35,5,35,5">
+            <!-- Общая разметка по горизонтали (header, popularTours, formFind) -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"></RowDefinition>
+                <RowDefinition/>
+             
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <DockPanel Grid.Row="0" >
+                <Image Style="{StaticResource logo}"  Source="Icons/logoIcon.png" DockPanel.Dock="Left"/>
+                <TextBlock Text="Путешествие мечты" VerticalAlignment="Center" DockPanel.Dock="Left"></TextBlock>
+                <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" />
+            </DockPanel>
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" >
+                <Label FontSize="18" Margin="0,0,0,10">Добавьте новый тур</Label>
+                <Label>Название тура</Label>
+                <TextBox x:Name="name_tb"></TextBox>
+                <Label>Продолжительность</Label>
+                <TextBox x:Name="dur_tb"></TextBox>
+                <Label>Цена</Label>
+                <TextBox x:Name="price_tb"></TextBox>
+                <Button  Style="{DynamicResource buttonCallBack}" Margin="0,20,0,0" Click="Button_Click_1">Добавить изображение</Button>
+
+                <Label>В продаже?</Label>
+                <ComboBox x:Name="insale_cb">
+                    <ComboBoxItem>Да</ComboBoxItem>
+                    <ComboBoxItem>Нет</ComboBoxItem></ComboBox>
+                <Label>Описание</Label>
+                <TextBox  x:Name="des_tb" TextWrapping="Wrap" Height="75"></TextBox>
+                <Button  Style="{DynamicResource buttonFind}" Margin="0,20,0,0" Click="Button_Click" >Добавить тур</Button>
+            </StackPanel>
+        </Grid>
+    </Border>
 </Window>
