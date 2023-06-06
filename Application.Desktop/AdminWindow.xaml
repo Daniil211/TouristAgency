@@ -19,10 +19,10 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"></RowDefinition>
                 <RowDefinition Height="80"></RowDefinition>
-                <RowDefinition Height="159*"  />
-                <RowDefinition Height="48*" />
-                <RowDefinition Height="52*" />
-                <RowDefinition Height="305*" />
+                <RowDefinition Height="53*"  />
+                <RowDefinition Height="16*" />
+                <RowDefinition Height="16*" />
+                <RowDefinition Height="103*" />
 
             </Grid.RowDefinitions>
 
@@ -32,10 +32,9 @@
                 <TextBlock Text="Путешествие мечты" VerticalAlignment="Center" DockPanel.Dock="Left"></TextBlock>
                 <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" />
             </DockPanel>
-            <StackPanel Grid.Row="1" Orientation="Horizontal" >
+            <StackPanel HorizontalAlignment="Center" Grid.Row="1" Orientation="Horizontal" Width="456" >
                 <Button  Style="{DynamicResource buttonFind}"  x:Name="men_btn" Click="men_btn_Click" Width="223" HorizontalAlignment="Center" >Посмотреть менеджеров</Button>
                 <Button  Style="{DynamicResource buttonFind}"  x:Name="toursadd_btn" Click="toursadd_btn_Click" Margin="10,0,0,0" Width="223" HorizontalAlignment="Center" >Добавить тур</Button>
-                <Button  Style="{DynamicResource buttonFind}"  x:Name="touropadd_btn" Click="touropadd_btn_Click" Margin="10,0,0,0" Width="223" HorizontalAlignment="Center" >Добавить туроператора</Button>
             </StackPanel>
             <Label Grid.Row="2">Заявки</Label>
             <DataGrid Grid.Row="2" x:Name="DataGridOrders" Margin="0,0,0,10" />
@@ -47,8 +46,7 @@
                 <Label HorizontalAlignment="Center">Выберите менеджера:</Label>
                 <ComboBox x:Name="cbmen" Width="302"></ComboBox>
             </StackPanel>
-            <Button Grid.Row="5" Style="{DynamicResource buttonFind}"  x:Name="save_btn" Click="save_btn_Click" Margin="365,0,365,47" >Сохранить изменения</Button>
-
+            <Button Grid.Row="5" Style="{DynamicResource buttonFind}"  x:Name="save_btn" Click="save_btn_Click" HorizontalAlignment="Center" VerticalAlignment="Center"  >Сохранить изменения</Button>
         </Grid>
     </Border>
 </Window>

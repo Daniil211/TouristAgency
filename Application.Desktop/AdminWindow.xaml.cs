@@ -51,7 +51,6 @@ namespace Application.Desktop
                       select m.Fio;
             cbmen.ItemsSource = men.ToList();
         }
-
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
             if (num_cb.SelectedItem.ToString() != "" && cbmen.SelectedItem.ToString() != "")
@@ -85,22 +84,15 @@ namespace Application.Desktop
                 MessageBox.Show("Заполните все поля");
             }
         }
-
         private void men_btn_Click(object sender, RoutedEventArgs e)
         {
             AdminsWindow aw = new AdminsWindow();
             aw.Show();
         }
-
-        private async void toursadd_btn_Click(object sender, RoutedEventArgs e)
+        private void toursadd_btn_Click(object sender, RoutedEventArgs e)
         {
             AddTourWindow atw = new();
             atw.Show();
-        }
-
-        private void touropadd_btn_Click(object sender, RoutedEventArgs e)
-        {
-            //ПЕРЕХОД НА ОКНО С ДОБАВЛЕНИЕМ ТУРОПЕРАТОРА
         }
     }
 }

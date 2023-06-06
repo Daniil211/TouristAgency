@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Application.Desktop"
         mc:Ignorable="d"
-       Title="AdminsWindow" 
+       Title="Менеджеры" 
         Height="750" Width="980" 
         Icon="Icons/logoIcon.png" 
         WindowStartupLocation="CenterScreen" 
@@ -17,7 +17,13 @@
             <!-- Общая разметка по горизонтали (header, popularTours, formFind) -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"></RowDefinition>
-                <RowDefinition/>
+                <RowDefinition Height="229"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="70*"/>
+
+                <RowDefinition Height="300*"/>
             </Grid.RowDefinitions>
 
             <!-- Header -->
@@ -25,10 +31,23 @@
                 <Image Style="{StaticResource logo}"  Source="Icons/logoIcon.png" DockPanel.Dock="Left"/>
                 <TextBlock Text="Путешествие мечты" VerticalAlignment="Center" DockPanel.Dock="Left"></TextBlock>
                 <Image  DockPanel.Dock="Right" HorizontalAlignment="Right" Source="Icons/adminPanelIcon.png" />
-
             </DockPanel>
             <DataGrid Grid.Row="1" x:Name="DataGridMen" Margin="0,0,0,10" />
+            <StackPanel Margin="0,5,0,0" HorizontalAlignment="Center" Grid.Row="2" Orientation="Horizontal" Width="326">
+                <Label VerticalAlignment="Top">ФИО</Label>
+                <TextBox x:Name="tb1" Width="280" Height="24" VerticalAlignment="Top"  />
+            </StackPanel>
+            <StackPanel Margin="0,5,0,0" HorizontalAlignment="Center" Grid.Row="3" Orientation="Horizontal" Width="326">
+                <Label VerticalAlignment="Top">Возраст</Label>
+                <TextBox x:Name="tb2" Width="263" Height="24" VerticalAlignment="Top"  />
+            </StackPanel>
+            <StackPanel Margin="0,5,0,0" HorizontalAlignment="Center" Grid.Row="4" Orientation="Horizontal" Width="326">
+                <Label VerticalAlignment="Top">Резюме</Label>
+                <TextBox x:Name="tb3" Width="262" Height="53" VerticalAlignment="Top" TextWrapping="Wrap"  />
+            </StackPanel>
+            <Button Grid.Row="5" Style="{DynamicResource buttonCallBack}" Margin="0,5,0,0" Click="Button_Click_1">Добавить изображение</Button>
 
+            <Button Grid.Row="6" Style="{DynamicResource buttonFind}"  x:Name="save_btn" Click="save_btn_Click" HorizontalAlignment="Center" VerticalAlignment="Center"  >Сохранить изменения</Button>
         </Grid>
 
     </Border>
