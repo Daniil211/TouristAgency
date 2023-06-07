@@ -29,21 +29,30 @@ namespace Application.Desktop
             InitializeComponent();
             db = new TourAgencyContext();
             var currentTours = from ct in db.Tours select ct.TourName;
-            Tour_cb.ItemsSource = currentTours.ToList();
+            Tour_cb.ItemsSource = currentTours.ToList();   
+            var currentTransp = from ct in db.Transports select ct.TypeOfTransport;
+            Transport_cb.ItemsSource = currentTransp.ToList();
             Id = id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Order ord = new Order();
-            var curtourdb = db.Tours.Where(x => x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
-            ord.TourId = curtourdb;
-            //тут добавить потом фиксацию айдишника при авторизации
-            ord.UserId = Id;
-            ord.TourOperatorId = 1;
-            db.Orders.Add(ord);
-            db.SaveChanges();
-            MessageBox.Show("Заявка оставлена");
+            try
+            {
+                Order ord = new();
+                TransportOfTour tr = new();
+                var curtourdb = db.Tours.Where(x => x.TourName == Tour_cb.SelectedItem.ToString()).FirstOrDefault().TourId;
+                ord.TourId = curtourdb;
+                ord.UserId = Id;
+                ord.TourOperatorId = 1;
+                db.Orders.Add(ord);
+                var curtrdb = db.Transports.Where(x => x.TypeOfTransport == Transport_cb.SelectedItem.ToString()).FirstOrDefault().TransportId;
+                tr.TourId = curtourdb;
+                tr.TransportId = curtrdb;
+                db.SaveChanges();
+                MessageBox.Show("Заявка оставлена");
+            }
+            catch { MessageBox.Show("Ошибка сервера"); }
         }
     }
 }
