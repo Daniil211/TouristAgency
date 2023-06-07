@@ -6,6 +6,12 @@
 @page "/"
 @inject IRepository _db
 
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <p>@errordescription</p>
+</Modal>
 <AuthorizeView Context="Account">
     <NotAuthorized>
         <div>
@@ -72,7 +78,7 @@
                     </label>
                 </div>
                 <div>
-                    <button @onclick="TryReg">Submit</button>
+                    <Button Type="primary" @onclick="TryReg">Submit</Button>
                 </div>
             </EditForm>
         }
@@ -219,6 +225,10 @@
     private User User => _currentUserService.AuthorizedUser!;
 
     List<Order> orders = new();
+
+    string title = "Error notification";
+    string errordescription = string.Empty;
+    bool _visible = false;
     protected override void OnInitialized()
     {
         try
@@ -241,7 +251,19 @@
         await WebsiteAuthenticator.LoginAsync(LoginFormModel);
         _navi.NavigateTo("/");
     }
+    
 
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
     private async Task TryReg()
     {
         try
@@ -259,12 +281,14 @@
             }
             else
             {
-                _message.Error("Пароли не совпадают!");
+                _visible = true;
+                errordescription = "Пароли не совпадают";
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            _visible = true;
+            errordescription = ex.ToString();
         }
     }
 }
