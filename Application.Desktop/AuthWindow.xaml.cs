@@ -30,13 +30,20 @@ namespace Application.Desktop
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (login_tb.Text != "" && pass_tb.Text != "")
+            try
             {
+                if (login_tb.Text != "" && pass_tb.Text != "")
+                {
                     AuthMet.AuthMethod(login_tb.Text, pass_tb.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Заполните все поля");
+                MessageBox.Show("Ошибка сервера");
             }
         }
 
