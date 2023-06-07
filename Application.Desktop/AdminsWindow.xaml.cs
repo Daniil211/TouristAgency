@@ -83,7 +83,6 @@ namespace Application.Desktop
                             if (ch == ' ')
                             { MessageBox.Show("Введен пробел в поле возраст. Невозможно добавить туроператора"); return; }
                         }
-
                         AddMenedgerMet.AddMenedgerMethod(tb1.Text, Convert.ToInt32(tb2.Text), tb3.Text, base64String);
                         var tbOrders = from men in db.TourOperators
                                        select new
@@ -102,7 +101,7 @@ namespace Application.Desktop
             }
             catch
             {
-                MessageBox.Show("Ошибка сервера");
+                MessageBox.Show("Введите возраст в числовом формате");
             }
         }
     }
