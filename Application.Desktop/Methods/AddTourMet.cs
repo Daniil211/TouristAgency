@@ -14,29 +14,37 @@ namespace Application.Desktop.Methods
     {
         public static Tour AddTourMethod(string name, string duration, decimal price, bool insale, string image, string descr)
         {
-            TourAgencyContext db = new();
+            try
+            {
+                TourAgencyContext db = new();
 
-            var tour = db.Tours.FirstOrDefault(x => x.TourName == name);
-            if (tour == null)
-            {
-                Tour t = new();
-                t.TourName = name;
-                t.Duration = duration;
-                t.Price = price;
-                t.InSale = insale;
-                t.Image = image;
-                t.Description = descr;
-                t.Time = DateTime.Now;
-                db.Tours.Add(t);
-                db.SaveChanges();
-                MessageBox.Show("Тур создан");
-                return t;
+                var tour = db.Tours.FirstOrDefault(x => x.TourName == name);
+                if (tour == null)
+                {
+                    Tour t = new();
+                    t.TourName = name;
+                    t.Duration = duration;
+                    t.Price = price;
+                    t.InSale = insale;
+                    t.Image = image;
+                    t.Description = descr;
+                    t.Time = DateTime.Now;
+                    db.Tours.Add(t);
+                    db.SaveChanges();
+                    MessageBox.Show("Тур создан");
+                    return t;
+                }
+                else
+                {
+                    MessageBox.Show("Такой тур уже существует. Придумайте новое название");
+                }
+                return null;                
             }
-            else
+            catch
             {
-                MessageBox.Show("Такой тур уже существует. Придумайте новое название");
+                MessageBox.Show("Ошибка сервера");
+                return null;
             }
-            return null;
         }
     }
 }
