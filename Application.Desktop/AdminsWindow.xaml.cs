@@ -77,12 +77,6 @@ namespace Application.Desktop
                         if (ch == ' ')
                         { MessageBox.Show("Введен пробел в поле возраст. Невозможно добавить туроператора"); return; }
                     }
-                    for (int i = 0; i < tb3.Text.Length; i++)
-                    {
-                        char ch = Convert.ToChar(tb3.Text.Substring(i, 1));
-                        if (ch == ' ')
-                        { MessageBox.Show("Введен пробел в поле резюме. Невозможно добавить туроператора"); return; }
-                    }
                     if (Convert.ToInt32(tb2.Text) <= 18 && Convert.ToInt32(tb2.Text) >= 82)
                     {
                         MessageBox.Show("Введен некорректный возраст. Невозможно добавить туроператора"); return;
