@@ -33,13 +33,19 @@ namespace Application.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //здесь обработчик регистрации
-            if (login_tb.Text != "" && pass_tb.Text != "" && pass2_tb.Text != "" && fio_tb.Text != "" && date_tb != null && phone_tb.Text != null)
+            if (login_tb.Text != "" && pass_tb.Text != "" && pass2_tb.Text != "" && fio_tb.Text != "" && date_tb != null && phone_tb.Text != "" /*&& IsNullOrWhiteSpace(login_tb.Text)*/)
             {
                 if (pass_tb.Text == pass2_tb.Text)
                 {
-                    if (DateTime.ParseExact(date_tb.Text, "dd.MM.yyyy", null) < new DateTime(1941, 1, 1))
+                    if (DateTime.ParseExact(date_tb.Text, "dd.MM.yyyy", null) < new DateTime(1941, 1, 1) )
                     {
+                        
                         MessageBox.Show("Дата не может быть меньше 1941 года");
+                        return;
+                    }
+                    if (DateTime.ParseExact(date_tb.Text, "dd.MM.yyyy", null) > new DateTime(2005, 1, 1))
+                    {
+                        MessageBox.Show("Дата не может быть больше 2005");
                         return;
                     }
                     if (pass_tb.Text.Length < 3)
