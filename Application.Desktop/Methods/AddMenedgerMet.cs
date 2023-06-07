@@ -18,15 +18,23 @@ namespace Application.Desktop.Methods
             var tourop = db.TourOperators.FirstOrDefault(x => x.Fio == name);
             if (tourop == null)
             {
-                TourOperator t = new();
-                t.Fio = name;
-                t.Age = age;
-                t.Resume = res;
-                t.Image = image;
-                db.TourOperators.Add(t);
-                db.SaveChanges();
-                MessageBox.Show("Туроператор добавлен");
-                return t;
+                if (age >= 18 && age<=82)
+                {
+                    TourOperator t = new();
+                    t.Fio = name;
+                    t.Age = age;
+                    t.Resume = res;
+                    t.Image = image;
+                    db.TourOperators.Add(t);
+                    db.SaveChanges();
+                    MessageBox.Show("Туроператор добавлен");
+                    return t;
+                }
+                else
+                {
+                    MessageBox.Show("Некорректный возраст."); return null;
+                }
+              
             }
             else
             {
