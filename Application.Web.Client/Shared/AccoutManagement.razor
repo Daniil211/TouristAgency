@@ -53,12 +53,6 @@
                         <InputText type="password" @bind-Value="regFormModel.PasswordConfirm"></InputText>
                     </label>
                 </div>
-                @*<div>
-            <label>
-            Select role:
-            <Select DataSource="_roles" type="role" @bind-Value="regFormModel.Role"></Select>
-            </label>
-            </div>*@
                 <div>
                     <label>
                         Full Name:
@@ -68,7 +62,7 @@
                 <div>
                     <label>
                         Select a date:
-                        <AntDesign.DatePicker @bind-Value="regFormModel.Date"></AntDesign.DatePicker>
+                        <input type="date" @bind="regFormModel.Date" min="1940-01-01" max="2010-12-31">
                     </label>
                 </div>
                 <div>

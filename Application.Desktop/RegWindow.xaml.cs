@@ -33,13 +33,18 @@ namespace Application.Desktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //здесь обработчик регистрации
-            if (login_tb.Text!="" && pass_tb.Text!="" && pass2_tb.Text!="" && fio_tb.Text!="" && date_tb!=null && phone_tb.Text!=null)
+            if (login_tb.Text != "" && pass_tb.Text != "" && pass2_tb.Text != "" && fio_tb.Text != "" && date_tb != null && phone_tb.Text != null)
             {
                 if (pass_tb.Text == pass2_tb.Text)
                 {
                     if (DateTime.ParseExact(date_tb.Text, "dd.MM.yyyy", null) < new DateTime(1941, 1, 1))
                     {
                         MessageBox.Show("Дата не может быть меньше 1941 года");
+                        return;
+                    }
+                    if (pass_tb.Text.Length < 3)
+                    {
+                        MessageBox.Show("Пароль должен содержать не менее 3 символов");
                         return;
                     }
                     RegMet.RegMethod(login_tb.Text, pass_tb.Text, fio_tb.Text, DateTime.ParseExact(date_tb.Text, "dd.MM.yyyy", null), phone_tb.Text);
@@ -53,7 +58,6 @@ namespace Application.Desktop
             {
                 MessageBox.Show("Заполните все поля");
             }
-            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

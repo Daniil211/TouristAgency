@@ -53,7 +53,7 @@ namespace Application.Database.Models
         public DateTime? DateCreated { get; set; }
         public string Fio { get; set; } = null!;
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         public string Phone { get; set; } = null!;
         public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
