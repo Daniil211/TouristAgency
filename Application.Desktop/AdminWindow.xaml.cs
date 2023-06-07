@@ -26,63 +26,75 @@ namespace Application.Desktop
         public AdminWindow(int id)
         {
             InitializeComponent();
-            db = new TourAgencyContext();
-            var ord = from o in db.Orders
-                      join us in db.Users on o.UserId equals us.Id
-                      join t in db.Tours on o.TourId equals t.TourId
-                      join m in db.TourOperators on o.TourOperatorId equals m.OperatorId
-                      select new
-                      {
-                          IdOrder = o.OrderId,
-                          FIOClient = us.Username,
-                          Phone = us.Phone,
-                          TourName = t.TourName,
-                          FIOMenedger = m.Fio,
-                      };
-            DataGridOrders.ItemsSource = ord.ToList();
-            Id = id;
+            try
+            {
+                db = new TourAgencyContext();
+                var ord = from o in db.Orders
+                          join us in db.Users on o.UserId equals us.Id
+                          join t in db.Tours on o.TourId equals t.TourId
+                          join m in db.TourOperators on o.TourOperatorId equals m.OperatorId
+                          select new
+                          {
+                              IdOrder = o.OrderId,
+                              FIOClient = us.Username,
+                              Phone = us.Phone,
+                              TourName = t.TourName,
+                              FIOMenedger = m.Fio,
+                          };
+                DataGridOrders.ItemsSource = ord.ToList();
+                Id = id;
+            }
+            catch { MessageBox.Show("ошибка сервера"); }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            try
+            {
             var num = from n in db.Orders select n.OrderId;
             num_cb.ItemsSource = num.ToList();
             var men = from m in db.TourOperators
                       select m.Fio;
             cbmen.ItemsSource = men.ToList();
+            }
+            catch { MessageBox.Show("ошибка сервера"); }
         }
         private void save_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (num_cb.SelectedItem.ToString() != "" && cbmen.SelectedItem.ToString() != "")
+            try
             {
-                using (TourAgencyContext fcon = new TourAgencyContext())
+                if (num_cb.SelectedItem.ToString() != "" && cbmen.SelectedItem.ToString() != "")
                 {
-                    var num = num_cb.SelectedItem.ToString();
-                    var men = cbmen.SelectedItem.ToString();
-                    int meni = fcon.TourOperators.Where(c => c.Fio == men).FirstOrDefault().OperatorId;
-                    var zakaz = fcon.Orders.Where(c => c.OrderId.ToString() == num).FirstOrDefault();
-                    zakaz.TourOperatorId = meni;
-                    fcon.SaveChanges();
-                    MessageBox.Show("Туроператор изменен");
-                    var ord = from o in db.Orders
-                              join us in db.Users on o.UserId equals us.Id
-                              join t in db.Tours on o.TourId equals t.TourId
-                              join m in db.TourOperators on o.TourOperatorId equals m.OperatorId
-                              select new
-                              {
-                                  IdOrder = o.OrderId,
-                                  FIOClient = us.Username,
-                                  Phone = us.Phone,
-                                  TourName = t.TourName,
-                                  FIOMenedger = m.Fio,
-                              };
-                    DataGridOrders.ItemsSource = ord.ToList();
+                    using (TourAgencyContext fcon = new TourAgencyContext())
+                    {
+                        var num = num_cb.SelectedItem.ToString();
+                        var men = cbmen.SelectedItem.ToString();
+                        int meni = fcon.TourOperators.Where(c => c.Fio == men).FirstOrDefault().OperatorId;
+                        var zakaz = fcon.Orders.Where(c => c.OrderId.ToString() == num).FirstOrDefault();
+                        zakaz.TourOperatorId = meni;
+                        fcon.SaveChanges();
+                        MessageBox.Show("Туроператор изменен");
+                        var ord = from o in db.Orders
+                                  join us in db.Users on o.UserId equals us.Id
+                                  join t in db.Tours on o.TourId equals t.TourId
+                                  join m in db.TourOperators on o.TourOperatorId equals m.OperatorId
+                                  select new
+                                  {
+                                      IdOrder = o.OrderId,
+                                      FIOClient = us.Username,
+                                      Phone = us.Phone,
+                                      TourName = t.TourName,
+                                      FIOMenedger = m.Fio,
+                                  };
+                        DataGridOrders.ItemsSource = ord.ToList();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля");
                 }
             }
-            else
-            {
-                MessageBox.Show("Заполните все поля");
-            }
+            catch { MessageBox.Show("ошибка сервера"); }
         }
         private void men_btn_Click(object sender, RoutedEventArgs e)
         {
