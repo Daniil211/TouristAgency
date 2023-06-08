@@ -46,6 +46,9 @@ namespace Application.Web.Client.Data.Repository
         }
         #endregion
         #region TourOperator
+
+        
+
         public List<TourOperator> GetAllTourOperator()
         {
             throw new NotImplementedException();
@@ -118,6 +121,10 @@ namespace Application.Web.Client.Data.Repository
             tour.TourId = _tours.Max(x => x.TourId) + 1;
             _tours.Add(tour);
             return true;
+        }
+        public List<User> GetAllUsers()
+        {
+            throw new NotImplementedException();
         }
     }
 }

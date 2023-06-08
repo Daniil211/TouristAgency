@@ -1,9 +1,12 @@
 ﻿@using System.Security.Claims
 @using Application.Web.Client.Data.Repository
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
 @using Microsoft.Extensions.Caching.Memory
+@using Newtonsoft.Json
 @page "/order/{UserId:int}"
 @page "/order/{UserId:int}/{UserName}"
 @inject IRepository _db
+@inject ProtectedLocalStorage ProtectedLocalStorage
 
 <EditForm Model="Order" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
@@ -51,6 +54,7 @@
     {
         Tour = _db.GetAllTours();
         TourOperator = _db.GetAllTourOperator();
+
     }
 
 }
