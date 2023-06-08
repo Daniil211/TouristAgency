@@ -30,8 +30,10 @@ namespace Application.Desktop
             db = new TourAgencyContext();
             var currentTours = from ct in db.Tours select ct.TourName;
             Tour_cb.ItemsSource = currentTours.ToList();   
+
             var currentTransp = from ct in db.Transports select ct.TypeOfTransport;
             Transport_cb.ItemsSource = currentTransp.ToList();
+
             Id = id;
         }
 
