@@ -15,6 +15,7 @@ public partial class Tour
     public string? VideoTour { get; set; }
     public bool InSale { get; set; }
     public string Image { get; set; }
+    public byte[] Image2 { get; set; }
     public DateTime? Time { get; set; }
 
     public string? Description { get; set; }
