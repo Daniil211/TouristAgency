@@ -1,6 +1,5 @@
 ﻿@using Application.Web.Client.Data.Authentication;
 @using Application.Web.Client.Data.Repository
-@inject IMessageService _message
 @inject WebsiteAuthenticator WebsiteAuthenticator
 @inject NavigationManager NavigationManager
 @page "/"
@@ -84,6 +83,7 @@
         }
     </NotAuthorized>
     <Authorized>
+
         <style>
             body {
                 background: url(https://bootstraptema.ru/images/bg/bg-1.png)
@@ -151,19 +151,19 @@
                         <h4>Profile History</h4>
                         <table class="table table-th-block">
                             <tbody>
-                                @if (User != null)
-                                {
-                                    <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
-                                    <tr>
-                                        <td class="active">
-                                            Registered:
-                                        </td>
-                                        <td>@User?.DateCreated.ToString()</td>
-                                    </tr>
-                                    <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
-                                    <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
-                                    <tr><td class="active">Full years:</td><td>@User?.Age</td></tr>
-                                }
+                            @if (User != null)
+                            {
+                                <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
+                                <tr>
+                                    <td class="active">
+                                        Registered:
+                                    </td>
+                                    <td>@User?.DateCreated.ToString()</td>
+                                </tr>
+                                <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
+                                <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
+                                <tr><td class="active">Full years:</td><td>@User?.Age</td></tr>
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -179,26 +179,26 @@
             <div class="col">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
-                            <th scope="col">Order ID</th>
-                            <th scope="col">Tour Id</th>
-                            <th scope="col">Tour Operator ID</th>
-                            <th scope="col">User Id</th>
-                        </tr>
+                    <tr>
+                        <th scope="col">Order ID</th>
+                        <th scope="col">Tour Id</th>
+                        <th scope="col">Tour Operator ID</th>
+                        <th scope="col">User Id</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in orders)
+                    @foreach (var item in orders)
+                    {
+                        @if (@item.UserId == @User?.Id)
                         {
-                            @if (@item.UserId == @User?.Id)
-                            {
-                                <tr scope="row">
-                                    <td>@item.OrderId</td>
-                                    <td>@item.TourId</td>
-                                    <td>@item.TourOperatorId</td>
-                                    <td>@item.UserId</td>
-                                </tr>
-                            }
+                            <tr scope="row">
+                                <td>@item.OrderId</td>
+                                <td>@item.TourId</td>
+                                <td>@item.TourOperatorId</td>
+                                <td>@item.UserId</td>
+                            </tr>
                         }
+                    }
                     </tbody>
                 </table>
             </div>
@@ -225,11 +225,11 @@
     private User User => _currentUserService.AuthorizedUser!;
 
     List<Order> orders = new();
-
     string title = "Error notification";
     string errordescription = string.Empty;
     bool _visible = false;
-    protected override void OnInitialized()
+
+    protected override async Task OnInitializedAsync()
     {
         try
         {
@@ -239,6 +239,7 @@
         {
             Console.WriteLine(ex.Message);
         }
+
     }
     private readonly List<string> _roles = new List<string>
     {

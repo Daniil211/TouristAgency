@@ -1,19 +1,37 @@
 ﻿@using System.Security.Claims
+@using Application.Web.Client.Data.Repository
+@using Microsoft.Extensions.Caching.Memory
 @page "/order/{UserId:int}"
 @page "/order/{UserId:int}/{UserName}"
+@inject IRepository _db
+
 <EditForm Model="Order" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
         <label>New Order:</label>
         <div>
             <h3>Tour Id</h3>
-            <Input class="form-control mb-2" @bind-Value="Order.TourId"/>
-            <ValidationMessage For="(() => Order.TourId)"/>
+            <select class="form-control mb-2" @bind="Order.TourId">
+                <option>-- Select Tour Name --</option>
+                @foreach (var item in Tour)
+                {
+                    <option value="@item.TourId">@item.TourName</option>  
+                }
+            </select>
+            <ValidationMessage For="(() => Order.TourId)" />
             <h3>Tour Operator Id</h3>
-            <Input class="form-control mb-2" @bind-Value="Order.TourOperatorId"/>
+            <select class="form-control mb-2" @bind="Order.TourOperatorId">
+                <option>-- Select Tour Operator --</option>
+                @foreach (var item in TourOperator)
+                {
+                    <option value="@item.OperatorId">@item.Fio</option>  
+                }
+            </select>
             <ValidationMessage For="(() => Order.TourOperatorId)"/>
             <h3>User Id</h3>
+
             <Input class="form-control mb-2" @bind-Value="Order.UserId"/>
+
             <ValidationMessage For="(() => Order.UserId)"/>
         </div>
     </div>
@@ -25,7 +43,14 @@
     public int UserId { get; set; }
     [Parameter]
     public Order Order { get; set; }
+    List<Tour> Tour = new();
+    List<TourOperator> TourOperator = new();
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
+    protected override void OnInitialized()
+    {
+        Tour = _db.GetAllTours();
+        TourOperator = _db.GetAllTourOperator();
+    }
 
 }
