@@ -12,7 +12,7 @@ namespace Application.Desktop.Methods
 {
     public class AddTourMet
     {
-        public static Tour AddTourMethod(string name, string duration, decimal price, bool insale, string image, string descr)
+        public static Tour AddTourMethod(string name, string duration, decimal price, bool insale, byte[] image, string descr)
         {
             try
             {
@@ -26,7 +26,7 @@ namespace Application.Desktop.Methods
                     t.Duration = duration;
                     t.Price = price;
                     t.InSale = insale;
-                    t.Image = image;
+                    t.Image2 = image;
                     t.Description = descr;
                     t.Time = DateTime.Now;
                     db.Tours.Add(t);

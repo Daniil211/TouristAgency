@@ -27,6 +27,8 @@ namespace Application.Desktop
             InitializeComponent();
         }
         string base64String;
+        byte[] imageBytes;
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // метод добавления
@@ -64,7 +66,7 @@ namespace Application.Desktop
                          price = Convert.ToDecimal(price_tb.Text);
                     }
                     catch { MessageBox.Show("Введите цену в числовом формате"); return; }
-                    AddTourMet.AddTourMethod(name_tb.Text, dur_tb.Text, price, ins, base64String, des_tb.Text);
+                    AddTourMet.AddTourMethod(name_tb.Text, dur_tb.Text, price, ins, imageBytes, des_tb.Text);
                 }
                 else
                 {
@@ -74,7 +76,7 @@ namespace Application.Desktop
              catch { MessageBox.Show("Ошибка сервера"); }
             
         }
-        
+
         public void Button_Click_1(object sender, RoutedEventArgs e)
         {
             try
@@ -84,7 +86,17 @@ namespace Application.Desktop
                 if (openFileDialog.ShowDialog() == true)
                 {
                     string imagePath = openFileDialog.FileName;
-                    base64String = WorkWithImagesMet.ConvertImgToBase64(imagePath);
+                   // string imagePath = "path/to/image.jpg";
+
+                    using (FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+                    {
+                        using (MemoryStream memoryStream = new MemoryStream())
+                        {
+                            fileStream.CopyTo(memoryStream);
+                            imageBytes = memoryStream.ToArray();
+                        }
+                    }
+                    // base64String = WorkWithImagesMet.ConvertImgToBase64(imagePath);
                 }
             }
             catch { MessageBox.Show("Неверное изображение"); }
