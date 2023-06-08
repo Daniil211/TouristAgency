@@ -3,7 +3,12 @@
 @using Application.Database
 
 @inject IRepository _db
-
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <p>@errordescription</p>
+</Modal>
 @if (ListOfItems is null)
 {
     <div class="row text-center">
@@ -24,7 +29,7 @@ else
 {
     <div class="typeahead">
         <div class="typeahead-contols">
-            <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Name..." @bind="newTourName">
+            <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Name..." @bind="newTourName" oninput="if (event.target.value.startsWith(' ')) event.preventDefault();" />
         </div>
     </div>
     
@@ -42,6 +47,9 @@ else
     public List<Tour> ListOfItems { get; set; }
 
     private string newTourName;
+    string title = "Error notification";
+    string errordescription = string.Empty;
+    bool _visible = false;
 
     void DeleteTour(Tour tour)
     {
@@ -51,10 +59,21 @@ else
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            _visible = true;
+            errordescription = ex.ToString();
         }
     }
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
 
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
     void EditTour(Tour tour)
     {
         try{
@@ -69,12 +88,21 @@ else
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            _visible = true;
+            errordescription = ex.ToString();
         }
     }
 
     void UpdateTour()
     {
-        EditTour(ListOfItems.FirstOrDefault());
+        try
+        {
+            EditTour(ListOfItems.FirstOrDefault());
+        }
+        catch (Exception ex)
+        {
+            _visible = true;
+            errordescription = ex.ToString();
+        }
     }
 }

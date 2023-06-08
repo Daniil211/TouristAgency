@@ -1,6 +1,12 @@
 ﻿@inject IRepository _db
 @using Application.Web.Client.Data.Repository;
 @using Application.Web.Client.Helpers
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <p>@errordescription</p>
+</Modal>
 <EditForm Model="Tour" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator />
 
@@ -21,7 +27,7 @@
     <div class="form-group">
         <label>Price:</label>
         <div>
-            <Input class="form-control" @bind-Value="Tour.Price" />
+            <Input class="form-control" @bind-Value="Tour.Price" OnInput="OnCountOfStarsInput" />
             <ValidationMessage For="@(() => Tour.Price)"></ValidationMessage>
         </div>
     </div>
@@ -35,7 +41,7 @@
     <div class="form-group">
         <label>Sales start date:</label>
         <div>
-            <InputDate class="form-control" @bind-Value="Tour.Time" />
+            <InputDate class="form-control" @bind-Value="Tour.Time" min="1990-01-01" />
             <ValidationMessage For="@(() => Tour.Time)"></ValidationMessage>
         </div>
     </div>
@@ -73,29 +79,67 @@
     public List<MultipleSelectorHelperModel> Selected { get; set; } = new();
     [Parameter]
     public List<MultipleSelectorHelperModel> NotSelected { get; set; } = new();
-
+    string title = "Error notification";
+    string errordescription = string.Empty;
+    bool _visible = false;
     string imageUrl;
-
-    protected override void OnInitialized()
+    private void HandleOk(MouseEventArgs e)
     {
-        Selected = SelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
-        NotSelected = NotSelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
-
-
-        if (Tour.Time is null)
-            Tour.Time = DateTime.Now;
-
-        if (!string.IsNullOrWhiteSpace(Tour.Image))
-        {
-            imageUrl = Tour.Image;
-            Tour.Image = null;
-        }
+        Console.WriteLine(e);
+        _visible = false;
     }
 
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+    protected override void OnInitialized()
+    {
+        try
+        {
+            Selected = SelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
+            NotSelected = NotSelectedGenres.Select(x => new MultipleSelectorHelperModel(x.TransportId.ToString(), x.TypeOfTransport)).ToList();
+
+
+            if (Tour.Time is null)
+                Tour.Time = DateTime.Now;
+
+            if (!string.IsNullOrWhiteSpace(Tour.Image))
+            {
+                imageUrl = Tour.Image;
+                Tour.Image = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            _visible = true;
+            errordescription = ex.ToString();
+        }
+    }
+    void OnCountOfStarsInput(ChangeEventArgs e)
+    {
+        if (!int.TryParse(e.Value.ToString(), out int stars))
+        {
+            Tour.Price = 0;
+        }
+        else if (stars > 100000)
+        {
+            Tour.Price = 100000;
+        }
+    }
     void ImageFileSelectedHandler(string imageBase64)
     {
-        Tour.Image = imageBase64;
-        imageUrl = null;
+        try
+        {
+            Tour.Image = imageBase64;
+            imageUrl = null;
+        }
+        catch (Exception ex)
+        {
+            _visible = true;
+            errordescription = ex.ToString();
+        }
     }
 
     //async Task<IEnumerable<TourOperator>> SearchHandler(string searchText)
