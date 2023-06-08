@@ -154,6 +154,7 @@ namespace Application.Persistence.DataSeeders
                 }
 
             };
+            modelBuilder.Entity<Transport>().HasData(Transports);
             modelBuilder.Entity<Hotel>().HasData(Hotels);
             modelBuilder.Entity<User>().HasData(Users);
             modelBuilder.Entity<City>().HasData(Cities);
