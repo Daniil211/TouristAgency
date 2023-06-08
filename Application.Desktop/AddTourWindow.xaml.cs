@@ -29,34 +29,65 @@ namespace Application.Desktop
         string base64String;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //применить метод добавления
-            if (name_tb.Text != "" && dur_tb.Text != "" && price_tb.Text != "" && des_tb.Text != "" && insale_cb.SelectedItem.ToString() != "")
-            {
-                bool ins = false;
-                if (insale_cb.SelectedItem.ToString() == "Да")
+            // метод добавления
+             try
+             {
+                if (name_tb.Text != "" && dur_tb.Text != "" && price_tb.Text != "" && des_tb.Text != "" && insale_cb.SelectedItem.ToString() != "")
                 {
-                    ins = true;
+                    for (int i = 0; i < name_tb.Text.Length; i++)
+                    {
+                        char ch = Convert.ToChar(name_tb.Text.Substring(i, 1));
+                        if (ch == ' ')
+                        { MessageBox.Show("Введен пробел в поле название тура. Невозможно добавить тур"); return; }
+                    }        
+                    for (int i = 0; i < dur_tb.Text.Length; i++)
+                    {
+                        char ch = Convert.ToChar(dur_tb.Text.Substring(i, 1));
+                        if (ch == ' ')
+                        { MessageBox.Show("Введен пробел в поле продолжительность тура. Невозможно добавить тур"); return; }
+                    }
+                    for (int i = 0; i < price_tb.Text.Length; i++)
+                    {
+                        char ch = Convert.ToChar(price_tb.Text.Substring(i, 1));
+                        if (ch == ' ')
+                        { MessageBox.Show("Введен пробел в поле стоимость тура. Невозможно добавить тур"); return; }
+                    }
+                    bool ins = false;
+                    if (insale_cb.SelectedItem.ToString() == "Да")
+                    {
+                        ins = true;
+                    }
+                    else { ins = false; }
+                    decimal price;
+                    try
+                    {
+                         price = Convert.ToDecimal(price_tb.Text);
+                    }
+                    catch { MessageBox.Show("Введите цену в числовом формате"); return; }
+                    AddTourMet.AddTourMethod(name_tb.Text, dur_tb.Text, price, ins, base64String, des_tb.Text);
                 }
-                else { ins = false; }
-                decimal price = Convert.ToDecimal(price_tb.Text);
-                AddTourMet.AddTourMethod(name_tb.Text, dur_tb.Text, price, ins, base64String, des_tb.Text);
-            }
-            else
-            {
-                MessageBox.Show("Заполните все поля");
-            }
+                else
+                {
+                    MessageBox.Show("Заполните все поля");
+                }
+             }
+             catch { MessageBox.Show("Ошибка сервера"); }
+            
         }
         
         public void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files (*.jpg;*.png;*.gif;*.bmp)|*.jpg;*.png;*.gif;*.bmp|All Files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                string imagePath = openFileDialog.FileName;
-                base64String = WorkWithImagesMet.ConvertImgToBase64(imagePath);
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image Files (*.jpg;*.png;*.gif;*.bmp)|*.jpg;*.png;*.gif;*.bmp|All Files (*.*)|*.*";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string imagePath = openFileDialog.FileName;
+                    base64String = WorkWithImagesMet.ConvertImgToBase64(imagePath);
+                }
             }
+            catch { MessageBox.Show("Неверное изображение"); }
         }
     }
 }

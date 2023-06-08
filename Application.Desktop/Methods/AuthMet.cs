@@ -13,40 +13,48 @@ namespace Application.Desktop.Methods
     {
         public static User AuthMethod(string login, string password)
         {
-            TourAgencyContext db = new();
-
-            var user = db.Users.FirstOrDefault(x => x.Username == login);
-          
-            if (user != null)
+            try
             {
-                if (user.Password == password)
+                TourAgencyContext db = new();
+
+                var user = db.Users.FirstOrDefault(x => x.Username == login);
+
+                if (user != null)
                 {
-                    if (user.Role == "Admin")
+                    if (user.Password == password)
                     {
-                        MessageBox.Show("Админ");
-                        AdminWindow aw = new(user.Id);
-                        aw.Show();
-                        return user;
+                        if (user.Role == "Admin")
+                        {
+                            MessageBox.Show("Админ");
+                            AdminWindow aw = new(user.Id);
+                            aw.Show();
+                            return user;
+                        }
+                        else if (user.Role == "User")
+                        {
+                            MessageBox.Show("Клиент");
+                            MainWindow mw = new(user.Id);
+                            mw.Show();
+                            return user;
+                        }
                     }
-                    else if(user.Role == "User")
+                    else
                     {
-                        MessageBox.Show("Клиент");
-                        MainWindow mw = new(user.Id);
-                        mw.Show();
-                        return user;
+                        MessageBox.Show("Пароль неверный");
                     }
+                    return null;
                 }
                 else
                 {
-                    MessageBox.Show("Пароль неверный");
+                    MessageBox.Show("Пользователя с таким логином не существует");
                 }
                 return null;
             }
-            else
+            catch
             {
-                MessageBox.Show("Пользователя с таким логином не существует");
+                MessageBox.Show("Ошибка сервера");
+                return null;
             }
-            return null;
         }
     }
 }
