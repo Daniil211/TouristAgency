@@ -49,6 +49,8 @@
 
     bool IsBase64(string value)
     {
+        if (value == null || value.Length == 0)
+            return false;
         value = value.Trim();
         return ((value.Length % 4 == 0) && Regex.IsMatch(value, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None));
     }

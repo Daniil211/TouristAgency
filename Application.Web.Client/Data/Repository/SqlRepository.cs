@@ -15,6 +15,13 @@ namespace Application.Web.Client.Data.Repository
             var tours = _db.Tours.ToList();
             return tours;
         }
+
+        public List<User> GetAllUsers()
+        {
+            var users = _db.Users.ToList();
+            return users;
+        }
+
         public List<TourOperator> GetAllTourOperator()
         {
             var tourOperator = _db.TourOperators.ToList();

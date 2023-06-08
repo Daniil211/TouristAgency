@@ -8,44 +8,59 @@
         <h1 class="text-info">Orders</h1>
     </div>
 </div>
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <p>@errordescription</p>
+</Modal>
 <AuthorizeView Roles="Admin">
     <NotAuthorized>
 
     </NotAuthorized>
     <Authorized>
-<h1 class="text-info">All orders</h1>
-<div class="row">
-    <div class="col">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Tour Id</th>
-                    <th scope="col">Tour Operator ID</th>
-                    <th scope="col">User Id</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Order)
-                {
-                    <IndividualOrder Order="item" OnDeleteOrder="DeleteOrder" OnEditOrder="EditOrder" />
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+        <h1 class="text-info">All orders</h1>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Order ID</th>
+                            <th scope="col">Tour Id</th>
+                            <th scope="col">Tour Operator ID</th>
+                            <th scope="col">User Id</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Order)
+                        {
+                            <IndividualOrder Order="item" OnDeleteOrder="DeleteOrder" OnEditOrder="EditOrder" />
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col">
                 <h1 class="text-info">View Mode/Edit Mode</h1>
             </div>
         </div>
+        <div class="row">
+            <div class="col">
+                <h1 class="text-warning">First enter the data, then click on the button</h1>
+            </div>
+        </div>
         <div>
             <Switch @bind-Checked="switchValue" />
         </div>
-
+        <div class="row">
+            <div class="col">
+                <h1 class="text-info"></h1>
+            </div>
+        </div>
         @if (!switchValue)
         {
 
@@ -57,20 +72,59 @@
                     <h1 class="text-info">Fill in the fields before editing</h1>
                 </div>
             </div>
-            <div class="typeahead">
-                <div class="typeahead-contols">
-                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Id..." @bind="newTourId">
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-secondary">Select a tour to edit </h2>
                 </div>
             </div>
             <div class="typeahead">
                 <div class="typeahead-contols">
-                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New User Id..." @bind="newUserIdId">
-                </div>
-            </div>
 
+                    <select class="form-control mb-2" @bind="newTourId">
+                        <option>-- Select Tour  --</option>
+                        @foreach (var item in Tour)
+                        {
+                            <option value="@item.TourId">@item.TourName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-secondary">Select a user to edit </h2>
+                </div>
+            </div>
             <div class="typeahead">
                 <div class="typeahead-contols">
-                    <input type="text" class="typeahead-input" autocomplete="off" placeholder="New Tour Operator Id..." @bind="newTourOperator">
+
+                    <select class="form-control mb-2" @bind="newUserIdId">
+                        <option>-- Select User  --</option>
+                        @foreach (var item in User)
+                        {
+                            <option value="@item.Id">@item.Username</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h2 class="text-secondary">Select a tour operator to edit </h2>
+                </div>
+            </div>
+            <div class="typeahead">
+                <div class="typeahead-contols">
+                    <select class="form-control mb-2" @bind="newTourOperator">
+                        <option>-- Select Tour Operator  --</option>
+                        @foreach (var item in TourOperator)
+                        {
+                            <option value="@item.OperatorId">@item.Fio</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-info"> </h1>
                 </div>
             </div>
         }
@@ -89,6 +143,12 @@
     public EventCallback<Order> OnDeleteOrder { get; set; }
     [Parameter]
     public EventCallback<Order> OnEditOrder { get; set; }
+    List<Tour> Tour = new();
+    List<TourOperator> TourOperator = new();
+    List<User> User = new();
+    string title = "Error notification";
+    string errordescription = string.Empty;
+    bool _visible = false;
     List<Order> Order = new();
     private bool switchValue { get; set; }
     private int newTourId;
@@ -96,27 +156,56 @@
     private int newTourOperator;
     void DeleteOrder(Order order)
     {
-        Order.Remove(order);
-        _db.RemoveOrder(order);
+        try
+        {
+            Order.Remove(order);
+            _db.RemoveOrder(order);
+        }
+        catch (Exception ex)
+        {
+            _visible = true;
+            errordescription = ex.ToString();
+        }
     }
     void EditOrder(Order order)
     {
-        var tourToEditTourId = Order.FirstOrDefault(g => g.TourId == order.TourId);
-        var tourToEditUserId = Order.FirstOrDefault(g => g.UserId == order.UserId);
-        var tourToEditTourOperator = Order.FirstOrDefault(g => g.TourOperatorId == order.TourOperatorId);
-        if (tourToEditTourId != null && tourToEditUserId != null && tourToEditTourOperator != null)
+        try
         {
-            tourToEditTourId.TourId = newTourId;
-            tourToEditUserId.UserId = newUserIdId;
-            tourToEditTourOperator.TourOperatorId = newTourOperator;
-            _db.UpdateOrder(tourToEditTourId);
-            _db.UpdateOrder(tourToEditUserId);
-            _db.UpdateOrder(tourToEditTourOperator);
+            var tourToEditTourId = Order.FirstOrDefault(g => g.TourId == order.TourId);
+            var tourToEditUserId = Order.FirstOrDefault(g => g.UserId == order.UserId);
+            var tourToEditTourOperator = Order.FirstOrDefault(g => g.TourOperatorId == order.TourOperatorId);
+            if (tourToEditTourId != null && tourToEditUserId != null && tourToEditTourOperator != null)
+            {
+                tourToEditTourId.TourId = newTourId;
+                tourToEditUserId.UserId = newUserIdId;
+                tourToEditTourOperator.TourOperatorId = newTourOperator;
+                _db.UpdateOrder(tourToEditTourId);
+                _db.UpdateOrder(tourToEditUserId);
+                _db.UpdateOrder(tourToEditTourOperator);
+            }
+        }
+        catch (Exception ex)
+        {
+            _visible = true;
+            errordescription = ex.ToString();
         }
     }
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
 
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
     protected override void OnInitialized()
     {
         Order = _db.GetAllOrder();
+        Tour = _db.GetAllTours();
+        User = _db.GetAllUsers();
+        TourOperator = _db.GetAllTourOperator();
     }
 }

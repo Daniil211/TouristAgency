@@ -4,6 +4,7 @@
 @inject NavigationManager NavigationManager
 @page "/"
 @inject IRepository _db
+@inject IJSRuntime JS
 
 <Modal Title="@title"
        Visible="@_visible"
@@ -151,19 +152,19 @@
                         <h4>Profile History</h4>
                         <table class="table table-th-block">
                             <tbody>
-                                @if (User != null)
-                                {
-                                    <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
-                                    <tr>
-                                        <td class="active">
-                                            Registered:
-                                        </td>
-                                        <td>@User?.DateCreated.ToString()</td>
-                                    </tr>
-                                    <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
-                                    <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
-                                    <tr><td class="active">Full years:</td><td>@User?.Age</td></tr>
-                                }
+                            @if (User != null)
+                            {
+                                <tr><td class="active">User Id:</td><td>@User?.Id.ToString()</td></tr>
+                                <tr>
+                                    <td class="active">
+                                        Registered:
+                                    </td>
+                                    <td>@User?.DateCreated.ToString()</td>
+                                </tr>
+                                <tr><td class="active">Login:</td><td>@User?.Username</td></tr>
+                                <tr><td class="active">Role:</td><td>@User?.Role</td></tr>
+                                <tr><td class="active">Full years:</td><td>@User?.Age</td></tr>
+                            }
                             </tbody>
                         </table>
                     </div>
@@ -228,12 +229,14 @@
     string title = "Error notification";
     string errordescription = string.Empty;
     bool _visible = false;
+    string? _idName = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
         try
         {
             orders = _db.GetAllOrder();
+            _idName = @User?.Id.ToString();
         }
         catch (Exception ex)
         {
