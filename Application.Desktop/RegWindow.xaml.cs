@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Application.Database;
 using Application.Desktop.Methods;
+using Azure;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Application.Desktop
@@ -65,6 +66,16 @@ namespace Application.Desktop
                         char ch = Convert.ToChar(phone_tb.Text.Substring(i, 1));
                         if (ch == ' ')
                         { MessageBox.Show("Введен пробел в поле телефон. Невозможно зарегистрироваться"); return; }
+                    }
+                    for (int i = 0; i < Convert.ToString(phone_tb.Text).Length; i++)
+                    {
+                        char ch = Convert.ToChar(Convert.ToString(phone_tb.Text).Substring(i, 1));
+                        if (ch >= '0' && ch <= '9')
+                        {
+                            continue;
+                        }
+                        else
+                        { MessageBox.Show("Введите номер в числовом формате"); return; }
                     }
                     if (pass_tb.Text == pass2_tb.Text)
                     {
