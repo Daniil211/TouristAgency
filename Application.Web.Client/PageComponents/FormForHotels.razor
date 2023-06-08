@@ -1,4 +1,7 @@
 ﻿@using Application.Web.Client.Helpers
+@using Application.Web.Client.Data.Repository
+@inject IRepository _db
+
 <EditForm Model="Hotel" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
@@ -7,10 +10,16 @@
             <InputText class="form-control mb-2" @bind-Value="Hotel.HotelName"/>
             <ValidationMessage For="(() => Hotel.HotelName)" />
             <h3>Count Of Stars</h3>
-            <Input class="form-control mb-2" @bind-Value="Hotel.CountOfStars"/>
+            <Input class="form-control mb-2" @bind-Value="Hotel.CountOfStars" OnInput="OnCountOfStarsInput" />
             <ValidationMessage For="(() => Hotel.CountOfStars)" />
             <h3>Id City</h3>
-            <Input class="form-control mb-2" @bind-Value="Hotel.CityId"/>
+            <select class="form-control mb-2" @bind="Hotel.CityId">
+                <option>-- Select City --</option>
+                @foreach (var item in City)
+                {
+                    <option value="@item.CityId">@item.CityName</option>
+                }
+            </select>
             <ValidationMessage For="(() => Hotel.CityId)" />
         </div>
     </div>
@@ -20,6 +29,22 @@
 @code {
     [Parameter]
     public Hotel Hotel { get; set; }
+    List<City> City = new();
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
+    protected override void OnInitialized()
+    {
+        City = _db.GetAllCity();
+    }
+    void OnCountOfStarsInput(ChangeEventArgs e)
+    {
+        if (!int.TryParse(e.Value.ToString(), out int stars))
+        {
+            Hotel.CountOfStars = 0;
+        }
+        else if (stars > 5)
+        {
+            Hotel.CountOfStars = 5;
+        }
+    }
 }

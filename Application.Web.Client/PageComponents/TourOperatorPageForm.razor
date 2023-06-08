@@ -3,14 +3,14 @@
     <div class="form-group">
         <label>Operator Name: </label>
         <div>
-            <InputText class="form-control" @bind-Value="TourOperator.Fio" />
+            <InputText pattern="[^ ]+" title="Spaces are not allowed" class="form-control" @bind-Value="TourOperator.Fio" />
             <ValidationMessage For="(()=>TourOperator.Fio)" />
         </div>
     </div>
     <div class="form-group">
         <label>Age:</label>
         <div>
-            <Input class="form-control" @bind-Value="TourOperator.Age" />
+            <Input pattern="[^ ]+" title="Spaces are not allowed" class="form-control" @bind-Value="TourOperator.Age" />
             <ValidationMessage For="(()=>TourOperator.Age)" />
         </div>
     </div>

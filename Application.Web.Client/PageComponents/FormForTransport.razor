@@ -3,7 +3,7 @@
     <div class="form-group">
         <label>Type transport:</label>
         <div>
-            <InputText class="form-control mb-2" @bind-Value="Transport.TypeOfTransport" />
+            <InputText pattern="[^ ]+" title="Spaces are not allowed" class="form-control mb-2" @bind-Value="Transport.TypeOfTransport" />
             <ValidationMessage For="(() => Transport.TypeOfTransport)" />
         </div>
     </div>
