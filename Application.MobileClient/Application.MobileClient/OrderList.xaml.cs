@@ -18,7 +18,7 @@ namespace Application.MobileClient
 		}
         private async void ButtonMain_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new Tours());
+            await Navigation.PushModalAsync(new MainPage());
         }
     }
 }
