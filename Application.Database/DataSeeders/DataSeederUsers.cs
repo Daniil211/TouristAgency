@@ -61,8 +61,102 @@ namespace Application.Persistence.DataSeeders
                     Phone = "79797979"
                 }
             };
-            modelBuilder.Entity<User>().HasData(Users);
+            List<City> Cities = new()
+            {
+                new()
+                {
+                    CityId = 1,
+                    CityName = "Moscow"
+                },
+                new()
+                {
+                    CityId = 2,
+                    CityName = "Kazan"
+                },
+                new()
+                {
+                    CityId = 3,
+                    CityName = "Los-Angeles"
+                },
+                new()
+                {
+                    CityId = 4,
+                    CityName = "Miami"
+                }
+            };
+            List<Hotel> Hotels = new()
+            {
+                new()
+                {
+                    HotelId = 1,
+                    HotelName = "Almaz",
+                    CountOfStars = 2,
+                    CityId = 1
+                },
+                new()
+                {
+                    HotelId = 2,
+                    HotelName = "Plaza",
+                    CountOfStars = 5,
+                    CityId = 2
+                },
+                new()
+                {
+                    HotelId = 3,
+                    HotelName = "Rent",
+                    CountOfStars = 5,
+                    CityId = 4
+                },
+                new()
+                {
+                    HotelId = 4,
+                    HotelName = "Summer",
+                    CountOfStars = 4,
+                    CityId = 3
+                }
+            };
+            List<Transport> Transports = new()
+            {
+                new()
+                {
+                   TransportId = 1,
+                   TypeOfTransport = "AirPlane"
+                },
+                new()
+                {
+                    TransportId = 2,
+                    TypeOfTransport = "Bus"
+                },
+                new()
+                {
+                    TransportId = 3,
+                    TypeOfTransport = "Auto"
+                },
+                new()
+                {
+                    TransportId = 4,
+                    TypeOfTransport = "Travel"
+                },
+                new()
+                {
+                    TransportId = 5,
+                    TypeOfTransport = "Metro"
+                },
+                new()
+                {
+                    TransportId = 6,
+                    TypeOfTransport = "Spaceship"
+                },
+                new()
+                {
+                    TransportId = 7,
+                    TypeOfTransport = "Ship"
+                }
 
+            };
+            modelBuilder.Entity<Hotel>().HasData(Hotels);
+            modelBuilder.Entity<User>().HasData(Users);
+            modelBuilder.Entity<City>().HasData(Cities);
             return modelBuilder;
         }
     }
