@@ -1,18 +1,46 @@
 ﻿<EditForm Model="City" OnValidSubmit="OnValidSubmit">
-    <DataAnnotationsValidator/>
+    <DataAnnotationsValidator />
     <div class="form-group">
         <label>New City:</label>
         <div>
-            <InputText class="form-control mb-2" @bind-Value="City.CityName"/>
+            <InputText pattern="[^ ]+" title="Spaces are not allowed" class="form-control mb-2" @bind-Value="City.CityName" MinLength="3" />
             <ValidationMessage For="(() => City.CityName)" />
         </div>
     </div>
-    <button class="btn btn-outline-primary">Save</button>
+    <button @oninput="OnInput" class="btn btn-outline-primary">Save</button>
 </EditForm>
-
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <p>@errordescription</p>
+</Modal>
 @code {
     [Parameter]
     public City City { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
+    string title = "Error notification";
+    string errordescription = string.Empty;
+    bool _visible = false;
+    private async Task OnInput(ChangeEventArgs e)
+    {
+        string input = e.Value.ToString();
+        if (string.IsNullOrWhiteSpace(input) || input.Length < 3)
+        {
+            _visible = true;
+            errordescription = "Город не может быть назван одним пробелом и не может состоять из менее чем 3х букв";
+        }
+    }
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
 }

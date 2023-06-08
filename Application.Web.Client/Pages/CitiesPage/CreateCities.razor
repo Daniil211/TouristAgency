@@ -13,20 +13,40 @@
         <FormForCities City="city" OnValidSubmit="AddNewCity" />
     </div>
 </div>
-
+<Modal Title="@title"
+       Visible="@_visible"
+       OnOk="@HandleOk"
+       OnCancel="@HandleCancel">
+    <p>@errordescription</p>
+</Modal>
 @code {
     City city = new();
-
+    string title = "Error notification";
+    string errordescription = string.Empty;
+    bool _visible = false;
     void AddNewCity()
     {
-        bool result = _db.CreateNewCity(city);
-        try{
+        try
+        {
+            bool result = _db.CreateNewCity(city);
             if (result)
             navManager.NavigateTo("/");
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            _visible = true;
+            errordescription = ex.ToString();
         }
+    }
+    private void HandleOk(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
+    }
+
+    private void HandleCancel(MouseEventArgs e)
+    {
+        Console.WriteLine(e);
+        _visible = false;
     }
 }

@@ -1,4 +1,6 @@
 ﻿@using System.Security.Claims
+@using Application.Web.Client.Data.Repository
+@inject IRepository _db
 <EditForm Model="TransportOfTour" OnValidSubmit="OnValidSubmit">
     <DataAnnotationsValidator/>
     <div class="form-group">
@@ -9,10 +11,22 @@
         </div>
         <div>
             <h3>Tour Id</h3>
-            <Input class="form-control mb-2" @bind-Value="TransportOfTour.TourId"/>
+            <select class="form-control mb-2" @bind="TransportOfTour.TourId">
+                <option>-- Select Tour --</option>
+                @foreach (var item in Tour)
+                {
+                    <option value="@item.TourId">@item.TourName</option>
+                }
+            </select>
             <ValidationMessage For="(() => TransportOfTour.TourId)"/>
             <h3>Transport Id</h3>
-            <Input class="form-control mb-2" @bind-Value="TransportOfTour.TransportId"/>
+            <select class="form-control mb-2" @bind="TransportOfTour.TransportId">
+                <option>-- Select Transport --</option>
+                @foreach (var item in Transport)
+                {
+                    <option value="@item.TransportId">@item.TypeOfTransport</option>
+                }
+            </select>
             <ValidationMessage For="(() => TransportOfTour.TransportId)"/>
         </div>
     </div>
@@ -24,5 +38,11 @@
     public TransportOfTour TransportOfTour { get; set; }
     [Parameter]
     public EventCallback OnValidSubmit { get; set; }
-
+    List<Tour> Tour = new();
+    List<Transport> Transport = new();
+    protected override void OnInitialized()
+    {
+        Tour = _db.GetAllTours();
+        Transport = _db.GetAllTransport();
+    }
 }
