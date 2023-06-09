@@ -71,6 +71,18 @@ namespace Application.Desktop
                 {
                     if (tb1.Text != "" && tb2.Text != "" && tb3.Text != "")
                     {
+                        if (tb1.Text.Length > 40)
+                        {
+                            MessageBox.Show("Слишком длинное поле фио"); return;
+                        }
+                        if (tb2.Text.Length > 40)
+                        {
+                            MessageBox.Show("Слишком длинное поле возраст"); return;
+                        }
+                        if (tb3.Text.Length > 80)
+                        {
+                            MessageBox.Show("Слишком длинное поле резюме"); return;
+                        }
                         for (int i = 0; i < tb1.Text.Length; i++)
                         {
                             char ch = Convert.ToChar(tb1.Text.Substring(i, 1));

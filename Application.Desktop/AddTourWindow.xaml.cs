@@ -36,6 +36,23 @@ namespace Application.Desktop
              {
                 if (name_tb.Text != "" && dur_tb.Text != "" && price_tb.Text != "" && des_tb.Text != "" && insale_cb.SelectedItem.ToString() != "")
                 {
+                    if (name_tb.Text.Length > 40)
+                    {
+                        MessageBox.Show("Слишком длинное поле названия"); return;
+                    }
+                    if (dur_tb.Text.Length > 40)
+                    {
+                        MessageBox.Show("Слишком длинное поле продолжительность"); return;
+                    }
+                    if (des_tb.Text.Length > 80)
+                    {
+                        MessageBox.Show("Слишком длинное поле описания"); return;
+                    }  
+                    if (Convert.ToDecimal(price_tb.Text) < 0)
+                    {
+                        MessageBox.Show("цена меньше нуля"); return;
+                    }
+
                     for (int i = 0; i < name_tb.Text.Length; i++)
                     {
                         char ch = Convert.ToChar(name_tb.Text.Substring(i, 1));

@@ -28,10 +28,11 @@ namespace Application.Desktop
             using var db = new TourAgencyContext();
             var current = db.Tours.ToList();
             LViewTours.ItemsSource = current;
+            Id = id;
         }
         private void Btn_MakeOrder_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow orderWindow = new(Id);
+            OrderWindow orderWindow = new OrderWindow(Id);
             orderWindow.Show();
         }
     }
