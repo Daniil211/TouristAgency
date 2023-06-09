@@ -129,7 +129,8 @@ namespace Application.Web.Client.Data.Repository
         }
         public Transport GetTransportById(int id)
         {
-            throw new NotImplementedException();
+            var transport = _db.Transports.FirstOrDefault(x => x.TransportId == id);
+            return transport;
         }
         public List<Order> UpdateOrder(Order order)
         {

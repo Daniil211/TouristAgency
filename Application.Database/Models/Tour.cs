@@ -7,7 +7,7 @@ public partial class Tour
 {
     public int TourId { get; set; }
 
-    public string TourName { get; set; } = null!;
+    public string? TourName { get; set; } = null!;
 
     public string? Duration { get; set; } = null!;
 

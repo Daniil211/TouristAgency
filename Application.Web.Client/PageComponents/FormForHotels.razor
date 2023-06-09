@@ -7,7 +7,7 @@
     <div class="form-group">
         <div>
             <h3>Name Hotel</h3>
-            <InputText class="form-control mb-2" @bind-Value="Hotel.HotelName"/>
+            <InputText class="form-control mb-2" maxlength="16" @bind-Value="Hotel.HotelName" />
             <ValidationMessage For="(() => Hotel.HotelName)" />
             <h3>Count Of Stars</h3>
             <Input class="form-control mb-2" @bind-Value="Hotel.CountOfStars" OnInput="OnCountOfStarsInput" />

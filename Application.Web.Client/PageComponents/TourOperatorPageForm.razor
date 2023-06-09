@@ -3,14 +3,14 @@
     <div class="form-group">
         <label>Operator Name: </label>
         <div>
-            <InputText pattern="[^ ]+" title="Spaces are not allowed" class="form-control" @bind-Value="TourOperator.Fio" />
+            <InputText maxlength="16" pattern="[^ ]+" title="Spaces are not allowed" class="form-control" @bind-Value="TourOperator.Fio" />
             <ValidationMessage For="(()=>TourOperator.Fio)" />
         </div>
     </div>
     <div class="form-group">
         <label>Age:</label>
         <div>
-            <Input pattern="[^ ]+" title="Spaces are not allowed" class="form-control" @bind-Value="TourOperator.Age" />
+            <Input pattern="[^ ]+" maxlength="3" min="0" max="100" title="Spaces are not allowed" OnInput="OnPriceInput" class="form-control" @bind-Value="TourOperator.Age" />
             <ValidationMessage For="(()=>TourOperator.Age)" />
         </div>
     </div>
@@ -32,7 +32,13 @@
     public EventCallback OnValidSubmitHandler { get; set; }
 
     string imageUrl;
-
+    void OnPriceInput(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value.ToString(), out int value))
+        {
+            TourOperator.Age = Math.Clamp(value, 0, 100);
+        }
+    }
     protected override void OnInitialized()
     {
         imageUrl = TourOperator.Image;

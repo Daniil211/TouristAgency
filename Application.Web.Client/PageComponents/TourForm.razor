@@ -13,28 +13,28 @@
     <div class="form-group">
         <label>Tour Name:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Tour.TourName" />
+            <InputText class="form-control" maxlength="16" @bind-Value="Tour.TourName" />
             <ValidationMessage For="@(() => Tour.TourName)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Duration:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Tour.Duration" />
+            <InputText class="form-control" maxlength="16" @bind-Value="Tour.Duration" />
             <ValidationMessage For="@(() => Tour.Duration)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Price:</label>
         <div>
-            <Input class="form-control" @bind-Value="Tour.Price" OnInput="OnCountOfStarsInput" />
+            <Input class="form-control" @bind-Value="Tour.Price" OnInput="OnPriceInput" Min="0" />
             <ValidationMessage For="@(() => Tour.Price)"></ValidationMessage>
         </div>
     </div>
     <div class="form-group">
         <label>Video presentation of the tour:</label>
         <div>
-            <InputText class="form-control" @bind-Value="Tour.VideoTour" />
+            <InputText class="form-control" maxlength="16" @bind-Value="Tour.VideoTour" />
             <ValidationMessage For="@(() => Tour.VideoTour)"></ValidationMessage>
         </div>
     </div>
@@ -117,15 +117,15 @@
             errordescription = ex.ToString();
         }
     }
-    void OnCountOfStarsInput(ChangeEventArgs e)
+    void OnPriceInput(ChangeEventArgs e)
     {
-        if (!int.TryParse(e.Value.ToString(), out int stars))
+        if (int.TryParse(e.Value.ToString(), out int value))
         {
-            Tour.Price = 0;
-        }
-        else if (stars > 100000)
-        {
-            Tour.Price = 100000;
+            if (value < 0)
+            {
+                value = 0;
+            }
+            Tour.Price = value;
         }
     }
     void ImageFileSelectedHandler(string imageBase64)

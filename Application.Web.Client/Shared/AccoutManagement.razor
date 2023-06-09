@@ -17,20 +17,20 @@
         <div>
             <Switch @bind-Checked="switchValue" />
         </div>
-        Войти/Зарегаться
+        Войти/Зарегистрироваться
         @if (!switchValue)
         {
             <EditForm Model="LoginFormModel" Context="Login">
                 <div>
                     <label>
                         Username:
-                        <InputText pattern="[^ ]+" title="Spaces are not allowed" @bind-Value="LoginFormModel.Username"></InputText>
+                        <InputText pattern="[^ ]+" title="Spaces are not allowed" maxlength="16" @bind-Value="LoginFormModel.Username"></InputText>
                     </label>
                 </div>
                 <div>
                     <label>
                         Password:
-                        <InputText pattern="[^ ]+" title="Spaces are not allowed" type="password" @bind-Value="LoginFormModel.Password"></InputText>
+                        <InputText pattern="[^ ]+" title="Spaces are not allowed" maxlength="16" type="password" @bind-Value="LoginFormModel.Password"></InputText>
                     </label>
                 </div>
                 <div>
@@ -44,25 +44,25 @@
                 <div>
                     <label>
                         Username:
-                        <InputText @bind-Value="regFormModel.Name" pattern="[^ ]+" title="Spaces are not allowed"></InputText>
+                        <InputText @bind-Value="regFormModel.Name" pattern="[^ ]+" title="Spaces are not allowed" maxlength="16"></InputText>
                     </label>
                 </div>
                 <div>
                     <label>
                         Password:
-                        <InputText type="password" @bind-Value="regFormModel.Password"></InputText>
+                        <InputText type="password" @bind-Value="regFormModel.Password" maxlength="16"></InputText>
                     </label>
                 </div>
                 <div>
                     <label>
                         Confirm password:
-                        <InputText type="password" @bind-Value="regFormModel.PasswordConfirm"></InputText>
+                        <InputText type="password" @bind-Value="regFormModel.PasswordConfirm" maxlength="16"></InputText>
                     </label>
                 </div>
                 <div>
                     <label>
                         Full Name:
-                        <InputText @bind-Value="regFormModel.FIO" pattern="[^ ]+" title="Spaces are not allowed"></InputText>
+                        <InputText @bind-Value="regFormModel.FIO" pattern="[^ ]+" title="Spaces are not allowed" maxlength="16"></InputText>
                     </label>
                 </div>
                 <div>
@@ -74,7 +74,7 @@
                 <div>
                     <label>
                         Phone:
-                        <InputText @bind-Value="regFormModel.Phone" pattern="[^ ]+" title="Spaces are not allowed"></InputText>
+                        <InputText @bind-Value="regFormModel.Phone" pattern="[^ ]+" title="Spaces are not allowed" maxlength="16"></InputText>
                     </label>
                 </div>
                 <div>
@@ -257,10 +257,10 @@
             await WebsiteAuthenticator.LoginAsync(LoginFormModel);
                 _navi.NavigateTo("/");
         }
-        catch
+        catch(Exception ex)
         {
             _visible = true;
-            errordescription = "Пользователь не найден";
+            errordescription = ex.ToString();
         }
     }
 
@@ -294,13 +294,13 @@
             else
             {
                 _visible = true;
-                errordescription = "Пользователь с таким именем уже существует";
+                errordescription = "Ошибка валидности данных";
             }
         }
         catch (Exception ex)
         {
             _visible = true;
-            errordescription = ex.ToString();
+            errordescription = "Поля не могут содержать такие символы или такой профиль уже существует. Обновите страницу и повторите попытку";
         }
     }
 }

@@ -3,7 +3,7 @@
     <div class="form-group">
         <label>New City:</label>
         <div>
-            <InputText pattern="[^ ]+" title="Spaces are not allowed" class="form-control mb-2" @bind-Value="City.CityName" MinLength="3" />
+            <InputText pattern="[^ ]+" title="Spaces are not allowed" class="form-control mb-2" maxlength="16" @bind-Value="City.CityName" MinLength="3" />
             <ValidationMessage For="(() => City.CityName)" />
         </div>
     </div>
