@@ -48,11 +48,12 @@ namespace Application.Desktop
                 ord.UserId = Id;
                 ord.TourOperatorId = 1;
                 db.Orders.Add(ord);
-                var curtrdb = db.Transports.Where(x => x.TypeOfTransport == Transport_cb.SelectedItem.ToString()).FirstOrDefault().TransportId;
-                tr.TourId = curtourdb;
-                tr.TransportId = curtrdb;
-                db.SaveChanges();
-                MessageBox.Show("Заявка оставлена");
+        //    MessageBox.Show($"{Id}"); 
+            //  var curtrdb = db.Transports.Where(x => x.TypeOfTransport == Transport_cb.SelectedItem.ToString()).FirstOrDefault().TransportId;
+            //tr.TourId = curtourdb;
+            //tr.TransportId = curtrdb;
+             db.SaveChanges();
+             MessageBox.Show("Заявка оставлена");
             }
             catch { MessageBox.Show("Ошибка сервера"); }
         }

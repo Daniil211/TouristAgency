@@ -28,6 +28,22 @@ namespace Application.MobileClient
             Button button = (Button)sender;
             try
             {
+                if (login.Text.Length > 40)
+                {
+                    DisplayAlert("Невозможно зарегистрироваться", "Введено длинное в поле логин", "Ок"); return;
+                }
+                if (password.Text.Length > 40)
+                {
+                    DisplayAlert("Невозможно зарегистрироваться", "Введено длинное в поле пароль", "Ок"); return;
+                }
+                if (confirmPassword.Text.Length > 40)
+                {
+                    DisplayAlert("Невозможно зарегистрироваться", "Введено длинное в поле пароль", "Ок"); return;
+                }
+                if (phone.Text.Length > 12)
+                {
+                    DisplayAlert("Невозможно зарегистрироваться", "Введено длинное в телефон", "Ок"); return;
+                }
                 for (int i = 0; i < login.Text.Length; i++)
                 {
                     char ch = Convert.ToChar(login.Text.Substring(i, 1));

@@ -37,6 +37,22 @@ namespace Application.Desktop
             {
                 if (login_tb.Text != "" && pass_tb.Text != "" && pass2_tb.Text != "" && fio_tb.Text != "" && date_tb.Text != "" && phone_tb.Text != "")
                 {
+                    if (login_tb.Text.Length>40)
+                    {
+                        MessageBox.Show("Слишком длинное поле логина"); return;
+                    }
+                    if (pass_tb.Text.Length > 40)
+                    {
+                        MessageBox.Show("Слишком длинное поле пароля"); return;
+                    }    
+                    if (fio_tb.Text.Length > 40)
+                    {
+                        MessageBox.Show("Слишком длинное поле фио"); return;
+                    }
+                    if (phone_tb.Text.Length > 12)
+                    {
+                        MessageBox.Show("Слишком длинное поле телефона"); return;
+                    }
                     for (int i = 0; i < login_tb.Text.Length; i++)
                     {
                         char ch = Convert.ToChar(login_tb.Text.Substring(i, 1));
