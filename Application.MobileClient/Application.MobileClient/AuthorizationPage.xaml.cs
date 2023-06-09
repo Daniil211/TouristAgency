@@ -24,51 +24,49 @@ namespace Application.MobileClient
 
         private async void kabinetButton_Clicked(object sender, EventArgs e)
         {
-            try
+
+            if (login.Text == null)
             {
-                string log = App.Current.Properties["logino"].ToString();
-                string pass = App.Current.Properties["passwordo"].ToString();
-                string role = App.Current.Properties["roleo"].ToString();
-                if (login.Text == null)
+                DisplayAlert("Неуспешно", "Введите логин", "Ок");
+            }
+            else if (password.Text == null)
+            {
+                DisplayAlert("Неуспешно", "Введите пароль", "Ок");
+            }
+            else
+            {
+
+                if (login.Text == "Admin" && password.Text == "Admin")
                 {
-                    DisplayAlert("Неуспешно", "Введите логин", "Ок");
-                }
-                else if (password.Text == null)
-                {
-                    DisplayAlert("Неуспешно", "Введите пароль", "Ок");
+                    DisplayAlert("Успешно", "Вы вошли как админ", "Ок");
+                    Tours page = new Tours();
+                    await Navigation.PushAsync(page);
                 }
                 else
                 {
-                    if (login.Text == "Admin" && password.Text == "Admin")
+                    string log = App.Current.Properties["logino"].ToString();
+                    string pass = App.Current.Properties["passwordo"].ToString();
+                    string role = App.Current.Properties["roleo"].ToString();
+                    if (login.Text == log)
                     {
-                        DisplayAlert("Успешно", "Вы вошли как админ", "Ок");
-                        Tours page = new Tours();
-                        await Navigation.PushAsync(page);
-                    }
-                    else if (role == "User")
-                    {
-                        if (login.Text == log)
+                        if (password.Text == pass)
                         {
-                            if (password.Text == pass)
-                            {
-                                DisplayAlert("Успешно", "Вы вошли как клиент", "Ок");
-                                MainPage page = new MainPage();
-                                await Navigation.PushAsync(page);
-                            }
-                            else
-                            {
-                                DisplayAlert("Неуспешно", "Пароль неверный", "Ок");
-                            }
+                            DisplayAlert("Успешно", "Вы вошли как клиент", "Ок");
+                            MainPage page = new MainPage();
+                            await Navigation.PushAsync(page);
                         }
                         else
                         {
-                            DisplayAlert("Неуспешно", "Логин неверный", "Ок");
+                            DisplayAlert("Неуспешно", "Пароль неверный", "Ок");
                         }
+                    }
+                    else
+                    {
+                        DisplayAlert("Неуспешно", "Логин неверный", "Ок");
                     }
                 }
             }
-            catch {
-                   DisplayAlert("Неуспешно", "Ошибка сервера", "Ок"); }
+
 
         }
     }
