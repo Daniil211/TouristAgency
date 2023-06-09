@@ -10,7 +10,7 @@
     <div class="form-group">
         <label>Age:</label>
         <div>
-            <Input pattern="[^ ]+" maxlength="3" min="0" max="100" title="Spaces are not allowed" OnInput="OnPriceInput" class="form-control" @bind-Value="TourOperator.Age" />
+            <Input pattern="[^ ]+" min="0" max="100" title="Spaces are not allowed" OnInput="OnPriceInput" class="form-control" @bind-Value="TourOperator.Age" />
             <ValidationMessage For="(()=>TourOperator.Age)" />
         </div>
     </div>

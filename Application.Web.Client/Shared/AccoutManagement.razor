@@ -237,6 +237,7 @@
         {
             orders = _db.GetAllOrder();
             _idName = @User?.Id.ToString();
+
         }
         catch (Exception ex)
         {
@@ -249,7 +250,7 @@
         "Admin",
         "User"
     };
-
+  
     private async Task TryLogin()
     {
         try
@@ -280,21 +281,32 @@
     {
         try
         {
-            if (regFormModel.PasswordConfirm == regFormModel.Password)
+            DateTime date = new DateTime(1940, 2, 1);
+            DateTime date1 = new DateTime(2010, 2, 1);
+            if (regFormModel.Date >= date && regFormModel.Date <= date1)
             {
-                await WebsiteAuthenticator.RegAsync(regFormModel);
+                if (regFormModel.PasswordConfirm == regFormModel.Password)
+                {
+                    await WebsiteAuthenticator.RegAsync(regFormModel);
 
-                await WebsiteAuthenticator.LoginAsync(new LoginFormModel()
+                    await WebsiteAuthenticator.LoginAsync(new LoginFormModel()
                     {
                         Username = regFormModel.Name,
                         Password = regFormModel.Password
                     });
-                _navi.NavigateTo("/");
+                    _navi.NavigateTo("/");
+                }
+
+                else
+                {
+                    _visible = true;
+                    errordescription = "Ошибка валидности данных";
+                }
             }
             else
             {
                 _visible = true;
-                errordescription = "Ошибка валидности данных";
+                errordescription = "Некоректная дата";
             }
         }
         catch (Exception ex)
