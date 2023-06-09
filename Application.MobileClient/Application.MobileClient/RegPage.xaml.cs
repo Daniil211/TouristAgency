@@ -23,8 +23,6 @@ namespace Application.MobileClient
             object roleo = "";
         }
 
-
-
         private async void OnButtonClicked(object sender, System.EventArgs e)
         {
             Button button = (Button)sender;
@@ -57,16 +55,6 @@ namespace Application.MobileClient
                     char ch = Convert.ToChar(password.Text.Substring(i, 1));
                     if (ch == ' ')
                     { DisplayAlert("Невозможно зарегистрироваться", "Введен пробел в поле пароль", "Ок"); return; }
-                }
-                for (int i = 0; i < Convert.ToString(phone).Length; i++)
-                {
-                    char ch = Convert.ToChar(Convert.ToString(phone).Substring(i, 1));
-                    if (ch >= '0' && ch <= '9')
-                    {
-                        continue;
-                    }
-                    else
-                    { DisplayAlert("Невозможно зарегистрироваться", "Введите телефон в числовом формате", "Ок"); return; }
                 }
                 if (login.Text == null)
                 {
